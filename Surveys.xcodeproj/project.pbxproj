@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		2ECCF9ED24C9D94E00912CB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCF9EC24C9D94E00912CB9 /* AppDelegate.swift */; };
-		2ECCF9EF24C9D94E00912CB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCF9EE24C9D94E00912CB9 /* SceneDelegate.swift */; };
-		2ECCF9F124C9D94E00912CB9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCF9F024C9D94E00912CB9 /* ViewController.swift */; };
-		2ECCF9F424C9D94E00912CB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCF9F224C9D94E00912CB9 /* Main.storyboard */; };
-		2ECCF9F624C9D94F00912CB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCF9F524C9D94F00912CB9 /* Assets.xcassets */; };
 		2ECCF9F924C9D94F00912CB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCF9F724C9D94F00912CB9 /* LaunchScreen.storyboard */; };
 		2ECCFA0424C9D94F00912CB9 /* SurveysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCFA0324C9D94F00912CB9 /* SurveysTests.swift */; };
 		2ECCFA0F24C9D94F00912CB9 /* SurveysUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCFA0E24C9D94F00912CB9 /* SurveysUITests.swift */; };
+		2ECCFA2124C9DD1B00912CB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCFA2024C9DD1B00912CB9 /* Main.storyboard */; };
+		2ECCFA2824C9DE7C00912CB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCFA2624C9DE7C00912CB9 /* Assets.xcassets */; };
+		2ECCFA2B24C9E0AF00912CB9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCFA2724C9DE7C00912CB9 /* Info.plist */; };
+		2ECCFA2F24C9E5A100912CB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCFA2E24C9E5A100912CB9 /* SceneDelegate.swift */; };
+		2ECCFA3124C9E64500912CB9 /* SurveysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCFA3024C9E64500912CB9 /* SurveysViewController.swift */; };
+		2ECCFA3324C9E65200912CB9 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCFA3224C9E65200912CB9 /* Survey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,18 +39,19 @@
 /* Begin PBXFileReference section */
 		2ECCF9E924C9D94E00912CB9 /* Surveys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surveys.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ECCF9EC24C9D94E00912CB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2ECCF9EE24C9D94E00912CB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2ECCF9F024C9D94E00912CB9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2ECCF9F324C9D94E00912CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2ECCF9F524C9D94F00912CB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2ECCF9F824C9D94F00912CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2ECCF9FA24C9D94F00912CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2ECCF9FF24C9D94F00912CB9 /* SurveysTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SurveysTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ECCFA0324C9D94F00912CB9 /* SurveysTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveysTests.swift; sourceTree = "<group>"; };
 		2ECCFA0524C9D94F00912CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2ECCFA0A24C9D94F00912CB9 /* SurveysUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SurveysUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ECCFA0E24C9D94F00912CB9 /* SurveysUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveysUITests.swift; sourceTree = "<group>"; };
 		2ECCFA1024C9D94F00912CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2ECCFA2024C9DD1B00912CB9 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		2ECCFA2624C9DE7C00912CB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2ECCFA2724C9DE7C00912CB9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2ECCFA2E24C9E5A100912CB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		2ECCFA3024C9E64500912CB9 /* SurveysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveysViewController.swift; sourceTree = "<group>"; };
+		2ECCFA3224C9E65200912CB9 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +102,13 @@
 		2ECCF9EB24C9D94E00912CB9 /* Surveys */ = {
 			isa = PBXGroup;
 			children = (
+				2ECCFA1C24C9DCBE00912CB9 /* Models */,
+				2ECCFA1F24C9DCBE00912CB9 /* ViewControllers */,
+				2ECCFA1D24C9DCBE00912CB9 /* Views */,
 				2ECCF9EC24C9D94E00912CB9 /* AppDelegate.swift */,
-				2ECCF9EE24C9D94E00912CB9 /* SceneDelegate.swift */,
-				2ECCF9F024C9D94E00912CB9 /* ViewController.swift */,
-				2ECCF9F224C9D94E00912CB9 /* Main.storyboard */,
-				2ECCF9F524C9D94F00912CB9 /* Assets.xcassets */,
+				2ECCFA2E24C9E5A100912CB9 /* SceneDelegate.swift */,
 				2ECCF9F724C9D94F00912CB9 /* LaunchScreen.storyboard */,
-				2ECCF9FA24C9D94F00912CB9 /* Info.plist */,
+				2ECCFA2524C9DE7C00912CB9 /* Supporting Files */,
 			);
 			path = Surveys;
 			sourceTree = "<group>";
@@ -126,6 +129,47 @@
 				2ECCFA1024C9D94F00912CB9 /* Info.plist */,
 			);
 			path = SurveysUITests;
+			sourceTree = "<group>";
+		};
+		2ECCFA1C24C9DCBE00912CB9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2ECCFA3224C9E65200912CB9 /* Survey.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2ECCFA1D24C9DCBE00912CB9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2ECCFA1E24C9DCBE00912CB9 /* Storyboards */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2ECCFA1E24C9DCBE00912CB9 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				2ECCFA2024C9DD1B00912CB9 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		2ECCFA1F24C9DCBE00912CB9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2ECCFA3024C9E64500912CB9 /* SurveysViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2ECCFA2524C9DE7C00912CB9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2ECCFA2624C9DE7C00912CB9 /* Assets.xcassets */,
+				2ECCFA2724C9DE7C00912CB9 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +276,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ECCFA2B24C9E0AF00912CB9 /* Info.plist in Resources */,
+				2ECCFA2124C9DD1B00912CB9 /* Main.storyboard in Resources */,
+				2ECCFA2824C9DE7C00912CB9 /* Assets.xcassets in Resources */,
 				2ECCF9F924C9D94F00912CB9 /* LaunchScreen.storyboard in Resources */,
-				2ECCF9F624C9D94F00912CB9 /* Assets.xcassets in Resources */,
-				2ECCF9F424C9D94E00912CB9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,9 +304,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2ECCF9F124C9D94E00912CB9 /* ViewController.swift in Sources */,
 				2ECCF9ED24C9D94E00912CB9 /* AppDelegate.swift in Sources */,
-				2ECCF9EF24C9D94E00912CB9 /* SceneDelegate.swift in Sources */,
+				2ECCFA3324C9E65200912CB9 /* Survey.swift in Sources */,
+				2ECCFA2F24C9E5A100912CB9 /* SceneDelegate.swift in Sources */,
+				2ECCFA3124C9E64500912CB9 /* SurveysViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +343,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2ECCF9F224C9D94E00912CB9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2ECCF9F324C9D94E00912CB9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2ECCF9F724C9D94F00912CB9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -435,7 +473,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Surveys/Info.plist;
+				INFOPLIST_FILE = "Surveys/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -452,7 +491,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Surveys/Info.plist;
+				INFOPLIST_FILE = "Surveys/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
