@@ -23,6 +23,7 @@ class SurveysViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         setupNavigationBar()
+        setupVerticalPageView()
         fetchSurveys()
     }
     
@@ -32,7 +33,7 @@ class SurveysViewController: UIViewController {
         APIServices.shared.fetchSurveys { (surveys) in
             self.removeSpinner()
             self.surveys = surveys
-            self.configureVerticalPageControlView(withTotalPages: surveys.count)
+            self.configureVerticalPageControlView(withTotalPages: self.surveys.count)
             self.tableView.reloadData()
         }
     }
@@ -46,6 +47,13 @@ class SurveysViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
+    }
+    
+    private func setupVerticalPageView() {
+        let activedDot = UIImage(named: "actived_dot")?.maskWithColor(color: .white)
+        let unactivedDot = UIImage(named: "unactived_dot")?.maskWithColor(color: .white)
+        verticalPageControlView.setImageActiveState(activedDot, inActiveState: unactivedDot)
+        verticalPageControlView.delegate = self
     }
     
     func barButton(imageName: String, selector: Selector) -> UIBarButtonItem {
@@ -68,15 +76,8 @@ class SurveysViewController: UIViewController {
         tableView.register(UINib(nibName: surveyCellIdentifier, bundle: nil), forCellReuseIdentifier: surveyCellIdentifier)
     }
     
-    func configureVerticalPageControlView(withTotalPages totalPages: Int) {
-
-        verticalPageControlView.delegate = self
-        let activedDot = UIImage(named: "actived_dot")?.maskWithColor(color: .white)
-        let unactivedDot = UIImage(named: "unactived_dot")?.maskWithColor(color: .white)
-        
-        verticalPageControlView.setImageActiveState(activedDot, inActiveState: unactivedDot)
+    private func configureVerticalPageControlView(withTotalPages totalPages: Int) {
         verticalPageControlView.setNumberOfPages(totalPages)
-
         verticalPageControlView.show()
     }
 }
@@ -90,12 +91,6 @@ extension SurveysViewController:UIScrollViewDelegate {
         self.verticalPageControlView.updateState(forPageNumber: Int(page))
     }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if decelerate {
-            return
-        }
-        scrollViewDidEndDecelerating(scrollView)
-    }
 }
 
 // MARK: - UITableViewDataSource
@@ -123,6 +118,7 @@ extension SurveysViewController: UITableViewDelegate {
     }
 }
 
+//MARK: - VerticalPageControlViewDelegate
 extension SurveysViewController:VerticalPageControlViewDelegate {
     func verticalPageControlView(_ view: VerticalPageControlView?, currentPage: Int) {
         tableView.setContentOffset(CGPoint(x: 0, y: CGFloat(CGFloat(currentPage) * tableView.frame.size.height)), animated: true)

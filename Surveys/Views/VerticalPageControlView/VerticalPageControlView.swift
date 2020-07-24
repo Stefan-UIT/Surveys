@@ -19,6 +19,12 @@ class VerticalPageControlView: UIView {
     private var numberOfPages = 0
     private var currentPage = 1
     private let marginSpace:Double = 5.0
+    
+    private var activeSize:CGSize {
+        get {
+            return activeImage?.size ?? CGSize.zero
+        }
+    }
 
     weak var delegate: VerticalPageControlViewDelegate?
 
@@ -53,21 +59,14 @@ class VerticalPageControlView: UIView {
 
 
 // MARK: - Run time calculation / States Frame
-    func activeSize() -> CGSize {
-        return activeImage?.size ?? CGSize.zero
-    }
-
-    func inactiveSize() -> CGSize {
-        return inactiveImage?.size ?? CGSize.zero
-    }
 
 
     func stateVerticalFrameWith(x: CGFloat, y: CGFloat) -> CGRect {
-        return CGRect(x: x, y: y, width: activeSize().width, height: CGFloat(Double(activeSize().height) + marginSpace))
+        return CGRect(x: x, y: y, width: activeSize.width, height: CGFloat(Double(activeSize.height) + marginSpace))
     }
 
     func getY() -> CGFloat {
-        let dotHeight = CGFloat(Double(activeSize().height) + marginSpace)
+        let dotHeight = CGFloat(Double(activeSize.height) + marginSpace)
         let viewHeight = frame.height
         return (viewHeight - (CGFloat(numberOfPages) * dotHeight)) / 2.0
     }
