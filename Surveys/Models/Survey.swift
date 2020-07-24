@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+struct Survey:Decodable {
+    let title: String
+    let description: String
+    let coverImageUrl: String
+}
