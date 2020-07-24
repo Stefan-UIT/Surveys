@@ -22,13 +22,41 @@ class SurveysViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
-        
+        setupNavigationBar()
+        fetchSurveys()
+    }
+    
+    private func fetchSurveys() {
         self.showSpinner(onView: self.view)
         APIServices.shared.fetchSurveys { (surveys) in
             self.removeSpinner()
             self.surveys = surveys
             self.tableView.reloadData()
         }
+    }
+    
+    private func setupNavigationBar() {
+        let leftBarButton = barButton(imageName: "refresh_icon", selector: #selector(onReloadTouchUp))
+        navigationItem.leftBarButtonItem = leftBarButton
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        
+    }
+    
+    func barButton(imageName: String, selector: Selector) -> UIBarButtonItem {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: imageName), for: .normal)
+        button.frame = CGRect(x: 0, y: 0, width: 35, height: 35)
+        button.widthAnchor.constraint(equalToConstant: 35).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        button.addTarget(self, action: selector, for: .touchUpInside)
+        return UIBarButtonItem(customView: button)
+    }
+    
+    @objc func onReloadTouchUp() {
+        fetchSurveys()
     }
     
     private func setupTableView() {
