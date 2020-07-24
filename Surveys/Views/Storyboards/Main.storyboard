@@ -22,18 +22,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vOr-f1-HfC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vOr-f1-HfC">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVQ-2p-Cju" customClass="VerticalPageControlView" customModule="Surveys" customModuleProvider="target">
+                                <rect key="frame" x="376" y="118" width="30" height="714"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="ET1-8L-yQx"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="v7s-bw-diO" firstAttribute="centerY" secondItem="iau-y7-5mf" secondAttribute="centerY" id="0LG-DC-M1e"/>
                             <constraint firstItem="iau-y7-5mf" firstAttribute="trailing" secondItem="vOr-f1-HfC" secondAttribute="trailing" id="DgU-8t-eMo"/>
+                            <constraint firstItem="iau-y7-5mf" firstAttribute="trailing" secondItem="UVQ-2p-Cju" secondAttribute="trailing" constant="8" id="F9m-TQ-7P4"/>
                             <constraint firstItem="vOr-f1-HfC" firstAttribute="leading" secondItem="iau-y7-5mf" secondAttribute="leading" id="M4a-Pz-zJv"/>
+                            <constraint firstItem="UVQ-2p-Cju" firstAttribute="centerY" secondItem="iau-y7-5mf" secondAttribute="centerY" id="Otv-gI-F0k"/>
                             <constraint firstItem="v7s-bw-diO" firstAttribute="centerX" secondItem="iau-y7-5mf" secondAttribute="centerX" id="TGH-CA-Rrk"/>
                             <constraint firstItem="iau-y7-5mf" firstAttribute="bottom" secondItem="vOr-f1-HfC" secondAttribute="bottom" id="b9Z-10-tEK"/>
+                            <constraint firstItem="UVQ-2p-Cju" firstAttribute="top" secondItem="iau-y7-5mf" secondAttribute="top" constant="30" id="em3-hd-F4a"/>
                             <constraint firstItem="vOr-f1-HfC" firstAttribute="top" secondItem="iau-y7-5mf" secondAttribute="top" id="nOP-Td-GSy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iau-y7-5mf"/>
@@ -41,6 +51,7 @@
                     <navigationItem key="navigationItem" id="9dC-24-gdf"/>
                     <connections>
                         <outlet property="tableView" destination="vOr-f1-HfC" id="LJA-hp-bwe"/>
+                        <outlet property="verticalPageControlView" destination="UVQ-2p-Cju" id="AfK-mL-fCe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P68-Mh-MR0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

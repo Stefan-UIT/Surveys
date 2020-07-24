@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-let imageCachess = NSCache<NSString, UIImage>()
+let imageCache = NSCache<NSString, UIImage>()
 
 extension UIImageView {
     func load(urlString:String) {
         guard let url = URL(string: urlString) else { return }
         
         image = nil
-        if let imageFromCache = imageCachess.object(forKey: urlString as NSString) {
+        if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
             print("get from Cached")
             image = imageFromCache
         } else {
@@ -24,7 +24,7 @@ extension UIImageView {
                 if let data = try? Data(contentsOf: url) {
                     DispatchQueue.main.async {
                         if let image = UIImage(data: data) {
-                            imageCachess.setObject(image, forKey: urlString as NSString)
+                            imageCache.setObject(image, forKey: urlString as NSString)
                             print("download compelted + \(url)")
                             self?.image = image
                         }

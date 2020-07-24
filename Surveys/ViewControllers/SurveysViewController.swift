@@ -5,12 +5,12 @@
 //  Created by Trung Vo on 7/23/20.
 //  Copyright © 2020 Trung Vo. All rights reserved.
 //
-
 import UIKit
 
 class SurveysViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var verticalPageControlView: VerticalPageControlView!
     
     // MARK: - Private Var
     private let surveyCellIdentifier = "SurveyTableViewCell"
@@ -21,20 +21,23 @@ class SurveysViewController: UIViewController {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupTableView()
+        setupTableView()
         setupNavigationBar()
         fetchSurveys()
     }
     
+    // MARK: - API
     private func fetchSurveys() {
         self.showSpinner(onView: self.view)
         APIServices.shared.fetchSurveys { (surveys) in
             self.removeSpinner()
             self.surveys = surveys
+            self.configureVerticalPageControlView(withTotalPages: surveys.count)
             self.tableView.reloadData()
         }
     }
     
+    // MARK: - Support Functions
     private func setupNavigationBar() {
         let leftBarButton = barButton(imageName: "refresh_icon", selector: #selector(onReloadTouchUp))
         navigationItem.leftBarButtonItem = leftBarButton
@@ -64,6 +67,35 @@ class SurveysViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: surveyCellIdentifier, bundle: nil), forCellReuseIdentifier: surveyCellIdentifier)
     }
+    
+    func configureVerticalPageControlView(withTotalPages totalPages: Int) {
+
+        verticalPageControlView.delegate = self
+        let activedDot = UIImage(named: "actived_dot")?.maskWithColor(color: .white)
+        let unactivedDot = UIImage(named: "unactived_dot")?.maskWithColor(color: .white)
+        
+        verticalPageControlView.setImageActiveState(activedDot, inActiveState: unactivedDot)
+        verticalPageControlView.setNumberOfPages(totalPages)
+
+        verticalPageControlView.show()
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+extension SurveysViewController:UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
+    {
+        let pageHeight = scrollView.frame.size.height
+        let page = (floor((scrollView.contentOffset.y - pageHeight / 2) / pageHeight) + 1) + 1
+        self.verticalPageControlView.updateState(forPageNumber: Int(page))
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if decelerate {
+            return
+        }
+        scrollViewDidEndDecelerating(scrollView)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -88,5 +120,11 @@ extension SurveysViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension SurveysViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+}
+
+extension SurveysViewController:VerticalPageControlViewDelegate {
+    func verticalPageControlView(_ view: VerticalPageControlView?, currentPage: Int) {
+        tableView.setContentOffset(CGPoint(x: 0, y: CGFloat(CGFloat(currentPage) * tableView.frame.size.height)), animated: true)
     }
 }

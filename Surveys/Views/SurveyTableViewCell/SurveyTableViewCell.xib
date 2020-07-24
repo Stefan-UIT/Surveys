@@ -42,7 +42,7 @@
                                     <constraint firstAttribute="width" constant="180" id="FcN-aW-Awl"/>
                                     <constraint firstAttribute="height" constant="45" id="ahk-7e-F7L"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Take the survey">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
