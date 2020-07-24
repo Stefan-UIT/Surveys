@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rVO-NB-QK2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,14 +22,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vOr-f1-HfC">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="v7s-bw-diO" firstAttribute="centerY" secondItem="iau-y7-5mf" secondAttribute="centerY" id="0LG-DC-M1e"/>
+                            <constraint firstItem="iau-y7-5mf" firstAttribute="trailing" secondItem="vOr-f1-HfC" secondAttribute="trailing" id="DgU-8t-eMo"/>
+                            <constraint firstItem="vOr-f1-HfC" firstAttribute="leading" secondItem="iau-y7-5mf" secondAttribute="leading" id="M4a-Pz-zJv"/>
                             <constraint firstItem="v7s-bw-diO" firstAttribute="centerX" secondItem="iau-y7-5mf" secondAttribute="centerX" id="TGH-CA-Rrk"/>
+                            <constraint firstItem="iau-y7-5mf" firstAttribute="bottom" secondItem="vOr-f1-HfC" secondAttribute="bottom" id="b9Z-10-tEK"/>
+                            <constraint firstItem="vOr-f1-HfC" firstAttribute="top" secondItem="iau-y7-5mf" secondAttribute="top" id="nOP-Td-GSy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iau-y7-5mf"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="vOr-f1-HfC" id="LJA-hp-bwe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P68-Mh-MR0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
