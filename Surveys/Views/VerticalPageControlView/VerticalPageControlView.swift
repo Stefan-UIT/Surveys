@@ -16,10 +16,9 @@ protocol VerticalPageControlViewDelegate:class {
 class VerticalPageControlView: UIScrollView {
     private var activeImage: UIImage?
     private var inactiveImage: UIImage?
-    private var numberOfPages = 0
+    private var numberOfPages = 0   
     private var currentPage = 1
-    private let marginSpace:Double = 5.0
-    private let visibleItemsCount:Int = 5
+    private let marginSpace:Double = 10.0
     
     private var itemSize:CGSize {
         get {
