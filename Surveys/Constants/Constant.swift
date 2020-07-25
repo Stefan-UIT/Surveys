@@ -33,6 +33,7 @@ struct Messages {
 struct Constants {
     struct Images {
         static let RefreshIcon = "refresh_icon"
+        static let MenuIcon = "menu_icon"
         static let ActivedDot = "actived_dot"
         static let UnactivedDot = "unactived_dot"
     }
