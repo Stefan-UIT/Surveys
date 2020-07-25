@@ -17,6 +17,7 @@ class SurveysViewController: UIViewController {
     
     // MARK: - Variables
     var surveys:[Survey]!
+//    var surveys = [Survey]()
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -49,12 +50,6 @@ class SurveysViewController: UIViewController {
         
     }
     
-    private func setupVerticalPageView() {
-        let activedDot = UIImage(named: "actived_dot")?.maskWithColor(color: .white)
-        let unactivedDot = UIImage(named: "unactived_dot")?.maskWithColor(color: .white)
-        verticalPageControlView.setImageActiveState(activedDot, inActiveState: unactivedDot)
-        verticalPageControlView.delegate = self
-    }
     
     func barButton(imageName: String, selector: Selector) -> UIBarButtonItem {
         let button = UIButton(type: .custom)
@@ -76,6 +71,13 @@ class SurveysViewController: UIViewController {
         tableView.register(UINib(nibName: surveyCellIdentifier, bundle: nil), forCellReuseIdentifier: surveyCellIdentifier)
     }
     
+    private func setupVerticalPageView() {
+        let activedDot = UIImage(named: "actived_dot")
+        let unactivedDot = UIImage(named: "unactived_dot")
+        verticalPageControlView.setImageActiveState(activedDot, inActiveState: unactivedDot)
+        verticalPageControlView.verticalPageControlDelegate = self
+    }
+    
     private func configureVerticalPageControlView(withTotalPages totalPages: Int) {
         verticalPageControlView.setNumberOfPages(totalPages)
         verticalPageControlView.show()
@@ -86,11 +88,12 @@ class SurveysViewController: UIViewController {
 extension SurveysViewController:UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
     {
-        let pageHeight = scrollView.frame.size.height
-        let page = (floor((scrollView.contentOffset.y - pageHeight / 2) / pageHeight) + 1) + 1
-        self.verticalPageControlView.updateState(forPageNumber: Int(page))
+        verticalPageControlView.proceed(contentOffsetY: scrollView.contentOffset.y, pageHeight: scrollView.bounds.height)
     }
-    
+
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        verticalPageControlView.proceed(contentOffsetY: scrollView.contentOffset.y, pageHeight: scrollView.bounds.height)
+    }
 }
 
 // MARK: - UITableViewDataSource

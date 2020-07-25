@@ -13,7 +13,7 @@
 		2E52AF2024CAA6AD00BD6CDF /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52AF1F24CAA6AD00BD6CDF /* UIImageView+Extensions.swift */; };
 		2E52AF2224CAB13100BD6CDF /* UIVIewController+Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52AF2124CAB13100BD6CDF /* UIVIewController+Spinner.swift */; };
 		2E52AF2824CAD57800BD6CDF /* VerticalPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52AF2724CAD57800BD6CDF /* VerticalPageControlView.swift */; };
-		2E52AF2A24CAE41C00BD6CDF /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52AF2924CAE41C00BD6CDF /* UIImage+Color.swift */; };
+		2E7B6C5F24CBF37600DB99DA /* ScrollView+Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7B6C5E24CBF37600DB99DA /* ScrollView+Position.swift */; };
 		2ECCF9ED24C9D94E00912CB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCF9EC24C9D94E00912CB9 /* AppDelegate.swift */; };
 		2ECCF9F924C9D94F00912CB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCF9F724C9D94F00912CB9 /* LaunchScreen.storyboard */; };
 		2ECCFA0424C9D94F00912CB9 /* SurveysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCFA0324C9D94F00912CB9 /* SurveysTests.swift */; };
@@ -54,7 +54,7 @@
 		2E52AF1F24CAA6AD00BD6CDF /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		2E52AF2124CAB13100BD6CDF /* UIVIewController+Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Spinner.swift"; sourceTree = "<group>"; };
 		2E52AF2724CAD57800BD6CDF /* VerticalPageControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalPageControlView.swift; sourceTree = "<group>"; };
-		2E52AF2924CAE41C00BD6CDF /* UIImage+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Color.swift"; sourceTree = "<group>"; };
+		2E7B6C5E24CBF37600DB99DA /* ScrollView+Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Position.swift"; sourceTree = "<group>"; };
 		2ECCF9E924C9D94E00912CB9 /* Surveys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surveys.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ECCF9EC24C9D94E00912CB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2ECCF9F824C9D94F00912CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 			children = (
 				2E52AF1F24CAA6AD00BD6CDF /* UIImageView+Extensions.swift */,
 				2E52AF2124CAB13100BD6CDF /* UIVIewController+Spinner.swift */,
-				2E52AF2924CAE41C00BD6CDF /* UIImage+Color.swift */,
+				2E7B6C5E24CBF37600DB99DA /* ScrollView+Position.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -513,8 +513,8 @@
 				2ECCFA3324C9E65200912CB9 /* Survey.swift in Sources */,
 				2E52AF2824CAD57800BD6CDF /* VerticalPageControlView.swift in Sources */,
 				2ECCFA2F24C9E5A100912CB9 /* SceneDelegate.swift in Sources */,
-				2E52AF2A24CAE41C00BD6CDF /* UIImage+Color.swift in Sources */,
 				2ECCFA3124C9E64500912CB9 /* SurveysViewController.swift in Sources */,
+				2E7B6C5F24CBF37600DB99DA /* ScrollView+Position.swift in Sources */,
 				2E52AF1624CA8ED000BD6CDF /* APIServices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

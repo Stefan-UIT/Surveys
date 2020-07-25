@@ -13,20 +13,27 @@ protocol VerticalPageControlViewDelegate:class {
     func verticalPageControlView(_ view: VerticalPageControlView?, currentPage: Int)
 }
 
-class VerticalPageControlView: UIView {
+class VerticalPageControlView: UIScrollView {
     private var activeImage: UIImage?
     private var inactiveImage: UIImage?
     private var numberOfPages = 0
     private var currentPage = 1
     private let marginSpace:Double = 5.0
+    private let visibleItemsCount:Int = 5
     
-    private var activeSize:CGSize {
+    private var itemSize:CGSize {
         get {
             return activeImage?.size ?? CGSize.zero
         }
     }
+    
+    private var sizeWithSpace:Double {
+        get {
+            return Double(itemSize.width) + marginSpace
+        }
+    }
 
-    weak var delegate: VerticalPageControlViewDelegate?
+    weak var verticalPageControlDelegate: VerticalPageControlViewDelegate?
 
     func setImageActiveState(_ active: UIImage?, inActiveState inactive: UIImage?) {
         activeImage = active
@@ -52,30 +59,88 @@ class VerticalPageControlView: UIView {
 
     func updateState(forPageNumber page: Int) {
         if page <= numberOfPages && numberOfPages != 0 && page != currentPage {
-            let pageNeedToUpdate = (page     == 0) ? 1 : page
+            let pageNeedToUpdate = (page == 0) ? 1 : page
             changeButtonState(forTag: pageNeedToUpdate)
         }
+    }
+    
+    private func handleScrollingDown() {
+        let shouldScrollToBottom = CGFloat(currentPage) * CGFloat(sizeWithSpace) + bounds.size.height >= contentSize.height
+        if shouldScrollToBottom {
+            scrollToBottom()
+            return
+        }
+        moveDown()
+    }
+    
+    private func handleScrollingUp() {
+        let shouldScrollToTop = CGFloat(currentPage) * CGFloat(sizeWithSpace) - bounds.size.height <= 0
+        if shouldScrollToTop {
+            scrollToTop()
+            return
+        }
+        moveUp()
+    }
+    
+    private func updatePosition(forPageNumber page:Int) {
+        // if user moving normal or click on the vertical page control
+        let nextPage = CGFloat(page + 1)
+        let nextPageY = nextPage * CGFloat(sizeWithSpace)
+        let needToScrollDown = nextPageY > contentOffset.y + bounds.size.height
+        
+        if needToScrollDown {
+            handleScrollingDown()
+            return
+        }
+        
+        let previousPage = CGFloat(page - 1)
+        let previousPageY = previousPage * CGFloat(sizeWithSpace) - CGFloat(sizeWithSpace)
+        let needToScrollUp = previousPageY < contentOffset.y
+        
+        if needToScrollUp {
+            handleScrollingUp()
+            return
+        }
+    }
+    
+    func proceed(contentOffsetY: CGFloat, pageHeight: CGFloat) {
+        let page = Int((floor((contentOffsetY - pageHeight / 2) / pageHeight) + 1) + 1)
+        updateState(forPageNumber: page)
+        updatePosition(forPageNumber: page)
+    }
+    
+    
+    func moveDown() {
+        let viewHeight = bounds.size.height - CGFloat(sizeWithSpace * 2)
+        let nextContentOffset = CGPoint(x: contentOffset.x, y: contentOffset.y + viewHeight)
+        self.setContentOffset(nextContentOffset, animated: true)
+    }
+    
+    func moveUp() {
+        let viewHeight = bounds.size.height - CGFloat(sizeWithSpace * 2)
+        let nextContentOffset = CGPoint(x: contentOffset.x, y: contentOffset.y - viewHeight)
+        self.setContentOffset(nextContentOffset, animated: true)
     }
 
 
 // MARK: - Run time calculation / States Frame
-
-
     func stateVerticalFrameWith(x: CGFloat, y: CGFloat) -> CGRect {
-        return CGRect(x: x, y: y, width: activeSize.width, height: CGFloat(Double(activeSize.height) + marginSpace))
+        return CGRect(x: x, y: y, width: itemSize.width, height: CGFloat(Double(itemSize.height) + marginSpace))
     }
 
     func getY() -> CGFloat {
-        let dotHeight = CGFloat(Double(activeSize.height) + marginSpace)
+        let dotHeight = CGFloat(Double(itemSize.height) + marginSpace)
+        let contentHeight = contentSize.height
         let viewHeight = frame.height
-        return (viewHeight - (CGFloat(numberOfPages) * dotHeight)) / 2.0
+        let height = max(viewHeight, contentHeight)
+        return (height - (CGFloat(numberOfPages) * dotHeight)) / 2.0
     }
 
 // MARK: - User tap / Delegate Call
     func callDelegate(forPageChange page: Int) {
         updateState(forPageNumber: page)
         if currentPage > 0 {
-            self.delegate?.verticalPageControlView(self, currentPage: currentPage - 1)
+            self.verticalPageControlDelegate?.verticalPageControlView(self, currentPage: currentPage - 1)
         }
     }
 
@@ -85,26 +150,31 @@ class VerticalPageControlView: UIView {
 
 // MARK: - Add States
     
-    func removeAllSubViews() {
+    private func removeAllSubViews() {
         subviews.forEach({ $0.removeFromSuperview() })
     }
+    
+    private func calculateContentSize() {
+        contentSize = .init(width: sizeWithSpace, height: sizeWithSpace * Double(numberOfPages))
+    }
 
-    func addStatesVertically() {
+    private func addStatesVertically() {
         removeAllSubViews()
+        calculateContentSize()
         var y = getY()
         for index in 1...numberOfPages {
-            let btnState = UIButton(type: .custom)
-            btnState.addTarget(self, action: #selector(userTap(_:)), for: .touchUpInside)
-            btnState.tag = index
-            btnState.setImage(inactiveImage, for: .normal)
-            btnState.setImage(activeImage, for: .selected)
+            let dotButton = UIButton(type: .custom)
+            dotButton.addTarget(self, action: #selector(userTap(_:)), for: .touchUpInside)
+            dotButton.tag = index
+            dotButton.setImage(inactiveImage, for: .normal)
+            dotButton.setImage(activeImage, for: .selected)
             if index == currentPage {
-                btnState.isSelected = true
+                dotButton.isSelected = true
             }
-            btnState.frame = stateVerticalFrameWith(x: 0.0, y: y)
-            addSubview(btnState)
-            btnState.center = CGPoint(x: frame.width / 2.0, y: btnState.center.y)
-            y += btnState.frame.size.height
+            dotButton.frame = stateVerticalFrameWith(x: 0.0, y: y)
+            addSubview(dotButton)
+            dotButton.center = CGPoint(x: frame.width / 2.0, y: dotButton.center.y)
+            y += dotButton.frame.size.height
         }
     }
 
