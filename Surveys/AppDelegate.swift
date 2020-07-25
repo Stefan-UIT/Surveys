@@ -20,10 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setupNavigationBarAppearance() {
         let navigationBarAppearace = UINavigationBar.appearance()
-        let color = UIColor(red: 20/255.0, green: 26/255.0, blue: 46/255.0, alpha: 1)
+        let color = UIColor(red: 19/255.0, green: 30/255.0, blue: 52/255.0, alpha: 1)
         let font = UIFont.systemFont(ofSize: 24.0,weight: .semibold)
         
         navigationBarAppearace.tintColor = .white
+        navigationBarAppearace.isTranslucent = false
         navigationBarAppearace.barTintColor = color
         navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white,
                                                       NSAttributedString.Key.font : font]

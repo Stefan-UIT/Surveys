@@ -17,7 +17,6 @@ class SurveysViewController: UIViewController {
     
     // MARK: - Variables
     var surveys:[Survey]!
-//    var surveys = [Survey]()
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -33,6 +32,10 @@ class SurveysViewController: UIViewController {
         super.viewDidAppear(animated)
         self.configureVerticalPageControlView(withTotalPages: self.surveys.count)
         self.tableView.reloadData()
+    }
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
     // MARK: - API
@@ -53,6 +56,11 @@ class SurveysViewController: UIViewController {
     
     // MARK: - Support Functions
     private func setupNavigationBar() {
+        navigationController?.navigationBar.barStyle = .black
+        setupBarButtonItems()
+    }
+    
+    private func setupBarButtonItems() {
         let leftBarButton = UIBarButtonItem.barButton(imageName: Constants.Images.RefreshIcon, selector: #selector(onReloadTouchUp(sender:)),actionController: self)
         
         let rightBarButton = UIBarButtonItem.barButton(imageName: Constants.Images.MenuIcon,selector: nil, actionController: nil)
@@ -60,9 +68,6 @@ class SurveysViewController: UIViewController {
         navigationItem.leftBarButtonItem = leftBarButton
         navigationItem.rightBarButtonItem = rightBarButton
     }
-    
-    
-    
     
     @objc func onReloadTouchUp(sender:UIBarButtonItem) {
         sender.isEnabled = false
