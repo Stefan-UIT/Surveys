@@ -25,23 +25,32 @@ class SurveysViewController: UIViewController {
         setupTableView()
         setupNavigationBar()
         setupVerticalPageView()
-        fetchSurveys()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.configureVerticalPageControlView(withTotalPages: self.surveys.count)
+        self.tableView.reloadData()
     }
     
     // MARK: - API
     private func fetchSurveys() {
         self.showSpinner(onView: self.view)
-        APIServices.shared.fetchSurveys { (surveys) in
+        APIServices.shared.fetchSurveys(success: { (surveys) in
             self.removeSpinner()
             self.surveys = surveys
             self.configureVerticalPageControlView(withTotalPages: self.surveys.count)
             self.tableView.reloadData()
+        }) { (error) in
+            self.removeSpinner()
+            self.showAlert(message: Messages.CouldNotGetSurveysData)
         }
     }
     
     // MARK: - Support Functions
     private func setupNavigationBar() {
-        let leftBarButton = barButton(imageName: "refresh_icon", selector: #selector(onReloadTouchUp))
+        let leftBarButton = barButton(imageName: Constants.Images.RefreshIcon, selector: #selector(onReloadTouchUp))
         navigationItem.leftBarButtonItem = leftBarButton
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -72,8 +81,8 @@ class SurveysViewController: UIViewController {
     }
     
     private func setupVerticalPageView() {
-        let activedDot = UIImage(named: "actived_dot")
-        let unactivedDot = UIImage(named: "unactived_dot")
+        let activedDot = UIImage(named: Constants.Images.ActivedDot)
+        let unactivedDot = UIImage(named: Constants.Images.UnactivedDot)
         verticalPageControlView.setImageActiveState(activedDot, inActiveState: unactivedDot)
         verticalPageControlView.verticalPageControlDelegate = self
     }
