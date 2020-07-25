@@ -22,6 +22,7 @@ struct K {
     static let Accept = "Accept"
     static let Authorization = "Authorization"
     static let SurveysViewController = "SurveysViewController"
+    static let SurveyDetailViewController = "SurveyDetailViewController"
     static let Main = "Main"
 }
 

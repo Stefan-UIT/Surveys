@@ -58,6 +58,47 @@
             </objects>
             <point key="canvasLocation" x="1118.840579710145" y="51.5625"/>
         </scene>
+        <!--Survey Detail View Controller-->
+        <scene sceneID="utp-8P-CkD">
+            <objects>
+                <viewController storyboardIdentifier="SurveyDetailViewController" id="lyW-5i-wIO" customClass="SurveyDetailViewController" customModule="Surveys" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0RU-IM-NSb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surveys Demo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TID-6c-VN2">
+                                <rect key="frame" x="16" y="336.5" width="382" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surveys Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMt-mF-2sR">
+                                <rect key="frame" x="16" y="378" width="382" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="TID-6c-VN2" firstAttribute="centerX" secondItem="Zf2-gC-7Rp" secondAttribute="centerX" id="8Fo-AZ-WGM"/>
+                            <constraint firstItem="TID-6c-VN2" firstAttribute="centerY" secondItem="Zf2-gC-7Rp" secondAttribute="centerY" constant="-100" id="Hng-Zf-1RY"/>
+                            <constraint firstItem="Zf2-gC-7Rp" firstAttribute="trailing" secondItem="bMt-mF-2sR" secondAttribute="trailing" constant="16" id="nA3-9w-MAo"/>
+                            <constraint firstItem="bMt-mF-2sR" firstAttribute="centerX" secondItem="Zf2-gC-7Rp" secondAttribute="centerX" id="nHi-JV-E7b"/>
+                            <constraint firstItem="Zf2-gC-7Rp" firstAttribute="trailing" secondItem="TID-6c-VN2" secondAttribute="trailing" constant="16" id="oHf-9n-vHv"/>
+                            <constraint firstItem="bMt-mF-2sR" firstAttribute="top" secondItem="TID-6c-VN2" secondAttribute="bottom" constant="8" id="vg6-aY-joX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Zf2-gC-7Rp"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="bMt-mF-2sR" id="kbU-wo-ToP"/>
+                        <outlet property="titleLabel" destination="TID-6c-VN2" id="3ZM-2R-KVo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mg8-UV-EwH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2500" y="34"/>
+        </scene>
         <!--Loading View Controller-->
         <scene sceneID="AGo-lw-ey9">
             <objects>

@@ -112,6 +112,7 @@ extension SurveysViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: surveyCellIdentifier, for: indexPath) as! SurveyTableViewCell
         let survey = surveys[indexPath.row]
         cell.configureCell(survey: survey)
+        cell.delegate = self
         return cell
     }
     
@@ -131,5 +132,19 @@ extension SurveysViewController: UITableViewDelegate {
 extension SurveysViewController:VerticalPageControlViewDelegate {
     func verticalPageControlView(_ view: VerticalPageControlView?, currentPage: Int) {
         tableView.setContentOffset(CGPoint(x: 0, y: CGFloat(CGFloat(currentPage) * tableView.frame.size.height)), animated: true)
+    }
+}
+
+//MARK: - SurveyTableViewCellDelegate
+extension SurveysViewController:SurveyTableViewCellDelegate {
+    func didTouchUpTakeTheSurvey(_ cell: SurveyTableViewCell, survey: Survey) {
+        redirectToSurveyDetailVC(survey: survey)
+    }
+    
+    func redirectToSurveyDetailVC(survey:Survey) {
+        let storyboard : UIStoryboard = UIStoryboard(name: K.Main, bundle: nil)
+        let vc :SurveyDetailViewController = storyboard.instantiateViewController(withIdentifier: K.SurveyDetailViewController) as! SurveyDetailViewController
+        vc.survey = survey
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

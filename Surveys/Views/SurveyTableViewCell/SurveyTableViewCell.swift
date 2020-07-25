@@ -14,28 +14,31 @@ protocol SurveyTableViewCellDelegate:class {
 }
 
 class SurveyTableViewCell: UITableViewCell {
-    
+    // MARK: - IBOutlet
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
     weak var delegate:SurveyTableViewCellDelegate?
     
+    // MARK: - Variables
     var overlay: UIView!
     var survey:Survey!
+    
+    // MARK: - Cell Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-    
-    func addOverlayView() {
-        if overlay == nil {
-            initOverlay()
-            backgroundImageView.addSubview(overlay)
-        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    // MARK: - Methods
+    private func addOverlayView() {
+        if overlay == nil {
+            initOverlay()
+            backgroundImageView.addSubview(overlay)
+        }
     }
     
     private func initOverlay() {
@@ -52,10 +55,9 @@ class SurveyTableViewCell: UITableViewCell {
         addOverlayView()
     }
     
-    
+    // MARK: - Actions
     @IBAction func onTakeTheSurveyTouchUp(_ sender: UIButton) {
         self.delegate?.didTouchUpTakeTheSurvey(self, survey: survey)
-        
     }
     
 }
