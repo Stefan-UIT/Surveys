@@ -47,6 +47,17 @@ class VerticalPageControlView: UIScrollView {
     func setCurrentPage(_ current: Int) {
         currentPage = current
     }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.isScrollEnabled = false
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.isScrollEnabled = false
+    }
+    
 
     func show() {
         if numberOfPages != 0 && numberOfPages > 0 && currentPage <= numberOfPages {
