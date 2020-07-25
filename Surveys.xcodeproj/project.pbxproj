@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E48458524CC44010003DFD4 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48458424CC44010003DFD4 /* Token.swift */; };
+		2E48458724CC46380003DFD4 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48458624CC46380003DFD4 /* UserLogin.swift */; };
+		2E48458924CC498B0003DFD4 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48458824CC498B0003DFD4 /* UIViewController+Alert.swift */; };
+		2E48458C24CC4B640003DFD4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48458B24CC4B640003DFD4 /* Constant.swift */; };
 		2E52AF1624CA8ED000BD6CDF /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52AF1524CA8ED000BD6CDF /* APIServices.swift */; };
 		2E52AF1C24CAA4FB00BD6CDF /* SurveyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52AF1A24CAA4FB00BD6CDF /* SurveyTableViewCell.swift */; };
 		2E52AF1D24CAA4FB00BD6CDF /* SurveyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E52AF1B24CAA4FB00BD6CDF /* SurveyTableViewCell.xib */; };
@@ -14,6 +18,7 @@
 		2E52AF2224CAB13100BD6CDF /* UIVIewController+Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52AF2124CAB13100BD6CDF /* UIVIewController+Spinner.swift */; };
 		2E52AF2824CAD57800BD6CDF /* VerticalPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52AF2724CAD57800BD6CDF /* VerticalPageControlView.swift */; };
 		2E7B6C5F24CBF37600DB99DA /* ScrollView+Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7B6C5E24CBF37600DB99DA /* ScrollView+Position.swift */; };
+		2E7B6C6124CC198D00DB99DA /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7B6C6024CC198D00DB99DA /* LoadingViewController.swift */; };
 		2ECCF9ED24C9D94E00912CB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCF9EC24C9D94E00912CB9 /* AppDelegate.swift */; };
 		2ECCF9F924C9D94F00912CB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCF9F724C9D94F00912CB9 /* LaunchScreen.storyboard */; };
 		2ECCFA0424C9D94F00912CB9 /* SurveysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCFA0324C9D94F00912CB9 /* SurveysTests.swift */; };
@@ -48,6 +53,10 @@
 
 /* Begin PBXFileReference section */
 		26C3933CA077660B90832A2F /* Pods-Surveys-SurveysUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surveys-SurveysUITests.release.xcconfig"; path = "Target Support Files/Pods-Surveys-SurveysUITests/Pods-Surveys-SurveysUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2E48458424CC44010003DFD4 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		2E48458624CC46380003DFD4 /* UserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
+		2E48458824CC498B0003DFD4 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		2E48458B24CC4B640003DFD4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		2E52AF1524CA8ED000BD6CDF /* APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
 		2E52AF1A24CAA4FB00BD6CDF /* SurveyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTableViewCell.swift; sourceTree = "<group>"; };
 		2E52AF1B24CAA4FB00BD6CDF /* SurveyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyTableViewCell.xib; sourceTree = "<group>"; };
@@ -55,6 +64,7 @@
 		2E52AF2124CAB13100BD6CDF /* UIVIewController+Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Spinner.swift"; sourceTree = "<group>"; };
 		2E52AF2724CAD57800BD6CDF /* VerticalPageControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalPageControlView.swift; sourceTree = "<group>"; };
 		2E7B6C5E24CBF37600DB99DA /* ScrollView+Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Position.swift"; sourceTree = "<group>"; };
+		2E7B6C6024CC198D00DB99DA /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		2ECCF9E924C9D94E00912CB9 /* Surveys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surveys.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ECCF9EC24C9D94E00912CB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2ECCF9F824C9D94F00912CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -118,6 +128,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2E48458A24CC4B5A0003DFD4 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				2E48458B24CC4B640003DFD4 /* Constant.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		2E52AF1424CA8EB200BD6CDF /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +159,7 @@
 				2E52AF1F24CAA6AD00BD6CDF /* UIImageView+Extensions.swift */,
 				2E52AF2124CAB13100BD6CDF /* UIVIewController+Spinner.swift */,
 				2E7B6C5E24CBF37600DB99DA /* ScrollView+Position.swift */,
+				2E48458824CC498B0003DFD4 /* UIViewController+Alert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -184,6 +203,7 @@
 				2ECCF9EC24C9D94E00912CB9 /* AppDelegate.swift */,
 				2ECCFA2E24C9E5A100912CB9 /* SceneDelegate.swift */,
 				2ECCF9F724C9D94F00912CB9 /* LaunchScreen.storyboard */,
+				2E48458A24CC4B5A0003DFD4 /* Constants */,
 				2E52AF1E24CAA62E00BD6CDF /* Extensions */,
 				2E52AF1424CA8EB200BD6CDF /* Services */,
 				2ECCFA2524C9DE7C00912CB9 /* Supporting Files */,
@@ -213,6 +233,8 @@
 			isa = PBXGroup;
 			children = (
 				2ECCFA3224C9E65200912CB9 /* Survey.swift */,
+				2E48458424CC44010003DFD4 /* Token.swift */,
+				2E48458624CC46380003DFD4 /* UserLogin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -239,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				2ECCFA3024C9E64500912CB9 /* SurveysViewController.swift */,
+				2E7B6C6024CC198D00DB99DA /* LoadingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -508,14 +531,19 @@
 			files = (
 				2E52AF2224CAB13100BD6CDF /* UIVIewController+Spinner.swift in Sources */,
 				2ECCF9ED24C9D94E00912CB9 /* AppDelegate.swift in Sources */,
+				2E48458C24CC4B640003DFD4 /* Constant.swift in Sources */,
 				2E52AF2024CAA6AD00BD6CDF /* UIImageView+Extensions.swift in Sources */,
+				2E48458524CC44010003DFD4 /* Token.swift in Sources */,
 				2E52AF1C24CAA4FB00BD6CDF /* SurveyTableViewCell.swift in Sources */,
 				2ECCFA3324C9E65200912CB9 /* Survey.swift in Sources */,
 				2E52AF2824CAD57800BD6CDF /* VerticalPageControlView.swift in Sources */,
+				2E48458724CC46380003DFD4 /* UserLogin.swift in Sources */,
 				2ECCFA2F24C9E5A100912CB9 /* SceneDelegate.swift in Sources */,
 				2ECCFA3124C9E64500912CB9 /* SurveysViewController.swift in Sources */,
+				2E7B6C6124CC198D00DB99DA /* LoadingViewController.swift in Sources */,
 				2E7B6C5F24CBF37600DB99DA /* ScrollView+Position.swift in Sources */,
 				2E52AF1624CA8ED000BD6CDF /* APIServices.swift in Sources */,
+				2E48458924CC498B0003DFD4 /* UIViewController+Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
