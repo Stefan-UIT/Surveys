@@ -22,6 +22,7 @@ class SurveysViewController: UIViewController {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Surveys".uppercased()
         setupTableView()
         setupNavigationBar()
         setupVerticalPageView()
@@ -35,43 +36,39 @@ class SurveysViewController: UIViewController {
     }
     
     // MARK: - API
-    private func fetchSurveys() {
+    private func fetchSurveys(completionHandler: @escaping ()->() = {}) {
         self.showSpinner(onView: self.view)
         APIServices.shared.fetchSurveys(success: { (surveys) in
             self.removeSpinner()
             self.surveys = surveys
             self.configureVerticalPageControlView(withTotalPages: self.surveys.count)
             self.tableView.reloadData()
+            completionHandler()
         }) { (error) in
             self.removeSpinner()
             self.showAlert(message: Messages.CouldNotGetSurveysData)
+            completionHandler()
         }
     }
     
     // MARK: - Support Functions
     private func setupNavigationBar() {
-        let leftBarButton = barButton(imageName: Constants.Images.RefreshIcon, selector: #selector(onReloadTouchUp))
+        let leftBarButton = UIBarButtonItem.barButton(imageName: Constants.Images.RefreshIcon, selector: #selector(onReloadTouchUp(sender:)),actionController: self)
+        
+        let rightBarButton = UIBarButtonItem.barButton(imageName: Constants.Images.MenuIcon,selector: nil, actionController: nil)
+        
         navigationItem.leftBarButtonItem = leftBarButton
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        
+        navigationItem.rightBarButtonItem = rightBarButton
     }
     
     
-    func barButton(imageName: String, selector: Selector) -> UIBarButtonItem {
-        let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: imageName), for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 35, height: 35)
-        button.widthAnchor.constraint(equalToConstant: 35).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        button.addTarget(self, action: selector, for: .touchUpInside)
-        return UIBarButtonItem(customView: button)
-    }
     
-    @objc func onReloadTouchUp() {
-        fetchSurveys()
+    
+    @objc func onReloadTouchUp(sender:UIBarButtonItem) {
+        sender.isEnabled = false
+        fetchSurveys {
+            sender.isEnabled = true
+        }
     }
     
     private func setupTableView() {
