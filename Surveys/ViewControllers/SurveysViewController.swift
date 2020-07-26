@@ -21,7 +21,7 @@ class SurveysViewController: UIViewController {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Surveys".uppercased()
+        self.title = Texts.Surveys.uppercased()
         setupTableView()
         setupNavigationBar()
         setupVerticalPageView()
@@ -62,7 +62,6 @@ class SurveysViewController: UIViewController {
     
     private func setupBarButtonItems() {
         let leftBarButton = UIBarButtonItem.barButton(imageName: Constants.Images.RefreshIcon, selector: #selector(onReloadTouchUp(sender:)),actionController: self)
-        
         let rightBarButton = UIBarButtonItem.barButton(imageName: Constants.Images.MenuIcon,selector: nil, actionController: nil)
         
         navigationItem.leftBarButtonItem = leftBarButton
@@ -136,7 +135,8 @@ extension SurveysViewController: UITableViewDelegate {
 //MARK: - VerticalPageControlViewDelegate
 extension SurveysViewController:VerticalPageControlViewDelegate {
     func verticalPageControlView(_ view: VerticalPageControlView?, currentPage: Int) {
-        tableView.setContentOffset(CGPoint(x: 0, y: CGFloat(CGFloat(currentPage) * tableView.frame.size.height)), animated: true)
+        let point = CGPoint(x: 0.0, y: CGFloat(CGFloat(currentPage) * tableView.frame.size.height))
+        tableView.scrollTo(point)
     }
 }
 

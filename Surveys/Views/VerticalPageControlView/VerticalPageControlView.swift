@@ -180,6 +180,8 @@ class VerticalPageControlView: UIScrollView {
             dotButton.setImage(activeImage, for: .selected)
             if index == currentPage {
                 dotButton.isSelected = true
+                // disable selected button to avoid multi click on selected button
+                dotButton.isUserInteractionEnabled = !dotButton.isSelected
             }
             dotButton.frame = stateVerticalFrameWith(x: 0.0, y: y)
             addSubview(dotButton)
@@ -191,12 +193,14 @@ class VerticalPageControlView: UIScrollView {
 // MARK: - Update States For State Change Event
     func changeButtonState(forTag tag: Int) {
         for index in 1...numberOfPages {
-            let btnState = viewWithTag(index) as? UIButton
-            btnState?.isSelected = false
+            guard let _btnState = viewWithTag(index) as? UIButton else { break }
+            _btnState.isSelected = false
             if index == tag {
                 currentPage = index
-                btnState?.isSelected = true
+                _btnState.isSelected = true
             }
+            // disable selected button to avoid multi click on selected button
+            _btnState.isUserInteractionEnabled = !_btnState.isSelected
         }
     }
 }

@@ -31,6 +31,10 @@ struct Messages {
     static let CouldNotGetSurveysData = "Could not get survey data"
 }
 
+struct Texts {
+    static let Surveys = "Surveys"
+}
+
 struct Constants {
     struct Images {
         static let RefreshIcon = "refresh_icon"

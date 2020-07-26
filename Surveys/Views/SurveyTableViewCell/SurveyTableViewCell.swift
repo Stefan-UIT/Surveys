@@ -10,7 +10,6 @@ import UIKit
 
 protocol SurveyTableViewCellDelegate:class {
     func didTouchUpTakeTheSurvey(_ cell:SurveyTableViewCell, survey:Survey)
-    
 }
 
 class SurveyTableViewCell: UITableViewCell {
@@ -18,11 +17,11 @@ class SurveyTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
-    weak var delegate:SurveyTableViewCellDelegate?
     
     // MARK: - Variables
     var overlay: UIView!
     var survey:Survey!
+    weak var delegate:SurveyTableViewCellDelegate?
     
     // MARK: - Cell Life Cycle
     override func awakeFromNib() {
@@ -50,8 +49,7 @@ class SurveyTableViewCell: UITableViewCell {
         self.survey = survey
         titleLabel.text = survey.title
         descriptionLabel.text = survey.description
-        let urlString = survey.coverImageUrl + "l"
-        backgroundImageView.load(urlString: urlString)
+        backgroundImageView.load(urlString: survey.fullSizeCoverImageUrl)
         addOverlayView()
     }
     
@@ -59,5 +57,4 @@ class SurveyTableViewCell: UITableViewCell {
     @IBAction func onTakeTheSurveyTouchUp(_ sender: UIButton) {
         self.delegate?.didTouchUpTakeTheSurvey(self, survey: survey)
     }
-    
 }
