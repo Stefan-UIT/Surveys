@@ -22,12 +22,17 @@ struct K {
     static let Accept = "Accept"
     static let Authorization = "Authorization"
     static let SurveysViewController = "SurveysViewController"
+    static let SurveyDetailViewController = "SurveyDetailViewController"
     static let Main = "Main"
 }
 
 struct Messages {
     static let CouldNotGetAccessToken = "Could not get access token"
     static let CouldNotGetSurveysData = "Could not get survey data"
+}
+
+struct Texts {
+    static let Surveys = "Surveys"
 }
 
 struct Constants {

@@ -12,4 +12,9 @@ struct Survey:Decodable {
     let title: String
     let description: String
     let coverImageUrl: String
+    var fullSizeCoverImageUrl:String {
+        get {
+            return coverImageUrl + "l"
+        }
+    }
 }

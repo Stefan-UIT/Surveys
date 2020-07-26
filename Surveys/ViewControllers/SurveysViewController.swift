@@ -17,12 +17,11 @@ class SurveysViewController: UIViewController {
     
     // MARK: - Variables
     var surveys:[Survey]!
-//    var surveys = [Survey]()
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Surveys".uppercased()
+        self.title = Texts.Surveys.uppercased()
         setupTableView()
         setupNavigationBar()
         setupVerticalPageView()
@@ -33,6 +32,10 @@ class SurveysViewController: UIViewController {
         super.viewDidAppear(animated)
         self.configureVerticalPageControlView(withTotalPages: self.surveys.count)
         self.tableView.reloadData()
+    }
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
     // MARK: - API
@@ -53,16 +56,17 @@ class SurveysViewController: UIViewController {
     
     // MARK: - Support Functions
     private func setupNavigationBar() {
+        navigationController?.navigationBar.barStyle = .black
+        setupBarButtonItems()
+    }
+    
+    private func setupBarButtonItems() {
         let leftBarButton = UIBarButtonItem.barButton(imageName: Constants.Images.RefreshIcon, selector: #selector(onReloadTouchUp(sender:)),actionController: self)
-        
         let rightBarButton = UIBarButtonItem.barButton(imageName: Constants.Images.MenuIcon,selector: nil, actionController: nil)
         
         navigationItem.leftBarButtonItem = leftBarButton
         navigationItem.rightBarButtonItem = rightBarButton
     }
-    
-    
-    
     
     @objc func onReloadTouchUp(sender:UIBarButtonItem) {
         sender.isEnabled = false
@@ -112,6 +116,7 @@ extension SurveysViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: surveyCellIdentifier, for: indexPath) as! SurveyTableViewCell
         let survey = surveys[indexPath.row]
         cell.configureCell(survey: survey)
+        cell.delegate = self
         return cell
     }
     
@@ -130,6 +135,21 @@ extension SurveysViewController: UITableViewDelegate {
 //MARK: - VerticalPageControlViewDelegate
 extension SurveysViewController:VerticalPageControlViewDelegate {
     func verticalPageControlView(_ view: VerticalPageControlView?, currentPage: Int) {
-        tableView.setContentOffset(CGPoint(x: 0, y: CGFloat(CGFloat(currentPage) * tableView.frame.size.height)), animated: true)
+        let point = CGPoint(x: 0.0, y: CGFloat(CGFloat(currentPage) * tableView.frame.size.height))
+        tableView.scrollTo(point)
+    }
+}
+
+//MARK: - SurveyTableViewCellDelegate
+extension SurveysViewController:SurveyTableViewCellDelegate {
+    func didTouchUpTakeTheSurvey(_ cell: SurveyTableViewCell, survey: Survey) {
+        redirectToSurveyDetailVC(survey: survey)
+    }
+    
+    func redirectToSurveyDetailVC(survey:Survey) {
+        let storyboard : UIStoryboard = UIStoryboard(name: K.Main, bundle: nil)
+        let vc :SurveyDetailViewController = storyboard.instantiateViewController(withIdentifier: K.SurveyDetailViewController) as! SurveyDetailViewController
+        vc.survey = survey
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

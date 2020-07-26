@@ -12,6 +12,7 @@
 		2E48458924CC498B0003DFD4 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48458824CC498B0003DFD4 /* UIViewController+Alert.swift */; };
 		2E48458C24CC4B640003DFD4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48458B24CC4B640003DFD4 /* Constant.swift */; };
 		2E48459024CC7B0D0003DFD4 /* UIBarButtonItem+Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48458F24CC7B0D0003DFD4 /* UIBarButtonItem+Button.swift */; };
+		2E48459224CC7EE50003DFD4 /* SurveyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48459124CC7EE50003DFD4 /* SurveyDetailViewController.swift */; };
 		2E52AF1624CA8ED000BD6CDF /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52AF1524CA8ED000BD6CDF /* APIServices.swift */; };
 		2E52AF1C24CAA4FB00BD6CDF /* SurveyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52AF1A24CAA4FB00BD6CDF /* SurveyTableViewCell.swift */; };
 		2E52AF1D24CAA4FB00BD6CDF /* SurveyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E52AF1B24CAA4FB00BD6CDF /* SurveyTableViewCell.xib */; };
@@ -59,6 +60,7 @@
 		2E48458824CC498B0003DFD4 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		2E48458B24CC4B640003DFD4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		2E48458F24CC7B0D0003DFD4 /* UIBarButtonItem+Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Button.swift"; sourceTree = "<group>"; };
+		2E48459124CC7EE50003DFD4 /* SurveyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyDetailViewController.swift; sourceTree = "<group>"; };
 		2E52AF1524CA8ED000BD6CDF /* APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
 		2E52AF1A24CAA4FB00BD6CDF /* SurveyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTableViewCell.swift; sourceTree = "<group>"; };
 		2E52AF1B24CAA4FB00BD6CDF /* SurveyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyTableViewCell.xib; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			children = (
 				2ECCFA3024C9E64500912CB9 /* SurveysViewController.swift */,
 				2E7B6C6024CC198D00DB99DA /* LoadingViewController.swift */,
+				2E48459124CC7EE50003DFD4 /* SurveyDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				2E52AF1C24CAA4FB00BD6CDF /* SurveyTableViewCell.swift in Sources */,
 				2ECCFA3324C9E65200912CB9 /* Survey.swift in Sources */,
 				2E52AF2824CAD57800BD6CDF /* VerticalPageControlView.swift in Sources */,
+				2E48459224CC7EE50003DFD4 /* SurveyDetailViewController.swift in Sources */,
 				2E48458724CC46380003DFD4 /* UserLogin.swift in Sources */,
 				2ECCFA2F24C9E5A100912CB9 /* SceneDelegate.swift in Sources */,
 				2ECCFA3124C9E64500912CB9 /* SurveysViewController.swift in Sources */,
