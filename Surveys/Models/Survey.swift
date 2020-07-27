@@ -9,9 +9,10 @@
 import Foundation
 
 struct Survey:Decodable {
-    let title: String
-    let description: String
-    let coverImageUrl: String
+    var title: String = ""
+    var description: String = ""
+    var coverImageUrl: String = ""
+    
     var fullSizeCoverImageUrl:String {
         get {
             return coverImageUrl + "l"

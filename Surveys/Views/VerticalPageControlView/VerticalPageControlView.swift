@@ -9,10 +9,7 @@
 import Foundation
 import UIKit
 
-protocol VerticalPageControlViewDelegate:class {
-    func verticalPageControlView(_ view: VerticalPageControlView?, currentPage: Int)
-}
-
+// MARK: - VPCValidationError
 enum VPCValidationError:Error {
     case InvalidNumberOfPage
     case InvalidCurrentPage
@@ -38,6 +35,7 @@ enum VPCValidationError:Error {
     }
 }
 
+// MARK: - VPCValidationService
 struct VPCValidationService {
     func validateNumberOfPages(_ numberOfPages:Int) throws {
         guard numberOfPages > 0 else { throw VPCValidationError.InvalidNumberOfPage }
@@ -55,6 +53,10 @@ struct VPCValidationService {
     func validateInactiveImage(_ inactiveImage:UIImage?) throws {
         guard inactiveImage != nil else { throw VPCValidationError.InActiveImageShouldNotNil }
     }
+}
+
+protocol VerticalPageControlViewDelegate:class {
+    func verticalPageControlView(_ view: VerticalPageControlView?, currentPage: Int)
 }
 
 class VerticalPageControlView: UIScrollView {
