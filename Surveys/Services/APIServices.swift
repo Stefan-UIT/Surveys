@@ -77,7 +77,6 @@ final class APIServices {
         request(path: path, method: .post, parameters: params , success: { (data) in
             do {
                 let token = try self.jsonDecode(Token.self, fromAnyObject: data)
-                UserLogin.shared.token = token.accessToken
                 success(token)
             } catch let error {
                 failure(error)

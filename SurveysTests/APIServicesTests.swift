@@ -13,17 +13,18 @@ import XCTest
 class APIServicesTests: XCTestCase {
     var services:APIServices!
 
-    override func setUpWithError() throws {
+    override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         super.setUp()
         services = APIServices.shared
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
     }
     
-    func test_GetHeader() {
+    func testGetHeader() {
         let header = services.getHeader()
         XCTAssert(header.count > 1)
         
@@ -33,7 +34,7 @@ class APIServicesTests: XCTestCase {
         XCTAssertEqual(acceptType, K.ApplicationJson)
     }
     
-    func test_BearerTokenInHeader() {
+    func testBearerTokenInHeader() {
         let tempToken = "b1c2bf9e540f67fc2a390f2e4cfe41c69b0fd43c16f0cce0f8e50ec0ca025cf7"
         UserLogin.shared.token = tempToken
         let header = services.getHeader()
@@ -44,30 +45,63 @@ class APIServicesTests: XCTestCase {
         XCTAssert(bearerToken.contains("Bearer"))
     }
     
-    func test_FetchSurveysData() {
+    func testFetchSurveysDataSuccess() {
         let token = UserLogin.shared.token
         XCTAssert(!token.isEmpty)
         
-    }
-    
-    func test_GetAccessToken() {
-        let oldToken = UserLogin.shared.token
-        services.getAccessToken(success: {
-            <#code#>
-        }, failure: <#T##(Error) -> ()#>)
-    }
-    
-    
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        let promise = expectation(description: "Fetch Surveys Data Success")
+        services.fetchSurveys(success: { (surveys) in
+            XCTAssertNotNil(surveys, "surveys is nil")
+            promise.fulfill()
+        }) { (error) in
+            XCTFail("Error: \(error.localizedDescription)")
         }
+        wait(for: [promise], timeout: 5)
+    }
+    
+    func testFetchSurveysDataFailed() {
+        UserLogin.shared.token = ""
+        
+        let promise = expectation(description: "Fetch Surveys Data Failed")
+        services.fetchSurveys(success: { (surveys) in
+            XCTFail("API should not response success without access token")
+        }) { (error) in
+            XCTAssertNotNil(error , "there is no error")
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 30)
+    }
+    
+    func testGetAccessTokenSuccess() {
+        UserLogin.shared.username = "carlos@nimbl3.com"
+        UserLogin.shared.password = "antikera"
+        let promise = expectation(description: "request access token success")
+        
+        services.requestAccessToken(success: { (token) in
+            XCTAssertNotNil(token, "token is nil")
+            promise.fulfill()
+        }) { (error) in
+            XCTFail("Error: \(error.localizedDescription)")
+        }
+        
+        wait(for: [promise], timeout: 5)
+    }
+    
+    func testGetAccessTokenCouldNotDecodeJson() {
+        UserLogin.shared.username = ""
+        UserLogin.shared.password = ""
+        let promise = expectation(description: "GetAccessTokenCouldNotDecodeJson")
+        
+        services.requestAccessToken(success: { (token) in
+            XCTFail("API should not response success without user information")
+        }) { (error) in
+            let jsonError = error as? JsonParseError
+            XCTAssertNotNil(jsonError , "is not JSONParseError type")
+            XCTAssertEqual(jsonError, JsonParseError.CouldNotDecode)
+            promise.fulfill()
+        }
+        
+        wait(for: [promise], timeout: 30)
     }
 
 }

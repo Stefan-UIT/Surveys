@@ -13,12 +13,56 @@ protocol VerticalPageControlViewDelegate:class {
     func verticalPageControlView(_ view: VerticalPageControlView?, currentPage: Int)
 }
 
+enum VPCValidationError:Error {
+    case InvalidNumberOfPage
+    case InvalidCurrentPage
+    case CurrentPageIsTooLarge
+    case ActiveImageShouldNotNil
+    case InActiveImageShouldNotNil
+    
+    
+    var errorDescription: String {
+        switch self {
+        case .InvalidNumberOfPage:
+            return Messages.InvalidNumberOfPages
+        case .InvalidCurrentPage:
+            return Messages.InvalidCurrentPage
+        case .CurrentPageIsTooLarge:
+            return Messages.CurrentPageShouldLessThanOrEqualNumberOfPage
+        case .ActiveImageShouldNotNil:
+            return Messages.ActiveImageShouldNotBeNil
+        case .InActiveImageShouldNotNil:
+            return Messages.InactiveImageShouldNotBeNil
+        }
+        
+    }
+}
+
+struct VPCValidationService {
+    func validateNumberOfPages(_ numberOfPages:Int) throws {
+        guard numberOfPages > 0 else { throw VPCValidationError.InvalidNumberOfPage }
+    }
+    
+    func validateCurrentPage(_ currentPage:Int, numberOfPages:Int) throws {
+        guard currentPage > 0 else { throw VPCValidationError.InvalidCurrentPage }
+        guard currentPage <= numberOfPages else { throw VPCValidationError.CurrentPageIsTooLarge }
+    }
+    
+    func validateActiveImage(_ activeImage:UIImage?) throws {
+        guard activeImage != nil else { throw VPCValidationError.ActiveImageShouldNotNil }
+    }
+    
+    func validateInactiveImage(_ inactiveImage:UIImage?) throws {
+        guard inactiveImage != nil else { throw VPCValidationError.InActiveImageShouldNotNil }
+    }
+}
+
 class VerticalPageControlView: UIScrollView {
     // MARK: - Private Var
-    private var activeImage: UIImage?
-    private var inactiveImage: UIImage?
-    private var numberOfPages = 0   
-    private var currentPage = 1
+    var activeImage: UIImage?
+    var inactiveImage: UIImage?
+    var numberOfPages = 0
+    var currentPage = 1
     private let marginSpace:Double = 10.0
     
     private var itemSize:CGSize {
@@ -32,6 +76,8 @@ class VerticalPageControlView: UIScrollView {
             return Double(itemSize.width) + marginSpace
         }
     }
+    
+    private let validation = VPCValidationService()
 
     weak var verticalPageControlDelegate: VerticalPageControlViewDelegate?
     
@@ -46,7 +92,9 @@ class VerticalPageControlView: UIScrollView {
     }
 
     func setCurrentPage(_ current: Int) {
-        currentPage = current
+        if current <= numberOfPages {
+            currentPage = current
+        }
     }
     
     // MARK: - Init Functions
@@ -61,13 +109,26 @@ class VerticalPageControlView: UIScrollView {
     }
     
     // MARK: - Methods
-    func show() {
-        if numberOfPages != 0 && numberOfPages > 0 && currentPage <= numberOfPages {
-            if activeImage != nil && inactiveImage != nil {
-                addStatesVertically()
-                updateState(forPageNumber: currentPage)
-            }
+    private func validateInputData() throws {
+        do {
+            try validation.validateNumberOfPages(numberOfPages)
+            try validation.validateCurrentPage(currentPage, numberOfPages: numberOfPages)
+            try validation.validateActiveImage(activeImage)
+            try validation.validateInactiveImage(inactiveImage)
+        } catch let error {
+            throw error
         }
+    }
+    
+    func show() throws {
+        do {
+            try validateInputData()
+        } catch let error {
+            throw error
+        }
+        
+        addStatesVertically()
+        updateState(forPageNumber: currentPage)
     }
 
     private func updateState(forPageNumber page: Int) {
@@ -96,7 +157,6 @@ class VerticalPageControlView: UIScrollView {
     }
     
     private func updatePosition(forPageNumber page:Int) {
-        // if user moving normal or click on the vertical page control
         let nextPage = CGFloat(page + 1)
         let nextPageY = nextPage * CGFloat(sizeWithSpace)
         let needToScrollDown = nextPageY > contentOffset.y + bounds.size.height
@@ -123,13 +183,13 @@ class VerticalPageControlView: UIScrollView {
     }
     
     
-    private func moveDown() {
+    func moveDown() {
         let viewHeight = bounds.size.height - CGFloat(sizeWithSpace * 2)
         let nextContentOffset = CGPoint(x: contentOffset.x, y: contentOffset.y + viewHeight)
         self.setContentOffset(nextContentOffset, animated: true)
     }
     
-    private func moveUp() {
+    func moveUp() {
         let viewHeight = bounds.size.height - CGFloat(sizeWithSpace * 2)
         let nextContentOffset = CGPoint(x: contentOffset.x, y: contentOffset.y - viewHeight)
         self.setContentOffset(nextContentOffset, animated: true)

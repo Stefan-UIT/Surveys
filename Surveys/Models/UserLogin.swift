@@ -11,8 +11,8 @@ import Foundation
 final class UserLogin {
     static let shared = UserLogin()
     
-    let username:String = "carlos@nimbl3.com"
-    let password:String = "antikera"
+    var username:String = "carlos@nimbl3.com"
+    var password:String = "antikera"
     var token:String = ""
     
     func requestAccessToken(success: @escaping ()->(), failure:@escaping (_ error:Error)->()) {

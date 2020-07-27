@@ -13,29 +13,32 @@ import XCTest
 class SurveysModelTests: XCTestCase {
     var surveysModel:SurveysModel!
 
-    override func setUpWithError() throws {
+    override func setUp() {
         super.setUp()
         surveysModel = SurveysModel()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         surveysModel = nil
         super.tearDown()
     }
     
-    func test_AddSurveys() {
-        let oldCount = surveysModel.count
-        
-        let survey = Survey(title: "title", description: "des", coverImageUrl: "https://dhdbhh0jsld0o.cloudfront.net/m/1ea51560991bcb7d00d0_")
-        surveysModel.add(survey)
-        
-        XCTAssertEqual(surveysModel.count, oldCount + 1)
-    }
     
-    func test_FetchSurveysData() {
-//        XCTAssertEqual(surveysModel.count, oldCount + 1)
+    
+    func testFetchSurveysDataSuccess() {
+        let token = UserLogin.shared.token
+        XCTAssert(!token.isEmpty)
+        
+        let promise = expectation(description: "Fetch Surveys Data Success")
+        surveysModel.fetchSurveys(success: {
+            promise.fulfill()
+        }) { (error) in
+            XCTFail("Error: \(error.localizedDescription)")
+        }
+        
+        wait(for: [promise], timeout: 5)
     }
     
 

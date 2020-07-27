@@ -15,12 +15,8 @@ class SurveysModel {
         return surveys.count
     }
     
-    func add(_ survey: Survey) {
-        surveys.append(survey)
-    }
-    
-    func remove(at index: Int) {
-        surveys.remove(at: index)
+    func survey(at position: Int) -> Survey {
+        return surveys[position]
     }
     
     func fetchSurveys(success: @escaping ()->(), failure: @escaping (_ error:Error)->()) {

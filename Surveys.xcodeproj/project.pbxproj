@@ -34,6 +34,8 @@
 		2ECCFA3124C9E64500912CB9 /* SurveysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCFA3024C9E64500912CB9 /* SurveysViewController.swift */; };
 		2ECCFA3324C9E65200912CB9 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCFA3224C9E65200912CB9 /* Survey.swift */; };
 		2EDC540324CE6DFF00D69B11 /* APIServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDC540224CE6DFF00D69B11 /* APIServicesTests.swift */; };
+		2EE2C23324CEBA590015595C /* VerticalPageControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2C23224CEBA590015595C /* VerticalPageControlTests.swift */; };
+		2EE2C23524CEDB970015595C /* UIScrollViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2C23424CEDB970015595C /* UIScrollViewTests.swift */; };
 		59DAC9EA43F04956AADEA900 /* Pods_Surveys.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85206FE83E79A382C878A04F /* Pods_Surveys.framework */; };
 		61A1144FCA3CC8ACF8EC6F5E /* Pods_SurveysTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F4D30567F8875F71146F1B1 /* Pods_SurveysTests.framework */; };
 		F6D9B7ED5D85DAFA6E458CE0 /* Pods_Surveys_SurveysUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB70861D415AC28FAB924D8 /* Pods_Surveys_SurveysUITests.framework */; };
@@ -90,6 +92,8 @@
 		2ECCFA3024C9E64500912CB9 /* SurveysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveysViewController.swift; sourceTree = "<group>"; };
 		2ECCFA3224C9E65200912CB9 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		2EDC540224CE6DFF00D69B11 /* APIServicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServicesTests.swift; sourceTree = "<group>"; };
+		2EE2C23224CEBA590015595C /* VerticalPageControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalPageControlTests.swift; sourceTree = "<group>"; };
+		2EE2C23424CEDB970015595C /* UIScrollViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewTests.swift; sourceTree = "<group>"; };
 		3F4D30567F8875F71146F1B1 /* Pods_SurveysTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SurveysTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40D76D3A8E933C4B6B374103 /* Pods-Surveys-SurveysUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surveys-SurveysUITests.debug.xcconfig"; path = "Target Support Files/Pods-Surveys-SurveysUITests/Pods-Surveys-SurveysUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		67EC434B29B7434D88E8D5BC /* Pods-Surveys.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surveys.debug.xcconfig"; path = "Target Support Files/Pods-Surveys/Pods-Surveys.debug.xcconfig"; sourceTree = "<group>"; };
@@ -226,8 +230,10 @@
 			isa = PBXGroup;
 			children = (
 				2ECCFA0324C9D94F00912CB9 /* SurveysTests.swift */,
+				2EE2C23224CEBA590015595C /* VerticalPageControlTests.swift */,
 				2EDC540224CE6DFF00D69B11 /* APIServicesTests.swift */,
 				2E50479424CDCFCB00103DB8 /* SurveysModelTests.swift */,
+				2EE2C23424CEDB970015595C /* UIScrollViewTests.swift */,
 				2ECCFA0524C9D94F00912CB9 /* Info.plist */,
 			);
 			path = SurveysTests;
@@ -569,6 +575,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EE2C23524CEDB970015595C /* UIScrollViewTests.swift in Sources */,
+				2EE2C23324CEBA590015595C /* VerticalPageControlTests.swift in Sources */,
 				2EDC540324CE6DFF00D69B11 /* APIServicesTests.swift in Sources */,
 				2ECCFA0424C9D94F00912CB9 /* SurveysTests.swift in Sources */,
 				2E50479524CDCFCB00103DB8 /* SurveysModelTests.swift in Sources */,

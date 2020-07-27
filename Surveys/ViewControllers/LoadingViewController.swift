@@ -9,7 +9,7 @@
 import UIKit
 
 class LoadingViewController: UIViewController {
-    
+    var surveysModel = SurveysModel()
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,10 +17,11 @@ class LoadingViewController: UIViewController {
     }
     
     // MARK: - Methods
-    private func redirectToSurveysViewContrroller(surveys:[Survey]) {
+    private func redirectToSurveysViewContrroller() {
         let storyboard : UIStoryboard = UIStoryboard(name: K.Main, bundle: nil)
+        
         let vc :SurveysViewController = storyboard.instantiateViewController(withIdentifier: K.SurveysViewController) as! SurveysViewController
-        vc.surveys = surveys
+        vc.surveysModel = surveysModel
         
         let nav = UINavigationController(rootViewController: vc)
         let window = UIApplication.shared.windows[0]
@@ -29,9 +30,9 @@ class LoadingViewController: UIViewController {
     
     // MARK: - API
     private func fetchSurveys() {
-        APIServices.shared.fetchSurveys(success: { (surveys) in
+        surveysModel.fetchSurveys(success: {
             self.removeSpinner()
-            self.redirectToSurveysViewContrroller(surveys: surveys)
+            self.redirectToSurveysViewContrroller()
         }) { (error) in
             self.removeSpinner()
             self.showAlert(message: Messages.CouldNotGetAccessToken)

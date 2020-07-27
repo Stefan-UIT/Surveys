@@ -27,19 +27,24 @@ struct K {
 }
 
 struct Messages {
+    static let SomethingWentWrong = "Something went wrong"
     static let CouldNotGetAccessToken = "Could not get access token"
     static let CouldNotGetSurveysData = "Could not get survey data"
+    static let InvalidNumberOfPages = "Invalid number of pages"
+    static let InvalidCurrentPage = "Invalid current page"
+    static let CurrentPageShouldLessThanOrEqualNumberOfPage = "Current page should less than or equal number of pages"
+    static let ActiveImageShouldNotBeNil = "Active Image Should Not Be Nil"
+    static let InactiveImageShouldNotBeNil = "Inactive Image Should Not Be Nil"
 }
 
 struct Texts {
     static let Surveys = "Surveys"
 }
 
-struct Constants {
-    struct Images {
-        static let RefreshIcon = "refresh_icon"
-        static let MenuIcon = "menu_icon"
-        static let ActivedDot = "actived_dot"
-        static let UnactivedDot = "unactived_dot"
-    }
+struct Images {
+    static let RefreshIcon = "refresh_icon"
+    static let MenuIcon = "menu_icon"
+    static let ActivedDot = "actived_dot"
+    static let InactivedDot = "unactived_dot"
 }
+
