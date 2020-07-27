@@ -16,7 +16,7 @@ class SurveysViewController: UIViewController {
     private let surveyCellIdentifier = "SurveyTableViewCell"
     
     // MARK: - Variables
-    var surveys:[Survey]!
+    var surveysModel:SurveysModel!
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class SurveysViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.configureVerticalPageControlView(withTotalPages: self.surveys.count)
+        self.configureVerticalPageControlView(withTotalPages: surveysModel.count)
         self.tableView.reloadData()
     }
     
@@ -41,10 +41,9 @@ class SurveysViewController: UIViewController {
     // MARK: - API
     private func fetchSurveys(completionHandler: @escaping ()->() = {}) {
         self.showSpinner(onView: self.view)
-        APIServices.shared.fetchSurveys(success: { (surveys) in
+        surveysModel.fetchSurveys(success: {
             self.removeSpinner()
-            self.surveys = surveys
-            self.configureVerticalPageControlView(withTotalPages: self.surveys.count)
+            self.configureVerticalPageControlView(withTotalPages: self.surveysModel.count)
             self.tableView.reloadData()
             completionHandler()
         }) { (error) in
@@ -61,8 +60,8 @@ class SurveysViewController: UIViewController {
     }
     
     private func setupBarButtonItems() {
-        let leftBarButton = UIBarButtonItem.barButton(imageName: Constants.Images.RefreshIcon, selector: #selector(onReloadTouchUp(sender:)),actionController: self)
-        let rightBarButton = UIBarButtonItem.barButton(imageName: Constants.Images.MenuIcon,selector: nil, actionController: nil)
+        let leftBarButton = UIBarButtonItem.barButton(imageName: Images.RefreshIcon, selector: #selector(onReloadTouchUp(sender:)),actionController: self)
+        let rightBarButton = UIBarButtonItem.barButton(imageName: Images.MenuIcon,selector: nil, actionController: nil)
         
         navigationItem.leftBarButtonItem = leftBarButton
         navigationItem.rightBarButtonItem = rightBarButton
@@ -82,15 +81,21 @@ class SurveysViewController: UIViewController {
     }
     
     private func setupVerticalPageView() {
-        let activedDot = UIImage(named: Constants.Images.ActivedDot)
-        let unactivedDot = UIImage(named: Constants.Images.UnactivedDot)
-        verticalPageControlView.setImageActiveState(activedDot, inActiveState: unactivedDot)
+        let activedDot = UIImage(named: Images.ActivedDot)
+        let inactivedDot = UIImage(named: Images.InactivedDot)
+        verticalPageControlView.setImageActiveState(activedDot, inActiveState: inactivedDot)
         verticalPageControlView.verticalPageControlDelegate = self
     }
     
     private func configureVerticalPageControlView(withTotalPages totalPages: Int) {
         verticalPageControlView.setNumberOfPages(totalPages)
-        verticalPageControlView.show()
+        do {
+            try verticalPageControlView.show()
+        } catch let error as VPCValidationError {
+            showAlert(message: error.errorDescription)
+        } catch {
+            showAlert(message: Messages.SomethingWentWrong)
+        }
     }
 }
 
@@ -109,12 +114,12 @@ extension SurveysViewController:UIScrollViewDelegate {
 // MARK: - UITableViewDataSource
 extension SurveysViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (surveys == nil) ? 0 : surveys.count
+        return (surveysModel == nil) ? 0 : surveysModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: surveyCellIdentifier, for: indexPath) as! SurveyTableViewCell
-        let survey = surveys[indexPath.row]
+        let survey = surveysModel.survey(at: indexPath.row)
         cell.configureCell(survey: survey)
         cell.delegate = self
         return cell
