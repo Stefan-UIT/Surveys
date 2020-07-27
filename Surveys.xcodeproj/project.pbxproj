@@ -29,7 +29,6 @@
 		2ECCFA0F24C9D94F00912CB9 /* SurveysUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCFA0E24C9D94F00912CB9 /* SurveysUITests.swift */; };
 		2ECCFA2124C9DD1B00912CB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCFA2024C9DD1B00912CB9 /* Main.storyboard */; };
 		2ECCFA2824C9DE7C00912CB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCFA2624C9DE7C00912CB9 /* Assets.xcassets */; };
-		2ECCFA2B24C9E0AF00912CB9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCFA2724C9DE7C00912CB9 /* Info.plist */; };
 		2ECCFA2F24C9E5A100912CB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCFA2E24C9E5A100912CB9 /* SceneDelegate.swift */; };
 		2ECCFA3124C9E64500912CB9 /* SurveysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCFA3024C9E64500912CB9 /* SurveysViewController.swift */; };
 		2ECCFA3324C9E65200912CB9 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCFA3224C9E65200912CB9 /* Survey.swift */; };
@@ -419,7 +418,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E52AF1D24CAA4FB00BD6CDF /* SurveyTableViewCell.xib in Resources */,
-				2ECCFA2B24C9E0AF00912CB9 /* Info.plist in Resources */,
 				2ECCFA2124C9DD1B00912CB9 /* Main.storyboard in Resources */,
 				2ECCFA2824C9DE7C00912CB9 /* Assets.xcassets in Resources */,
 				2ECCF9F924C9D94F00912CB9 /* LaunchScreen.storyboard in Resources */,
