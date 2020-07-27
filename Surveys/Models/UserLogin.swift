@@ -14,4 +14,13 @@ final class UserLogin {
     let username:String = "carlos@nimbl3.com"
     let password:String = "antikera"
     var token:String = ""
+    
+    func requestAccessToken(success: @escaping ()->(), failure:@escaping (_ error:Error)->()) {
+        APIServices.shared.requestAccessToken(success: { (token) in
+            self.token = token.accessToken
+            success()
+        }) { (error) in
+            failure(error)
+        }
+    }
 }

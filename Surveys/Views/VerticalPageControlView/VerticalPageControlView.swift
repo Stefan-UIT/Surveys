@@ -14,6 +14,7 @@ protocol VerticalPageControlViewDelegate:class {
 }
 
 class VerticalPageControlView: UIScrollView {
+    // MARK: - Private Var
     private var activeImage: UIImage?
     private var inactiveImage: UIImage?
     private var numberOfPages = 0   
@@ -33,7 +34,8 @@ class VerticalPageControlView: UIScrollView {
     }
 
     weak var verticalPageControlDelegate: VerticalPageControlViewDelegate?
-
+    
+    // MARK: - Setters
     func setImageActiveState(_ active: UIImage?, inActiveState inactive: UIImage?) {
         activeImage = active
         inactiveImage = inactive
@@ -47,6 +49,7 @@ class VerticalPageControlView: UIScrollView {
         currentPage = current
     }
     
+    // MARK: - Init Functions
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.isScrollEnabled = false
@@ -57,7 +60,7 @@ class VerticalPageControlView: UIScrollView {
         self.isScrollEnabled = false
     }
     
-
+    // MARK: - Methods
     func show() {
         if numberOfPages != 0 && numberOfPages > 0 && currentPage <= numberOfPages {
             if activeImage != nil && inactiveImage != nil {
@@ -67,7 +70,7 @@ class VerticalPageControlView: UIScrollView {
         }
     }
 
-    func updateState(forPageNumber page: Int) {
+    private func updateState(forPageNumber page: Int) {
         if page <= numberOfPages && numberOfPages != 0 && page != currentPage {
             let pageNeedToUpdate = (page == 0) ? 1 : page
             changeButtonState(forTag: pageNeedToUpdate)
@@ -120,13 +123,13 @@ class VerticalPageControlView: UIScrollView {
     }
     
     
-    func moveDown() {
+    private func moveDown() {
         let viewHeight = bounds.size.height - CGFloat(sizeWithSpace * 2)
         let nextContentOffset = CGPoint(x: contentOffset.x, y: contentOffset.y + viewHeight)
         self.setContentOffset(nextContentOffset, animated: true)
     }
     
-    func moveUp() {
+    private func moveUp() {
         let viewHeight = bounds.size.height - CGFloat(sizeWithSpace * 2)
         let nextContentOffset = CGPoint(x: contentOffset.x, y: contentOffset.y - viewHeight)
         self.setContentOffset(nextContentOffset, animated: true)
@@ -134,11 +137,11 @@ class VerticalPageControlView: UIScrollView {
 
 
 // MARK: - Run time calculation / States Frame
-    func stateVerticalFrameWith(x: CGFloat, y: CGFloat) -> CGRect {
+    private func stateVerticalFrameWith(x: CGFloat, y: CGFloat) -> CGRect {
         return CGRect(x: x, y: y, width: itemSize.width, height: CGFloat(Double(itemSize.height) + marginSpace))
     }
 
-    func getY() -> CGFloat {
+    private func getY() -> CGFloat {
         let dotHeight = CGFloat(Double(itemSize.height) + marginSpace)
         let contentHeight = contentSize.height
         let viewHeight = frame.height
@@ -147,7 +150,7 @@ class VerticalPageControlView: UIScrollView {
     }
 
 // MARK: - User tap / Delegate Call
-    func callDelegate(forPageChange page: Int) {
+    private func callDelegate(forPageChange page: Int) {
         updateState(forPageNumber: page)
         if currentPage > 0 {
             self.verticalPageControlDelegate?.verticalPageControlView(self, currentPage: currentPage - 1)
@@ -191,7 +194,7 @@ class VerticalPageControlView: UIScrollView {
     }
 
 // MARK: - Update States For State Change Event
-    func changeButtonState(forTag tag: Int) {
+    private func changeButtonState(forTag tag: Int) {
         for index in 1...numberOfPages {
             guard let _btnState = viewWithTag(index) as? UIButton else { break }
             _btnState.isSelected = false
