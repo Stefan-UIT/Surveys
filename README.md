@@ -22,6 +22,12 @@ An application that allows users to browse a list of surveys. For the UI:
 ### 2. Youtube
 Link: https://youtu.be/T1JwIzzWBqA
 
+##  Requirements
+- iOS 10.0+
+- Xcode 10+
+### Installations
+Remember to run ``` pod install ``` before running the project.
+
 ##  Main Files
 
 - VerticalPageContorlView.swift: a custom of UIScrollView to emulate a vertical page control
