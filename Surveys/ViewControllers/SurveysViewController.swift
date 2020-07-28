@@ -151,10 +151,9 @@ extension SurveysViewController:SurveyTableViewCellDelegate {
         redirectToSurveyDetailVC(survey: survey)
     }
     
-    func redirectToSurveyDetailVC(survey:Survey) {
-        let storyboard : UIStoryboard = UIStoryboard(name: K.Main, bundle: nil)
-        let vc :SurveyDetailViewController = storyboard.instantiateViewController(withIdentifier: K.SurveyDetailViewController) as! SurveyDetailViewController
-        vc.survey = survey
-        self.navigationController?.pushViewController(vc, animated: true)
+    private func redirectToSurveyDetailVC(survey:Survey) {
+        guard let surveyDetailController = ControllerHelper.load(SurveyDetailViewController.self, fromStoryboard: K.Main) else { return }
+        surveyDetailController.survey = survey
+        self.navigationController?.pushViewController(surveyDetailController, animated: true)
     }
 }

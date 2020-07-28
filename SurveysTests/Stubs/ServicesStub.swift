@@ -20,29 +20,6 @@ struct DummyData {
         static let error = NSError(domain: "test", code: 999)
         static let token = Token(accessToken: "123")
     }
-    
-    struct Location {
-        static let streetAddres = "269–299 Geary St"
-        static let city = "San Francisco"
-        static let subLocality = "Union Square"
-        static let state = "CA"
-        static let postalCode = "94102"
-        static let country = "Estados Unidos"
-        static let isoCountry = "US"
-        
-        static var fullAddress: String {
-            return "\(city), \(postalCode)"
-        }
-    }
-    
-    struct Api {
-        static let response = ["title": "iOS Developer Test"]
-        
-        static var responseArray: [[String: Any]] {
-            return [response]
-        }
-    }
-    
 }
 
 class ServicesStub: APIServicesProvider {
