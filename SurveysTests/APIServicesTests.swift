@@ -73,11 +73,12 @@ class APIServicesTests: XCTestCase {
     }
     
     func testGetAccessTokenSuccess() {
-        UserLogin.shared.username = "carlos@nimbl3.com"
-        UserLogin.shared.password = "antikera"
+        let username = "carlos@nimbl3.com"
+        let password = "antikera"
+        
         let promise = expectation(description: "request access token success")
         
-        services.requestAccessToken(success: { (token) in
+        services.requestAccessToken(username: username, password: password, success: { (token) in
             XCTAssertNotNil(token, "token is nil")
             promise.fulfill()
         }) { (error) in
@@ -88,11 +89,12 @@ class APIServicesTests: XCTestCase {
     }
     
     func testGetAccessTokenCouldNotDecodeJson() {
-        UserLogin.shared.username = ""
+        let username = ""
+        let password = ""
         UserLogin.shared.password = ""
         let promise = expectation(description: "GetAccessTokenCouldNotDecodeJson")
         
-        services.requestAccessToken(success: { (token) in
+        services.requestAccessToken(username: username, password: password, success: { (token) in
             XCTFail("API should not response success without user information")
         }) { (error) in
             let jsonError = error as? JsonParseError
@@ -100,7 +102,7 @@ class APIServicesTests: XCTestCase {
             XCTAssertEqual(jsonError, JsonParseError.CouldNotDecode)
             promise.fulfill()
         }
-        
+    
         wait(for: [promise], timeout: 30)
     }
 

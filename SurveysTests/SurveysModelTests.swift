@@ -12,6 +12,7 @@ import XCTest
 
 class SurveysModelTests: XCTestCase {
     var surveysModel:SurveysModel!
+    var stubService = ServicesStub()
 
     override func setUp() {
         super.setUp()
@@ -26,7 +27,7 @@ class SurveysModelTests: XCTestCase {
     }
     
     
-    
+    // Test with real API
     func testFetchSurveysDataSuccess() {
         let token = UserLogin.shared.token
         XCTAssert(!token.isEmpty)
@@ -39,6 +40,28 @@ class SurveysModelTests: XCTestCase {
         }
         
         wait(for: [promise], timeout: 5)
+    }
+    
+    // Test With Stub
+    func testStubFetchSurveysDataSuccess() {
+        surveysModel = SurveysModel(provider: stubService)
+        surveysModel.fetchSurveys(success: {
+            XCTAssertEqual(self.surveysModel.survey(at: 0).title, DummyData.survey1.title)
+            XCTAssertEqual(self.surveysModel.survey(at: 1).title, DummyData.survey2.title)
+        }) { (err) in
+            XCTFail("Error \(err.localizedDescription)")
+        }
+    }
+    
+    func testStubFetchSurveysDataFailed() {
+        surveysModel = SurveysModel(provider: stubService)
+        stubService.isValidAccessToken = false
+        surveysModel.fetchSurveys(success: {
+            XCTFail("Could not success if there is invalid token")
+        }) { (err) in
+            let error = err as NSError
+            XCTAssertEqual(error, DummyData.Response.error)
+        }
     }
     
 
