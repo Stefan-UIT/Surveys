@@ -94,9 +94,7 @@ class VerticalPageControlView: UIScrollView {
     }
 
     func setCurrentPage(_ current: Int) {
-        if current <= numberOfPages {
-            currentPage = current
-        }
+        currentPage = current
     }
     
     // MARK: - Init Functions
@@ -134,7 +132,15 @@ class VerticalPageControlView: UIScrollView {
     }
 
     private func updateState(forPageNumber page: Int) {
-        if page <= numberOfPages && numberOfPages != 0 && page != currentPage {
+        do {
+            try validateInputData()
+        } catch let error {
+            let _error = error as! VPCValidationError
+            print(_error.errorDescription)
+            return
+        }
+        
+        if page != currentPage {
             let pageNeedToUpdate = (page == 0) ? 1 : page
             changeButtonState(forTag: pageNeedToUpdate)
         }
