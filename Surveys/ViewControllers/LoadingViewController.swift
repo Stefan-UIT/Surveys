@@ -8,6 +8,29 @@
 
 import UIKit
 
+class ControllerHelper {
+    class var window:UIWindow? {
+        get {
+            return UIApplication.shared.windows.first
+        }
+    }
+    class func load<T>(_ type: T.Type, fromStoryboard storyboardName:String) -> T? where T : UIViewController {
+        let storyboard : UIStoryboard = UIStoryboard(name: storyboardName, bundle: nil)
+        guard let controller = storyboard.instantiateViewController(withIdentifier: String(describing: T.self)) as? T else {
+            return nil
+        }
+        return controller
+    }
+    
+    class func setToRootViewController(_ controller:UIViewController) {
+        guard let _window = window else {
+            print(Messages.CouldNotGetTheWindow)
+            return
+        }
+        _window.rootViewController = controller
+    }
+}
+
 class LoadingViewController: UIViewController {
     var surveysModel = SurveysModel()
     // MARK: - View Life Cycle
@@ -18,14 +41,10 @@ class LoadingViewController: UIViewController {
     
     // MARK: - Methods
     private func redirectToSurveysViewContrroller() {
-        let storyboard : UIStoryboard = UIStoryboard(name: K.Main, bundle: nil)
-        
-        let vc :SurveysViewController = storyboard.instantiateViewController(withIdentifier: K.SurveysViewController) as! SurveysViewController
-        vc.surveysModel = surveysModel
-        
-        let nav = UINavigationController(rootViewController: vc)
-        let window = UIApplication.shared.windows[0]
-        window.rootViewController = nav
+        guard let surveysController = ControllerHelper.load(SurveysViewController.self, fromStoryboard: K.Main) else { return }
+        surveysController.surveysModel = surveysModel
+        let nav = UINavigationController(rootViewController: surveysController)
+        ControllerHelper.setToRootViewController(nav)
     }
     
     // MARK: - API

@@ -35,6 +35,8 @@ struct Messages {
     static let CurrentPageShouldLessThanOrEqualNumberOfPage = "Current page should less than or equal number of pages"
     static let ActiveImageShouldNotBeNil = "Active Image Should Not Be Nil"
     static let InactiveImageShouldNotBeNil = "Inactive Image Should Not Be Nil"
+    static let CouldNotGetTheWindow = "Could Not Get The Window"
+    static let CouldNotSetRootViewControllerToWindow = "Could Not Set Root View Controller To Window"
 }
 
 struct Texts {
