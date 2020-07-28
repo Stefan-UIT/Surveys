@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E0A2A1C24CFFF5C00D7D344 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A1B24CFFF5C00D7D344 /* Protocols.swift */; };
+		2E0A2A1F24D0093400D7D344 /* ServicesStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A1E24D0093400D7D344 /* ServicesStub.swift */; };
+		2E0A2A2224D0149F00D7D344 /* UserLoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A2124D0149F00D7D344 /* UserLoginTests.swift */; };
 		2E48458524CC44010003DFD4 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48458424CC44010003DFD4 /* Token.swift */; };
 		2E48458724CC46380003DFD4 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48458624CC46380003DFD4 /* UserLogin.swift */; };
 		2E48458924CC498B0003DFD4 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48458824CC498B0003DFD4 /* UIViewController+Alert.swift */; };
@@ -59,6 +62,9 @@
 
 /* Begin PBXFileReference section */
 		26C3933CA077660B90832A2F /* Pods-Surveys-SurveysUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surveys-SurveysUITests.release.xcconfig"; path = "Target Support Files/Pods-Surveys-SurveysUITests/Pods-Surveys-SurveysUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2E0A2A1B24CFFF5C00D7D344 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		2E0A2A1E24D0093400D7D344 /* ServicesStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesStub.swift; sourceTree = "<group>"; };
+		2E0A2A2124D0149F00D7D344 /* UserLoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginTests.swift; sourceTree = "<group>"; };
 		2E48458424CC44010003DFD4 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		2E48458624CC46380003DFD4 /* UserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		2E48458824CC498B0003DFD4 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
@@ -141,6 +147,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2E0A2A1A24CFFF4B00D7D344 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2E0A2A1B24CFFF5C00D7D344 /* Protocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		2E0A2A1D24D0092600D7D344 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				2E0A2A1E24D0093400D7D344 /* ServicesStub.swift */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
 		2E48458A24CC4B5A0003DFD4 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +233,7 @@
 		2ECCF9EB24C9D94E00912CB9 /* Surveys */ = {
 			isa = PBXGroup;
 			children = (
+				2E0A2A1A24CFFF4B00D7D344 /* Protocols */,
 				2ECCFA1C24C9DCBE00912CB9 /* Models */,
 				2ECCFA1F24C9DCBE00912CB9 /* ViewControllers */,
 				2ECCFA1D24C9DCBE00912CB9 /* Views */,
@@ -228,12 +251,14 @@
 		2ECCFA0224C9D94F00912CB9 /* SurveysTests */ = {
 			isa = PBXGroup;
 			children = (
+				2E0A2A1D24D0092600D7D344 /* Stubs */,
 				2ECCFA0324C9D94F00912CB9 /* SurveysTests.swift */,
 				2EE2C23224CEBA590015595C /* VerticalPageControlTests.swift */,
 				2EDC540224CE6DFF00D69B11 /* APIServicesTests.swift */,
 				2E50479424CDCFCB00103DB8 /* SurveysModelTests.swift */,
 				2EE2C23424CEDB970015595C /* UIScrollViewTests.swift */,
 				2ECCFA0524C9D94F00912CB9 /* Info.plist */,
+				2E0A2A2124D0149F00D7D344 /* UserLoginTests.swift */,
 			);
 			path = SurveysTests;
 			sourceTree = "<group>";
@@ -557,6 +582,7 @@
 				2ECCFA3324C9E65200912CB9 /* Survey.swift in Sources */,
 				2E52AF2824CAD57800BD6CDF /* VerticalPageControlView.swift in Sources */,
 				2E48459224CC7EE50003DFD4 /* SurveyDetailViewController.swift in Sources */,
+				2E0A2A1C24CFFF5C00D7D344 /* Protocols.swift in Sources */,
 				2E48458724CC46380003DFD4 /* UserLogin.swift in Sources */,
 				2ECCFA2F24C9E5A100912CB9 /* SceneDelegate.swift in Sources */,
 				2E50479324CDCD5100103DB8 /* SurveysModel.swift in Sources */,
@@ -574,8 +600,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EE2C23524CEDB970015595C /* UIScrollViewTests.swift in Sources */,
+				2E0A2A2224D0149F00D7D344 /* UserLoginTests.swift in Sources */,
 				2EE2C23324CEBA590015595C /* VerticalPageControlTests.swift in Sources */,
 				2EDC540324CE6DFF00D69B11 /* APIServicesTests.swift in Sources */,
+				2E0A2A1F24D0093400D7D344 /* ServicesStub.swift in Sources */,
 				2ECCFA0424C9D94F00912CB9 /* SurveysTests.swift in Sources */,
 				2E50479524CDCFCB00103DB8 /* SurveysModelTests.swift in Sources */,
 			);

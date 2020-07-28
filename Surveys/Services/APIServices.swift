@@ -14,7 +14,7 @@ enum JsonParseError: Error {
     case CouldNotDecode
 }
 
-final class APIServices {
+final class APIServices: APIServicesProvider {
     static let shared = APIServices()
     private var decoder:JSONDecoder
     
@@ -65,11 +65,9 @@ final class APIServices {
         }
     }
     
-    func requestAccessToken(success: @escaping (_ token:Token)->(), failure:@escaping (_ error:Error)->()) {
+    func requestAccessToken(username:String, password:String, success: @escaping (_ token:Token)->(), failure:@escaping (_ error:Error)->()) {
         let path = Paths.GetAccessToken
-        
-        let username = UserLogin.shared.username
-        let password = UserLogin.shared.password
+
         let params = [K.GrantType : K.Password,
                       K.Username : username,
                       K.Password : password]

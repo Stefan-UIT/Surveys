@@ -8,7 +8,15 @@
 
 import Foundation
 
-class SurveysModel {
+class BaseViewModel {
+    let apiServicesProvider: APIServicesProvider!
+    
+    init(provider:APIServicesProvider = APIServices.shared) {
+        apiServicesProvider = provider
+    }
+}
+
+final class SurveysModel:BaseViewModel {
     private var surveys = [Survey]()
     
     var count:Int {
@@ -20,12 +28,11 @@ class SurveysModel {
     }
     
     func fetchSurveys(success: @escaping ()->(), failure: @escaping (_ error:Error)->()) {
-        APIServices.shared.fetchSurveys(success: { (data) in
+        apiServicesProvider.fetchSurveys(success: { (data) in
             self.surveys = data
             success()
         }) { (error) in
             failure(error)
         }
     }
-    
 }
