@@ -37,6 +37,7 @@ struct Messages {
     static let InactiveImageShouldNotBeNil = "Inactive Image Should Not Be Nil"
     static let CouldNotGetTheWindow = "Could Not Get The Window"
     static let CouldNotSetRootViewControllerToWindow = "Could Not Set Root View Controller To Window"
+    static let VPCCouldNotCreateButton = "VPC Could Not Create Button"
 }
 
 struct Texts {

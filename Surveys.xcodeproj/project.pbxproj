@@ -13,6 +13,13 @@
 		2E0A2A2524D03A1700D7D344 /* ControllerHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A2424D03A1700D7D344 /* ControllerHelperTests.swift */; };
 		2E0A2A2724D0579B00D7D344 /* UIBarButtonItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A2624D0579B00D7D344 /* UIBarButtonItemTests.swift */; };
 		2E0A2A2924D0637300D7D344 /* UIButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A2824D0637300D7D344 /* UIButtonTests.swift */; };
+		2E0A2A2B24D0835800D7D344 /* VerticalPageControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A2A24D0835800D7D344 /* VerticalPageControlViewModel.swift */; };
+		2E0A2A2D24D0881100D7D344 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A2C24D0881100D7D344 /* UIView+Extensions.swift */; };
+		2E0A2A2F24D0A85E00D7D344 /* VPCViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A2E24D0A85E00D7D344 /* VPCViewModelTests.swift */; };
+		2E0A2A3124D0A8D400D7D344 /* VPCHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A3024D0A8D400D7D344 /* VPCHelpers.swift */; };
+		2E0A2A3324D0A97700D7D344 /* VPCValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A3224D0A97700D7D344 /* VPCValidations.swift */; };
+		2E0A2A3524D0A9D300D7D344 /* VPCHelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A3424D0A9D300D7D344 /* VPCHelpersTests.swift */; };
+		2E0A2A3724D0B66100D7D344 /* VPCValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A3624D0B66100D7D344 /* VPCValidationTests.swift */; };
 		2E48458524CC44010003DFD4 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48458424CC44010003DFD4 /* Token.swift */; };
 		2E48458724CC46380003DFD4 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48458624CC46380003DFD4 /* UserLogin.swift */; };
 		2E48458924CC498B0003DFD4 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48458824CC498B0003DFD4 /* UIViewController+Alert.swift */; };
@@ -71,6 +78,13 @@
 		2E0A2A2424D03A1700D7D344 /* ControllerHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerHelperTests.swift; sourceTree = "<group>"; };
 		2E0A2A2624D0579B00D7D344 /* UIBarButtonItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemTests.swift; sourceTree = "<group>"; };
 		2E0A2A2824D0637300D7D344 /* UIButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonTests.swift; sourceTree = "<group>"; };
+		2E0A2A2A24D0835800D7D344 /* VerticalPageControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalPageControlViewModel.swift; sourceTree = "<group>"; };
+		2E0A2A2C24D0881100D7D344 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		2E0A2A2E24D0A85E00D7D344 /* VPCViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPCViewModelTests.swift; sourceTree = "<group>"; };
+		2E0A2A3024D0A8D400D7D344 /* VPCHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPCHelpers.swift; sourceTree = "<group>"; };
+		2E0A2A3224D0A97700D7D344 /* VPCValidations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPCValidations.swift; sourceTree = "<group>"; };
+		2E0A2A3424D0A9D300D7D344 /* VPCHelpersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPCHelpersTests.swift; sourceTree = "<group>"; };
+		2E0A2A3624D0B66100D7D344 /* VPCValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPCValidationTests.swift; sourceTree = "<group>"; };
 		2E48458424CC44010003DFD4 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		2E48458624CC46380003DFD4 /* UserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		2E48458824CC498B0003DFD4 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
@@ -202,6 +216,7 @@
 				2E7B6C5E24CBF37600DB99DA /* ScrollView+Position.swift */,
 				2E48458824CC498B0003DFD4 /* UIViewController+Alert.swift */,
 				2E48458F24CC7B0D0003DFD4 /* UIBarButtonItem+Button.swift */,
+				2E0A2A2C24D0881100D7D344 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -210,6 +225,9 @@
 			isa = PBXGroup;
 			children = (
 				2E52AF2724CAD57800BD6CDF /* VerticalPageControlView.swift */,
+				2E0A2A2A24D0835800D7D344 /* VerticalPageControlViewModel.swift */,
+				2E0A2A3024D0A8D400D7D344 /* VPCHelpers.swift */,
+				2E0A2A3224D0A97700D7D344 /* VPCValidations.swift */,
 			);
 			path = VerticalPageControlView;
 			sourceTree = "<group>";
@@ -268,6 +286,9 @@
 				2E0A2A2424D03A1700D7D344 /* ControllerHelperTests.swift */,
 				2E0A2A2624D0579B00D7D344 /* UIBarButtonItemTests.swift */,
 				2E0A2A2824D0637300D7D344 /* UIButtonTests.swift */,
+				2E0A2A2E24D0A85E00D7D344 /* VPCViewModelTests.swift */,
+				2E0A2A3424D0A9D300D7D344 /* VPCHelpersTests.swift */,
+				2E0A2A3624D0B66100D7D344 /* VPCValidationTests.swift */,
 			);
 			path = SurveysTests;
 			sourceTree = "<group>";
@@ -582,6 +603,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E0A2A2D24D0881100D7D344 /* UIView+Extensions.swift in Sources */,
+				2E0A2A3124D0A8D400D7D344 /* VPCHelpers.swift in Sources */,
 				2E52AF2224CAB13100BD6CDF /* UIVIewController+Spinner.swift in Sources */,
 				2ECCF9ED24C9D94E00912CB9 /* AppDelegate.swift in Sources */,
 				2E48458C24CC4B640003DFD4 /* Constant.swift in Sources */,
@@ -591,8 +614,10 @@
 				2ECCFA3324C9E65200912CB9 /* Survey.swift in Sources */,
 				2E52AF2824CAD57800BD6CDF /* VerticalPageControlView.swift in Sources */,
 				2E48459224CC7EE50003DFD4 /* SurveyDetailViewController.swift in Sources */,
+				2E0A2A2B24D0835800D7D344 /* VerticalPageControlViewModel.swift in Sources */,
 				2E0A2A1C24CFFF5C00D7D344 /* Protocols.swift in Sources */,
 				2E48458724CC46380003DFD4 /* UserLogin.swift in Sources */,
+				2E0A2A3324D0A97700D7D344 /* VPCValidations.swift in Sources */,
 				2ECCFA2F24C9E5A100912CB9 /* SceneDelegate.swift in Sources */,
 				2E50479324CDCD5100103DB8 /* SurveysModel.swift in Sources */,
 				2ECCFA3124C9E64500912CB9 /* SurveysViewController.swift in Sources */,
@@ -614,10 +639,13 @@
 				2E0A2A2724D0579B00D7D344 /* UIBarButtonItemTests.swift in Sources */,
 				2EE2C23324CEBA590015595C /* VerticalPageControlTests.swift in Sources */,
 				2EDC540324CE6DFF00D69B11 /* APIServicesTests.swift in Sources */,
+				2E0A2A3724D0B66100D7D344 /* VPCValidationTests.swift in Sources */,
 				2E0A2A1F24D0093400D7D344 /* ServicesStub.swift in Sources */,
+				2E0A2A3524D0A9D300D7D344 /* VPCHelpersTests.swift in Sources */,
 				2E0A2A2524D03A1700D7D344 /* ControllerHelperTests.swift in Sources */,
 				2ECCFA0424C9D94F00912CB9 /* SurveysTests.swift in Sources */,
 				2E50479524CDCFCB00103DB8 /* SurveysModelTests.swift in Sources */,
+				2E0A2A2F24D0A85E00D7D344 /* VPCViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
