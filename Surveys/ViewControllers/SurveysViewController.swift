@@ -24,8 +24,6 @@ class SurveysViewController: UIViewController {
         self.title = Texts.Surveys.uppercased()
         setupTableView()
         setupNavigationBar()
-        setupVerticalPageView()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,7 +41,7 @@ class SurveysViewController: UIViewController {
         self.showSpinner(onView: self.view)
         surveysModel.fetchSurveys(success: {
             self.removeSpinner()
-            self.configureVerticalPageControlView(withTotalPages: self.surveysModel.count)
+            self.reloadVerticalPageControl(totalPages: self.surveysModel.count)
             self.tableView.reloadData()
             completionHandler()
         }) { (error) in
@@ -88,6 +86,11 @@ class SurveysViewController: UIViewController {
     }
     
     private func configureVerticalPageControlView(withTotalPages totalPages: Int) {
+        setupVerticalPageView()
+        reloadVerticalPageControl(totalPages: totalPages)
+    }
+    
+    private func reloadVerticalPageControl(totalPages:Int) {
         verticalPageControlView.setNumberOfPages(totalPages)
         do {
             try verticalPageControlView.show()
