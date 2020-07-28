@@ -42,5 +42,4 @@ class ServicesStub: APIServicesProvider {
             failure(DummyData.Response.error)
         }
     }
-    
 }
