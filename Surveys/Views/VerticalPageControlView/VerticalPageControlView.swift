@@ -92,7 +92,7 @@ class VerticalPageControlView: UIScrollView {
     }
     
     private func handleScrollingDown() {
-        let shouldScrollToBottom = viewModel.shouldScrollToBottom(pageControl: self)
+        let shouldScrollToBottom = viewModel.shouldScrollToBottom(pageHeight: bounds.size.height, pageContentSizeHeight: contentSize.height)
         if shouldScrollToBottom {
             scrollToBottom()
         } else {
@@ -101,7 +101,7 @@ class VerticalPageControlView: UIScrollView {
     }
     
     private func handleScrollingUp() {
-        let shouldScrollToTop = viewModel.shouldScrollToTop(pageControl: self)
+        let shouldScrollToTop = viewModel.shouldScrollToTop(pageHeight: bounds.size.height)
         if shouldScrollToTop {
             scrollToTop()
         } else {
@@ -110,13 +110,13 @@ class VerticalPageControlView: UIScrollView {
     }
     
     private func updatePosition(forPageNumber page:Int) {
-        let needToScrollDown = viewModel.needToScrollDown(pageControl: self)
+        let needToScrollDown = viewModel.needToScrollDown(pageContentOffsetY: contentOffset.y, pageHeight: bounds.size.height)
         if needToScrollDown {
             handleScrollingDown()
             return
         }
         
-        let needToScrollUp = viewModel.needToScrollUp(pageControl: self)
+        let needToScrollUp = viewModel.needToScrollUp(pageContentOffsetY: contentOffset.y)
         if needToScrollUp {
             handleScrollingUp()
             return
