@@ -86,27 +86,47 @@ struct VPCViewModel {
         return CGSize(width: sizeWithSpace, height: sizeWithSpace * CGFloat(numberOfPages))
     }
     
-    func shouldScrollToBottom(pageControl:VerticalPageControlView) -> Bool {
-        let result = CGFloat(currentPage) * CGFloat(sizeWithSpace) + pageControl.bounds.size.height >= pageControl.contentSize.height
+    func shouldScrollToBottom(pageHeight:CGFloat, pageContentSizeHeight:CGFloat) -> Bool {
+        let result = CGFloat(currentPage) * CGFloat(sizeWithSpace) + pageHeight >= pageContentSizeHeight
         return result
     }
     
-    func shouldScrollToTop(pageControl:VerticalPageControlView) -> Bool {
-        let result = CGFloat(currentPage) * CGFloat(sizeWithSpace) - pageControl.bounds.size.height <= 0
+    func shouldScrollToTop(pageHeight:CGFloat) -> Bool {
+        let result = CGFloat(currentPage) * CGFloat(sizeWithSpace) - pageHeight <= 0
         return result
     }
     
-    func needToScrollDown(pageControl:VerticalPageControlView) -> Bool {
-        let nextPage = CGFloat(currentPage + 1)
-        let nextPageY = nextPage * CGFloat(sizeWithSpace)
-        let needToScrollDown = nextPageY > pageControl.contentOffset.y + pageControl.bounds.size.height
+    var nextPage:Int {
+        get {
+            return currentPage + 1
+        }
+    }
+    
+    var previousPage:Int {
+        get {
+            return currentPage - 1
+        }
+    }
+    
+    var nextPageY:CGFloat {
+        get {
+            return CGFloat(self.nextPage) * CGFloat(sizeWithSpace)
+        }
+    }
+    
+    var previousPageY:CGFloat {
+        get {
+            return CGFloat(self.previousPage) * sizeWithSpace - sizeWithSpace
+        }
+    }
+    
+    func needToScrollDown(pageContentOffsetY:CGFloat, pageHeight:CGFloat) -> Bool {
+        let needToScrollDown = self.nextPageY > pageContentOffsetY + pageHeight
         return needToScrollDown
     }
     
-    func needToScrollUp(pageControl:VerticalPageControlView) -> Bool {
-        let previousPage = CGFloat(currentPage - 1)
-        let previousPageY = previousPage * CGFloat(sizeWithSpace) - CGFloat(sizeWithSpace)
-        let needToScrollUp = previousPageY < pageControl.contentOffset.y
+    func needToScrollUp(pageContentOffsetY:CGFloat) -> Bool {
+        let needToScrollUp = self.previousPageY < pageContentOffsetY
         return needToScrollUp
     }
     
@@ -114,14 +134,18 @@ struct VPCViewModel {
         return currentPage == page
     }
     
+    func getLimitedVisibleHeight(pageHeight:CGFloat) -> CGFloat {
+        return pageHeight - CGFloat(sizeWithSpace * 2)
+    }
+    
     func getNextContentOffetToMoveDown(contentOffset:CGPoint, pageHeight:CGFloat) -> CGPoint {
-        let limitedVisibleHeight = pageHeight - CGFloat(sizeWithSpace * 2)
+        let limitedVisibleHeight = getLimitedVisibleHeight(pageHeight: pageHeight)
         let nextContentOffset = CGPoint(x: contentOffset.x, y: contentOffset.y + limitedVisibleHeight)
         return nextContentOffset
     }
     
     func getNextContentOffetToMoveUp(contentOffset:CGPoint, pageHeight:CGFloat) -> CGPoint {
-        let limitedVisibleY = pageHeight - CGFloat(sizeWithSpace * 2)
+        let limitedVisibleY = getLimitedVisibleHeight(pageHeight: pageHeight)
         let nextContentOffset = CGPoint(x: contentOffset.x, y: contentOffset.y - limitedVisibleY)
         return nextContentOffset
     }

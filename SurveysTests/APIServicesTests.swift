@@ -12,6 +12,7 @@ import XCTest
 
 class APIServicesTests: XCTestCase {
     var services:APIServices!
+    let testedToken:String = "b1c2bf9e540f67fc2a390f2e4cfe41c69b0fd43c16f0cce0f8e50ec0ca025cf7"
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -35,8 +36,7 @@ class APIServicesTests: XCTestCase {
     }
     
     func testBearerTokenInHeader() {
-        let tempToken = "b1c2bf9e540f67fc2a390f2e4cfe41c69b0fd43c16f0cce0f8e50ec0ca025cf7"
-        UserLogin.shared.token = tempToken
+        UserLogin.shared.token = testedToken
         let header = services.getHeader()
         guard let bearerToken = header.value(for: K.Authorization) else {
             XCTFail()
@@ -46,8 +46,7 @@ class APIServicesTests: XCTestCase {
     }
     
     func testFetchSurveysDataSuccess() {
-        let token = UserLogin.shared.token
-        XCTAssert(!token.isEmpty)
+        UserLogin.shared.token = testedToken
         
         let promise = expectation(description: "Fetch Surveys Data Success")
         services.fetchSurveys(success: { (surveys) in
