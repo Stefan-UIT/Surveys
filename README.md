@@ -29,12 +29,18 @@ Link: https://youtu.be/T1JwIzzWBqA
 Remember to run ``` pod install ``` before running the project.
 
 ##  Main Files
-
-- VerticalPageContorlView.swift: a custom of UIScrollView to emulate a vertical page control
-- LoadingViewController.swift: get token and surveys data.
-- SurveysViewController.swift: allows users to browse a list of surveys, reload surveys data and redirect to see more survey detail.
-- SurveyDetailViewController.swift: display detail's of the selected survey
+###  Control Files
+- LoadingViewController.swift: get access token and surveys data.
+- SurveysViewController.swift: allows users to browse a list of surveys, reload surveys data and direct user to see the survey details.
+- SurveyDetailViewController.swift: display selected survey detail informations.
 - Main.storyboard: includes all the UI of the 3 screens.
-- APIServices.swift: using Alamorfire to communicate with Nimble server to get data. All APIs request should come from here.
+- APIServices.swift: using Alamorfire to communicate with Nimble server to get data. All API's requests should come from here.
 
-## That's it! Have a nice day!
+### Custom View Files
+- VerticalPageControlView.swift: a custom of UIScrollView to emulate a vertical page control.
+- VerticalPageControlViewModel.swift: is the model of VerticalPageControlView, which contains logics, validations, model properties/functions of the Vertical Page Control.
+- VPCHelpers.swift: contains VPCButtonHelper and VPCPageHelper to help haandling logic for Vertical Page Control.
+- VPCValidations.swift: contains VPCValidationService and VPCValidationError to help about validations for Vertical Page Control.
+
+
+## That's it! Thank you and have a nice day!
