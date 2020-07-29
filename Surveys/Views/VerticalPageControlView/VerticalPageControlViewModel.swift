@@ -22,6 +22,7 @@ struct VPCViewModel {
     private let buttonHelper = VPCButtonHelper()
     
     
+    // MARK: - Getter Variables
     var itemSize:CGSize {
         get {
             return activeImage?.size ?? CGSize.zero
@@ -40,17 +41,6 @@ struct VPCViewModel {
         }
     }
     
-    func validateInputData() throws {
-        do {
-            try validation.validateNumberOfPages(numberOfPages)
-            try validation.validateCurrentPage(currentPage, numberOfPages: numberOfPages)
-            try validation.validateActiveImage(activeImage)
-            try validation.validateInactiveImage(inactiveImage)
-        } catch let error {
-            throw error
-        }
-    }
-    
     var isValidCurrentPage:Bool {
         get {
             do {
@@ -62,7 +52,42 @@ struct VPCViewModel {
         }
     }
     
+    var nextPage:Int {
+        get {
+            return currentPage + 1
+        }
+    }
+    
+    var previousPage:Int {
+        get {
+            return currentPage - 1
+        }
+    }
+    
+    var nextPageY:CGFloat {
+        get {
+            return CGFloat(self.nextPage) * CGFloat(sizeWithSpace)
+        }
+    }
+    
+    var previousPageY:CGFloat {
+        get {
+            return CGFloat(self.previousPage) * sizeWithSpace - sizeWithSpace
+        }
+    }
+    
     // MARK: - Methods
+    func validateInputData() throws {
+        do {
+            try validation.validateNumberOfPages(numberOfPages)
+            try validation.validateCurrentPage(currentPage, numberOfPages: numberOfPages)
+            try validation.validateActiveImage(activeImage)
+            try validation.validateInactiveImage(inactiveImage)
+        } catch let error {
+            throw error
+        }
+    }
+    
     func getButton(withOriginY originY:CGFloat, atIndex index:Int, targetView:VerticalPageControlView) -> UIButton {
         let button = buttonHelper.button(activeImage: activeImage, inactiveImage: inactiveImage, selector: #selector(targetView.userTap(_:)), target: targetView)
         guard let _button = button  else {
@@ -96,30 +121,6 @@ struct VPCViewModel {
         return result
     }
     
-    var nextPage:Int {
-        get {
-            return currentPage + 1
-        }
-    }
-    
-    var previousPage:Int {
-        get {
-            return currentPage - 1
-        }
-    }
-    
-    var nextPageY:CGFloat {
-        get {
-            return CGFloat(self.nextPage) * CGFloat(sizeWithSpace)
-        }
-    }
-    
-    var previousPageY:CGFloat {
-        get {
-            return CGFloat(self.previousPage) * sizeWithSpace - sizeWithSpace
-        }
-    }
-    
     func needToScrollDown(pageContentOffsetY:CGFloat, pageHeight:CGFloat) -> Bool {
         let needToScrollDown = self.nextPageY > pageContentOffsetY + pageHeight
         return needToScrollDown
@@ -150,7 +151,7 @@ struct VPCViewModel {
         return nextContentOffset
     }
     
-    
+    // MARK: - Mutating Methods
     mutating func updateButtonState(button:UIButton, atIndex index:Int, forTag tag:Int) {
         button.isSelected = false
         if index == tag {
