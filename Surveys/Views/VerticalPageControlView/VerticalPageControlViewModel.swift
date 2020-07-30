@@ -153,13 +153,12 @@ struct VPCViewModel {
     
     // MARK: - Mutating Methods
     mutating func updateButtonState(button:UIButton, atIndex index:Int, forTag tag:Int) {
-        button.isSelected = false
-        if index == tag {
-            currentPage = index
-            button.isSelected = true
-        }
-        // disable selected button to avoid multi click on selected button
+        let isShouldSelected = (index == tag)
+        button.isSelected = isShouldSelected
         button.isUserInteractionEnabled = !button.isSelected
+        if isShouldSelected {
+            currentPage = index
+        }
     }
     
     mutating func updateAllButtonsState(forTag tag: Int, inPageControl pageControl:VerticalPageControlView) {

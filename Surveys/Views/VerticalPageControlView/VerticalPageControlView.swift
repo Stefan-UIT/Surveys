@@ -19,7 +19,6 @@ class VerticalPageControlView: UIScrollView {
     // MARK: - Private Var
     var viewModel = VPCViewModel()
     private let pageHelper = VPCPageHelper()
-    
     weak var verticalPageControlDelegate: VerticalPageControlViewDelegate?
     
     // MARK: - Setters

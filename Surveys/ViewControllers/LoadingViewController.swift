@@ -8,12 +8,14 @@
 
 import UIKit
 
+// MARK: - ControllerHelper
 class ControllerHelper {
     class var window:UIWindow? {
         get {
             return UIApplication.shared.windows.first
         }
     }
+    
     class func load<T>(_ type: T.Type, fromStoryboard storyboardName:String) -> T? where T : UIViewController {
         let storyboard : UIStoryboard = UIStoryboard(name: storyboardName, bundle: nil)
         guard let controller = storyboard.instantiateViewController(withIdentifier: String(describing: T.self)) as? T else {
@@ -31,6 +33,7 @@ class ControllerHelper {
     }
 }
 
+// MARK: - LoadingViewController
 class LoadingViewController: UIViewController {
     var surveysModel = SurveysModel()
     // MARK: - View Life Cycle
@@ -50,11 +53,9 @@ class LoadingViewController: UIViewController {
     // MARK: - API
     private func fetchSurveys() {
         surveysModel.fetchSurveys(success: {
-            self.removeSpinner()
-            self.redirectToSurveysViewContrroller()
+            self.handleFetchingSurveySuccess()
         }) { (error) in
-            self.removeSpinner()
-            self.showAlert(message: Messages.CouldNotGetAccessToken)
+            self.handleFetchingSurveyFailed()
         }
     }
     
@@ -63,8 +64,22 @@ class LoadingViewController: UIViewController {
         UserLogin.shared.requestAccessToken(success: {
             self.fetchSurveys()
         }) { (error) in
-            self.removeSpinner()
-            self.showAlert(message: Messages.CouldNotGetAccessToken)
+            self.handleFetchingTokenFailed()
         }
+    }
+    
+    private func handleFetchingSurveySuccess() {
+        removeSpinner()
+        redirectToSurveysViewContrroller()
+    }
+    
+    private func handleFetchingSurveyFailed() {
+        removeSpinner()
+        showAlert(message: Messages.CouldNotGetSurveysData)
+    }
+    
+    private func handleFetchingTokenFailed() {
+        removeSpinner()
+        showAlert(message: Messages.CouldNotGetAccessToken)
     }
 }
