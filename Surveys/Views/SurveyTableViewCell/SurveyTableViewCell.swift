@@ -19,7 +19,7 @@ class SurveyTableViewCell: UITableViewCell {
     @IBOutlet weak var backgroundImageView: UIImageView!
     
     // MARK: - Variables
-    var overlay: UIView!
+    private var overlay: UIView!
     var survey:Survey!
     weak var delegate:SurveyTableViewCellDelegate?
     
@@ -33,6 +33,18 @@ class SurveyTableViewCell: UITableViewCell {
     }
     
     // MARK: - Methods
+    func configureCell(survey:Survey) {
+        self.survey = survey
+        setupData(withSurvey: survey)
+        addOverlayView()
+    }
+    
+    func setupData(withSurvey survey:Survey) {
+        titleLabel.text = survey.title
+        descriptionLabel.text = survey.description
+        backgroundImageView.load(urlString: survey.fullSizeCoverImageUrl)
+    }
+    
     private func addOverlayView() {
         if overlay == nil {
             initOverlay()
@@ -43,14 +55,6 @@ class SurveyTableViewCell: UITableViewCell {
     private func initOverlay() {
         overlay = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
         overlay.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.4)
-    }
-    
-    func configureCell(survey:Survey) {
-        self.survey = survey
-        titleLabel.text = survey.title
-        descriptionLabel.text = survey.description
-        backgroundImageView.load(urlString: survey.fullSizeCoverImageUrl)
-        addOverlayView()
     }
     
     // MARK: - Actions

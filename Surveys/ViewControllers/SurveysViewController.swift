@@ -40,15 +40,23 @@ class SurveysViewController: UIViewController {
     private func fetchSurveys(completionHandler: @escaping ()->() = {}) {
         self.showSpinner(onView: self.view)
         surveysModel.fetchSurveys(success: {
-            self.removeSpinner()
-            self.reloadVerticalPageControl(totalPages: self.surveysModel.count)
-            self.tableView.reloadData()
+            self.handleFetchingDataSuccess()
             completionHandler()
         }) { (error) in
-            self.removeSpinner()
-            self.showAlert(message: Messages.CouldNotGetSurveysData)
+            self.handleFetchingDataFailed()
             completionHandler()
         }
+    }
+    
+    private func handleFetchingDataSuccess() {
+        removeSpinner()
+        reloadVerticalPageControl(totalPages: self.surveysModel.count)
+        tableView.reloadData()
+    }
+    
+    private func handleFetchingDataFailed() {
+        removeSpinner()
+        showAlert(message: Messages.CouldNotGetSurveysData)
     }
     
     // MARK: - Support Functions
@@ -121,17 +129,23 @@ extension SurveysViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: surveyCellIdentifier, for: indexPath) as! SurveyTableViewCell
-        let survey = surveysModel.survey(at: indexPath.row)
-        cell.configureCell(survey: survey)
-        cell.delegate = self
-        return cell
+        return cellSurvey(tableView, atIndexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.frame.size.height
     }
     
+    func  cellSurvey(_ tableView: UITableView, atIndexPath indexPath:IndexPath) -> SurveyTableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: surveyCellIdentifier, for: indexPath) as? SurveyTableViewCell else {
+            return SurveyTableViewCell()
+        }
+        let survey = surveysModel.survey(at: indexPath.row)
+        cell.configureCell(survey: survey)
+        cell.delegate = self
+        
+        return cell
+    }
 }
 
 //MARK: - UITableViewDelegate

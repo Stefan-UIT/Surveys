@@ -16,21 +16,11 @@ class SurveyDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        titleLabel.text = survey.title
-        descriptionLabel.text = survey.description
-        // Do any additional setup after loading the view.
+        setupUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setupUI() {
+        titleLabel.text = survey.title
+        descriptionLabel.text = survey.description
     }
-    */
-
 }

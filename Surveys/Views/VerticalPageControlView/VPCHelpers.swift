@@ -39,9 +39,7 @@ struct VPCButtonHelper {
     }
     
     func getY(itemSizeWithMarginSpace:CGFloat, parentView:UIScrollView, numberOfPages:Int) -> CGFloat {
-        let contentHeight = parentView.contentSize.height
-        let viewHeight = parentView.frame.height
-        let height = max(viewHeight, contentHeight)
+        let height = max(parentView.frame.height, parentView.contentSize.height)
         return (height - (CGFloat(numberOfPages) * itemSizeWithMarginSpace)) / 2.0
     }
 }
