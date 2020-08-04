@@ -72,6 +72,10 @@ class VerticalPageControlView: UIScrollView {
         let nextContentOffset = viewModel.getNextContentOffetToMoveUp(contentOffset: contentOffset, pageHeight: bounds.size.height)
         self.setContentOffset(nextContentOffset, animated: true)
     }
+    
+    func resetData() {
+        viewModel.resetData()
+    }
 
     // MARK: - Private Methods
     private func updateState(forPageNumber page: Int) {

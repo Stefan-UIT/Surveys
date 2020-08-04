@@ -35,7 +35,7 @@ class ControllerHelper {
 
 // MARK: - LoadingViewController
 class LoadingViewController: UIViewController {
-    var surveysModel = SurveysModel()
+    var surveysModel = SurveysViewModel()
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()

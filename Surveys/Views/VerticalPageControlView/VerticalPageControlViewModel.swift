@@ -77,6 +77,11 @@ struct VPCViewModel {
     }
     
     // MARK: - Methods
+    mutating func resetData() {
+        numberOfPages = 0
+        currentPage = 1
+    }
+    
     func validateInputData() throws {
         do {
             try validation.validateNumberOfPages(numberOfPages)

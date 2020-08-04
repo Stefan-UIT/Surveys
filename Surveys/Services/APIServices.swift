@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 enum JsonParseError: Error {
+    case NullData
     case WrongJsonFormat
     case CouldNotDecode
 }
@@ -42,6 +43,7 @@ final class APIServices: APIServicesProvider {
     }
     
     private func jsonDecode<T>(_ type: T.Type, fromAnyObject data:Any) throws -> T where T : Decodable {
+        guard !(data is NSNull) else { throw JsonParseError.NullData }
         guard let jsonData = try? JSONSerialization.data(withJSONObject: data) else { throw JsonParseError.WrongJsonFormat }
         guard let result:T = try? decoder.decode(type, from: jsonData) else { throw JsonParseError.CouldNotDecode }
         
@@ -49,10 +51,16 @@ final class APIServices: APIServicesProvider {
     }
     
     
-    func fetchSurveys(success: @escaping ([Survey])->(), failure: @escaping (_ error:Error)->()) {
+    func fetchSurveys(page:Int,
+                      success: @escaping ([Survey])->(),
+                      failure: @escaping (_ error:Error)->()) {
         let path = Paths.GetSurveys
+        let params:[String:Any] = [
+            K.PerPage  : Paths.DataPerPage,
+            K.Page      : page
+        ]
         
-        request(path: path, method: .get, success: { (data) in
+        request(path: path, method: .get, parameters: params, success: { (data) in
             do {
                 let surveys = try self.jsonDecode([Survey].self, fromAnyObject: data)
                 success(surveys)
@@ -85,16 +93,16 @@ final class APIServices: APIServicesProvider {
     }
     
     private func request(path:String, method:HTTPMethod, parameters: Parameters? = nil, success: @escaping (_ data:Any)->(), failure: @escaping (_ error:Error)->()) {
-           let header = getHeader()
-           AF.request(path, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: { (dataResponse) in
-                       switch dataResponse.result {
-                       case .success(let data):
-                           success(data)
-                           break
-                       case .failure(let error):
-                           failure(error)
-                       }
-                   })
-       }
-    
+        let header = getHeader()
+        let encoding:ParameterEncoding =  (method == .get) ? URLEncoding.default : JSONEncoding.default
+        AF.request(path, method: method, parameters: parameters, encoding: encoding, headers: header).responseJSON(completionHandler: { (dataResponse) in
+               switch dataResponse.result {
+               case .success(let data):
+                   success(data)
+                   break
+               case .failure(let error):
+                   failure(error)
+            }
+        })
+    }
 }

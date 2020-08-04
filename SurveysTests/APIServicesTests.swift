@@ -49,7 +49,7 @@ class APIServicesTests: XCTestCase {
         UserLogin.shared.token = testedToken
         
         let promise = expectation(description: "Fetch Surveys Data Success")
-        services.fetchSurveys(success: { (surveys) in
+        services.fetchSurveys(page: 1, success: { (surveys) in
             XCTAssertNotNil(surveys, "surveys is nil")
             promise.fulfill()
         }) { (error) in
@@ -62,7 +62,7 @@ class APIServicesTests: XCTestCase {
         UserLogin.shared.token = ""
         
         let promise = expectation(description: "Fetch Surveys Data Failed")
-        services.fetchSurveys(success: { (surveys) in
+        services.fetchSurveys(page: 1, success: { (surveys) in
             XCTFail("API should not response success without access token")
         }) { (error) in
             XCTAssertNotNil(error , "there is no error")

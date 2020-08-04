@@ -35,7 +35,7 @@ class ServicesStub: APIServicesProvider {
             failure(DummyData.Response.error)
         }
     }
-    func fetchSurveys(success: @escaping ([Survey])->(), failure: @escaping (_ error:Error)->()) {
+    func fetchSurveys(page:Int, success: @escaping ([Survey])->(), failure: @escaping (_ error:Error)->()) {
         if self.isValidAccessToken {
             success(surveys)
         } else {
