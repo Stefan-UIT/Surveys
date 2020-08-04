@@ -14,9 +14,10 @@ class SurveysViewController: UIViewController {
     
     // MARK: - Private Var
     private let surveyCellIdentifier = "SurveyTableViewCell"
+    private var leftBarButton:UIBarButtonItem!
     
     // MARK: - Variables
-    var surveysModel:SurveysModel!
+    var surveysModel:SurveysViewModel!
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -38,19 +39,21 @@ class SurveysViewController: UIViewController {
     
     // MARK: - API
     private func fetchSurveys(completionHandler: @escaping ()->() = {}) {
+        leftBarButton.isEnabled = false
         self.showSpinner(onView: self.view)
         surveysModel.fetchSurveys(success: {
+            self.leftBarButton.isEnabled = true
             self.handleFetchingDataSuccess()
             completionHandler()
         }) { (error) in
+            self.leftBarButton.isEnabled = true
             self.handleFetchingDataFailed()
-            completionHandler()
         }
     }
     
     private func handleFetchingDataSuccess() {
         removeSpinner()
-        reloadVerticalPageControl(totalPages: self.surveysModel.count)
+        reloadVerticalPageControl(totalPages: surveysModel.count)
         tableView.reloadData()
     }
     
@@ -66,7 +69,7 @@ class SurveysViewController: UIViewController {
     }
     
     private func setupBarButtonItems() {
-        let leftBarButton = UIBarButtonItem.barButton(imageName: Images.RefreshIcon, selector: #selector(onReloadTouchUp(sender:)),actionController: self)
+        leftBarButton = UIBarButtonItem.barButton(imageName: Images.RefreshIcon, selector: #selector(onReloadTouchUp(sender:)),actionController: self)
         let rightBarButton = UIBarButtonItem.barButton(imageName: Images.MenuIcon,selector: nil, actionController: nil)
         
         navigationItem.leftBarButtonItem = leftBarButton
@@ -74,10 +77,18 @@ class SurveysViewController: UIViewController {
     }
     
     @objc func onReloadTouchUp(sender:UIBarButtonItem) {
-        sender.isEnabled = false
-        fetchSurveys {
-            sender.isEnabled = true
-        }
+        refreshData()
+    }
+    
+    private func refreshData() {
+        resetData()
+        fetchSurveys()
+    }
+    
+    private func resetData() {
+        surveysModel.resetData()
+        verticalPageControlView.resetData()
+        tableView.reloadData()
     }
     
     private func setupTableView() {
@@ -126,6 +137,12 @@ extension SurveysViewController:UIScrollViewDelegate {
 extension SurveysViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (surveysModel == nil) ? 0 : surveysModel.count
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if surveysModel.shouldLoadMoreItems(currentRow:indexPath.row) {
+            fetchSurveys()
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -11,12 +11,12 @@ import XCTest
 @testable import Surveys
 
 class SurveysModelTests: XCTestCase {
-    var surveysModel:SurveysModel!
+    var surveysModel:SurveysViewModel!
     var stubService = ServicesStub()
 
     override func setUp() {
         super.setUp()
-        surveysModel = SurveysModel()
+        surveysModel = SurveysViewModel()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
@@ -27,24 +27,24 @@ class SurveysModelTests: XCTestCase {
     }
     
     
-    // Test with real API
-    func testFetchSurveysDataSuccess() {
-        let token = UserLogin.shared.token
-        XCTAssert(!token.isEmpty)
-        
-        let promise = expectation(description: "Fetch Surveys Data Success")
-        surveysModel.fetchSurveys(success: {
-            promise.fulfill()
-        }) { (error) in
-            XCTFail("Error: \(error.localizedDescription)")
-        }
-        
-        wait(for: [promise], timeout: 5)
-    }
+//    // Test with real API
+//    func testFetchSurveysDataSuccess() {
+//        let token = UserLogin.shared.token
+//        XCTAssert(!token.isEmpty)
+//
+//        let promise = expectation(description: "Fetch Surveys Data Success")
+//        surveysModel.fetchSurveys(success: {
+//            promise.fulfill()
+//        }) { (error) in
+//            XCTFail("Error: \(error.localizedDescription)")
+//        }
+//
+//        wait(for: [promise], timeout: 5)
+//    }
     
     // Test With Stub
     func testStubFetchSurveysDataSuccess() {
-        surveysModel = SurveysModel(provider: stubService)
+        surveysModel = SurveysViewModel(provider: stubService)
         surveysModel.fetchSurveys(success: {
             XCTAssertEqual(self.surveysModel.survey(at: 0).title, DummyData.survey1.title)
             XCTAssertEqual(self.surveysModel.survey(at: 1).title, DummyData.survey2.title)
@@ -54,7 +54,7 @@ class SurveysModelTests: XCTestCase {
     }
     
     func testStubFetchSurveysDataFailed() {
-        surveysModel = SurveysModel(provider: stubService)
+        surveysModel = SurveysViewModel(provider: stubService)
         stubService.isValidAccessToken = false
         surveysModel.fetchSurveys(success: {
             XCTFail("Could not success if there is invalid token")

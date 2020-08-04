@@ -9,11 +9,15 @@
 import Foundation
 
 struct Paths {
-    static let GetAccessToken = "https://nimble-survey-api.herokuapp.com/oauth/token"
-    static let GetSurveys = "https://nimble-survey-api.herokuapp.com/surveys.json"
+    static let BaseApiGateway = "https://nimble-survey-api.herokuapp.com"
+    static let GetAccessToken = BaseApiGateway + "/oauth/token"
+    static let GetSurveys = BaseApiGateway + "/surveys.json"
+    static let DataPerPage = 10
 }
 
 struct K {
+    static let PerPage = "per_page"
+    static let Page = "page"
     static let Password = "password"
     static let Username = "username"
     static let GrantType = "grant_type"
