@@ -17,7 +17,6 @@ extension UIImageView {
         
         image = nil
         if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
-            print("get from Cached")
             image = imageFromCache
         } else {
             DispatchQueue.global().async { [weak self] in
@@ -25,7 +24,6 @@ extension UIImageView {
                     DispatchQueue.main.async {
                         if let image = UIImage(data: data) {
                             imageCache.setObject(image, forKey: urlString as NSString)
-                            print("download compelted + \(url)")
                             self?.image = image
                         }
                     }
