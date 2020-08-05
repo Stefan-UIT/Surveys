@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import os.log
 
 // MARK: - VerticalPageControlViewDelegate
 protocol VerticalPageControlViewDelegate:class {
@@ -61,6 +62,7 @@ class VerticalPageControlView: UIScrollView {
         let page = pageHelper.calculatePage(contentOffsetY: contentOffsetY, pageHeight: pageHeight)
         updateState(forPageNumber: page)
         updatePosition(forPageNumber: page)
+        os_log(LogMessages.ScrollToPage, log: .surveys, type: .info, page)
     }
     
     func moveDown() {
@@ -83,7 +85,7 @@ class VerticalPageControlView: UIScrollView {
             try viewModel.validateInputData()
         } catch let error {
             let _error = error as! VPCValidationError
-            print(_error.errorDescription)
+            os_log("%@", log: .surveys, type: .error, _error.errorDescription)
             return
         }
         

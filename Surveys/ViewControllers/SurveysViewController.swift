@@ -6,8 +6,9 @@
 //  Copyright © 2020 Trung Vo. All rights reserved.
 //
 import UIKit
+import os.log
 
-class SurveysViewController: UIViewController {
+class SurveysViewController: BaseViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var verticalPageControlView: VerticalPageControlView!
@@ -77,6 +78,7 @@ class SurveysViewController: UIViewController {
     }
     
     @objc func onReloadTouchUp(sender:UIBarButtonItem) {
+        os_log(LogMessages.RefreshSurveyData, log: .surveys, type: .info)
         refreshData()
     }
     
@@ -113,10 +115,15 @@ class SurveysViewController: UIViewController {
         verticalPageControlView.setNumberOfPages(totalPages)
         do {
             try verticalPageControlView.show()
+            os_log(LogMessages.VerticalPageControlHasBeenShowedWithTotalPages, log: .surveys, type: .info, totalPages)
         } catch let error as VPCValidationError {
-            showAlert(message: error.errorDescription)
+            let mes = error.errorDescription
+            os_log("%@", log: .surveys, type: .error, mes)
+            showAlert(message: mes)
         } catch {
-            showAlert(message: Messages.SomethingWentWrong)
+            let mes = Messages.FailedToShowVerticalPageControl
+            os_log("%@", log: .surveys, type: .error, mes)
+            showAlert(message: mes)
         }
     }
 }
@@ -155,6 +162,7 @@ extension SurveysViewController: UITableViewDataSource {
     
     func  cellSurvey(_ tableView: UITableView, atIndexPath indexPath:IndexPath) -> SurveyTableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: surveyCellIdentifier, for: indexPath) as? SurveyTableViewCell else {
+            os_log(LogMessages.CouldNotReusedCell, log: .surveys, type: .error, surveyCellIdentifier)
             return SurveyTableViewCell()
         }
         let survey = surveysModel.survey(at: indexPath.row)
@@ -182,6 +190,7 @@ extension SurveysViewController:VerticalPageControlViewDelegate {
 //MARK: - SurveyTableViewCellDelegate
 extension SurveysViewController:SurveyTableViewCellDelegate {
     func didTouchUpTakeTheSurvey(_ cell: SurveyTableViewCell, survey: Survey) {
+        os_log(LogMessages.RedirectToSurveyDetail, log: .userFlows, type: .info, survey.title)
         redirectToSurveyDetailVC(survey: survey)
     }
     

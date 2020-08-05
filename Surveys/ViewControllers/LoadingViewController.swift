@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 // MARK: - ControllerHelper
 class ControllerHelper {
@@ -18,7 +19,9 @@ class ControllerHelper {
     
     class func load<T>(_ type: T.Type, fromStoryboard storyboardName:String) -> T? where T : UIViewController {
         let storyboard : UIStoryboard = UIStoryboard(name: storyboardName, bundle: nil)
-        guard let controller = storyboard.instantiateViewController(withIdentifier: String(describing: T.self)) as? T else {
+        let identifier = String(describing: T.self)
+        guard let controller = storyboard.instantiateViewController(withIdentifier: identifier) as? T else {
+            os_log(LogMessages.CouldNotInit, log: .ui, type: .error, identifier)
             return nil
         }
         return controller
@@ -26,7 +29,7 @@ class ControllerHelper {
     
     class func setToRootViewController(_ controller:UIViewController) {
         guard let _window = window else {
-            print(Messages.CouldNotGetTheWindow)
+            os_log(LogMessages.CouldNotGetTheWindow, log: .ui, type: .error)
             return
         }
         _window.rootViewController = controller
@@ -34,7 +37,7 @@ class ControllerHelper {
 }
 
 // MARK: - LoadingViewController
-class LoadingViewController: UIViewController {
+class LoadingViewController: BaseViewController {
     var surveysModel = SurveysViewModel()
     // MARK: - View Life Cycle
     override func viewDidLoad() {

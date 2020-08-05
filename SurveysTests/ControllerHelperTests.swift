@@ -30,7 +30,7 @@ class ControllerHelperTests: XCTestCase {
     
     func testSetRootViewControllerSuccess() {
         guard let _window = ControllerHelper.window else {
-            XCTFail(Messages.CouldNotGetTheWindow)
+            XCTFail("Could not get window")
             return
         }
         

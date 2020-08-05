@@ -48,6 +48,8 @@
 		2EDC540324CE6DFF00D69B11 /* APIServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDC540224CE6DFF00D69B11 /* APIServicesTests.swift */; };
 		2EE2C23324CEBA590015595C /* VerticalPageControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2C23224CEBA590015595C /* VerticalPageControlTests.swift */; };
 		2EE2C23524CEDB970015595C /* UIScrollViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2C23424CEDB970015595C /* UIScrollViewTests.swift */; };
+		2EF4AC0524DAC92600D07AC4 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF4AC0424DAC92600D07AC4 /* Log.swift */; };
+		2EF4AC0724DAF6C300D07AC4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF4AC0624DAF6C300D07AC4 /* BaseViewController.swift */; };
 		59DAC9EA43F04956AADEA900 /* Pods_Surveys.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85206FE83E79A382C878A04F /* Pods_Surveys.framework */; };
 		61A1144FCA3CC8ACF8EC6F5E /* Pods_SurveysTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F4D30567F8875F71146F1B1 /* Pods_SurveysTests.framework */; };
 		F6D9B7ED5D85DAFA6E458CE0 /* Pods_Surveys_SurveysUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB70861D415AC28FAB924D8 /* Pods_Surveys_SurveysUITests.framework */; };
@@ -119,6 +121,8 @@
 		2EDC540224CE6DFF00D69B11 /* APIServicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServicesTests.swift; sourceTree = "<group>"; };
 		2EE2C23224CEBA590015595C /* VerticalPageControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalPageControlTests.swift; sourceTree = "<group>"; };
 		2EE2C23424CEDB970015595C /* UIScrollViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewTests.swift; sourceTree = "<group>"; };
+		2EF4AC0424DAC92600D07AC4 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		2EF4AC0624DAF6C300D07AC4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		3F4D30567F8875F71146F1B1 /* Pods_SurveysTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SurveysTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40D76D3A8E933C4B6B374103 /* Pods-Surveys-SurveysUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surveys-SurveysUITests.debug.xcconfig"; path = "Target Support Files/Pods-Surveys-SurveysUITests/Pods-Surveys-SurveysUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		67EC434B29B7434D88E8D5BC /* Pods-Surveys.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surveys.debug.xcconfig"; path = "Target Support Files/Pods-Surveys/Pods-Surveys.debug.xcconfig"; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				2E48458B24CC4B640003DFD4 /* Constant.swift */,
+				2EF4AC0424DAC92600D07AC4 /* Log.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				2ECCFA3024C9E64500912CB9 /* SurveysViewController.swift */,
 				2E7B6C6024CC198D00DB99DA /* LoadingViewController.swift */,
 				2E48459124CC7EE50003DFD4 /* SurveyDetailViewController.swift */,
+				2EF4AC0624DAF6C300D07AC4 /* BaseViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -617,11 +623,13 @@
 				2E0A2A2B24D0835800D7D344 /* VerticalPageControlViewModel.swift in Sources */,
 				2E0A2A1C24CFFF5C00D7D344 /* Protocols.swift in Sources */,
 				2E48458724CC46380003DFD4 /* UserLogin.swift in Sources */,
+				2EF4AC0524DAC92600D07AC4 /* Log.swift in Sources */,
 				2E0A2A3324D0A97700D7D344 /* VPCValidations.swift in Sources */,
 				2ECCFA2F24C9E5A100912CB9 /* SceneDelegate.swift in Sources */,
 				2E50479324CDCD5100103DB8 /* SurveysViewModel.swift in Sources */,
 				2ECCFA3124C9E64500912CB9 /* SurveysViewController.swift in Sources */,
 				2E7B6C6124CC198D00DB99DA /* LoadingViewController.swift in Sources */,
+				2EF4AC0724DAF6C300D07AC4 /* BaseViewController.swift in Sources */,
 				2E48459024CC7B0D0003DFD4 /* UIBarButtonItem+Button.swift in Sources */,
 				2E7B6C5F24CBF37600DB99DA /* ScrollView+Position.swift in Sources */,
 				2E52AF1624CA8ED000BD6CDF /* APIServices.swift in Sources */,
@@ -810,7 +818,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Trung-Vo.Surveys";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nimble.surveys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -829,7 +837,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Trung-Vo.Surveys";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nimble.surveys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
