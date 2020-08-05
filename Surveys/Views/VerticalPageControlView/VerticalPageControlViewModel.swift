@@ -96,7 +96,6 @@ struct VPCViewModel {
     func getButton(withOriginY originY:CGFloat, atIndex index:Int, targetView:VerticalPageControlView) -> UIButton {
         let button = buttonHelper.button(activeImage: activeImage, inactiveImage: inactiveImage, selector: #selector(targetView.userTap(_:)), target: targetView)
         guard let _button = button  else {
-            print(Messages.VPCCouldNotCreateButton)
             return UIButton()
         }
         buttonHelper.setPosition(ofButton: _button, originY: originY, itemSize: itemSize.width, marginSpace: CGFloat(marginSpace), inView: targetView)

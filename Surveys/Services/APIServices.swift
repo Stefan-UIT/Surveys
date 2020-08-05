@@ -8,11 +8,24 @@
 
 import Foundation
 import Alamofire
+import os.log
 
 enum JsonParseError: Error {
     case NullData
     case WrongJsonFormat
     case CouldNotDecode
+    
+    var errorDescription: String {
+        switch self {
+        case .NullData:
+            return Messages.NoDataFromResponse
+        case .WrongJsonFormat:
+            return Messages.WrongJsonFormat
+        case .CouldNotDecode:
+            return Messages.CouldNotDecode
+        }
+        
+    }
 }
 
 final class APIServices: APIServicesProvider {
@@ -43,9 +56,14 @@ final class APIServices: APIServicesProvider {
     }
     
     private func jsonDecode<T>(_ type: T.Type, fromAnyObject data:Any) throws -> T where T : Decodable {
-        guard !(data is NSNull) else { throw JsonParseError.NullData }
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: data) else { throw JsonParseError.WrongJsonFormat }
-        guard let result:T = try? decoder.decode(type, from: jsonData) else { throw JsonParseError.CouldNotDecode }
+        guard !(data is NSNull) else {
+            throw JsonParseError.NullData
+        }
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: data) else {
+            throw JsonParseError.WrongJsonFormat
+        }
+        guard let result:T = try? decoder.decode(type, from: jsonData) else {
+            throw JsonParseError.CouldNotDecode }
         
         return result
     }
@@ -63,8 +81,12 @@ final class APIServices: APIServicesProvider {
         request(path: path, method: .get, parameters: params, success: { (data) in
             do {
                 let surveys = try self.jsonDecode([Survey].self, fromAnyObject: data)
+                os_log(LogMessages.SuccessfullyFetchedNumberOfRecordsAtPage, log: .networking, type: .info, surveys.count, page)
+
                 success(surveys)
             } catch let error {
+                let _error = error as! JsonParseError
+                os_log("%@", log: .networking, type: .error, path, _error.errorDescription)
                 failure(error)
             }
             
@@ -83,8 +105,12 @@ final class APIServices: APIServicesProvider {
         request(path: path, method: .post, parameters: params , success: { (data) in
             do {
                 let token = try self.jsonDecode(Token.self, fromAnyObject: data)
+                os_log(LogMessages.FetchTokenSuccessful, log: .networking, type: .info, token.accessToken)
+                
                 success(token)
             } catch let error {
+                let _error = error as! JsonParseError
+                os_log("%@", log: .networking, type: .error, path, _error.errorDescription)
                 failure(error)
             }
         }) { (error) in
@@ -95,13 +121,16 @@ final class APIServices: APIServicesProvider {
     private func request(path:String, method:HTTPMethod, parameters: Parameters? = nil, success: @escaping (_ data:Any)->(), failure: @escaping (_ error:Error)->()) {
         let header = getHeader()
         let encoding:ParameterEncoding =  (method == .get) ? URLEncoding.default : JSONEncoding.default
+        
+        os_log(LogMessages.FetchingDataFrom, log: .networking, type: .info, path)
         AF.request(path, method: method, parameters: parameters, encoding: encoding, headers: header).responseJSON(completionHandler: { (dataResponse) in
                switch dataResponse.result {
                case .success(let data):
-                   success(data)
-                   break
+                    success(data)
+                    break
                case .failure(let error):
-                   failure(error)
+                    os_log(LogMessages.FetchDataFailedFromWithError, log: .networking, type: .error, path, error.localizedDescription)
+                    failure(error)
             }
         })
     }

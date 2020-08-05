@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import os.log
 
 class BaseViewModel {
     let apiServicesProvider: APIServicesProvider!

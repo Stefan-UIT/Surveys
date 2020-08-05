@@ -27,21 +27,6 @@ class SurveysModelTests: XCTestCase {
     }
     
     
-//    // Test with real API
-//    func testFetchSurveysDataSuccess() {
-//        let token = UserLogin.shared.token
-//        XCTAssert(!token.isEmpty)
-//
-//        let promise = expectation(description: "Fetch Surveys Data Success")
-//        surveysModel.fetchSurveys(success: {
-//            promise.fulfill()
-//        }) { (error) in
-//            XCTFail("Error: \(error.localizedDescription)")
-//        }
-//
-//        wait(for: [promise], timeout: 5)
-//    }
-    
     // Test With Stub
     func testStubFetchSurveysDataSuccess() {
         surveysModel = SurveysViewModel(provider: stubService)
@@ -63,19 +48,4 @@ class SurveysModelTests: XCTestCase {
             XCTAssertEqual(error, DummyData.Response.error)
         }
     }
-    
-
-
-//    func testExample() throws {
-//        // This is an example of a functional test case.
-//        // Use XCTAssert and related functions to verify your tests produce the correct results.
-//    }
-//
-//    func testPerformanceExample() throws {
-//        // This is an example of a performance test case.
-//        self.measure {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
-
 }

@@ -64,9 +64,4 @@ class VerticalPageControlTests: XCTestCase {
         super.tearDown()
     }
     
-//    func testImagesSetters() {
-//        let image1 = UIImage(named: "image1")
-//        let image2 = UIImage(named)
-//    }
-
 }

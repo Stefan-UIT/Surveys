@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol SurveyTableViewCellDelegate:class {
     func didTouchUpTakeTheSurvey(_ cell:SurveyTableViewCell, survey:Survey)
@@ -42,7 +43,12 @@ class SurveyTableViewCell: UITableViewCell {
     func setupData(withSurvey survey:Survey) {
         titleLabel.text = survey.title
         descriptionLabel.text = survey.description
-        backgroundImageView.load(urlString: survey.fullSizeCoverImageUrl)
+        loadBackgroundImage(urlString: survey.fullSizeCoverImageUrl)
+    }
+    
+    private func loadBackgroundImage(urlString:String) {
+        let imageURL = URL(string: urlString)
+        backgroundImageView.sd_setImage(with: imageURL, placeholderImage: ImageObjects.Placeholder, options: .progressiveLoad)
     }
     
     private func addOverlayView() {
