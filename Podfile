@@ -6,8 +6,9 @@ target 'Surveys' do
   use_frameworks!
 
   # Pods for Surveys
-pod "Alamofire"
-
+  pod "Alamofire"
+  pod 'SDWebImage'
+  
   target 'SurveysTests' do
     inherit! :search_paths
     # Pods for testing

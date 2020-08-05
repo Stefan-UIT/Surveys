@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Paths {
     static let BaseApiGateway = "https://nimble-survey-api.herokuapp.com"
@@ -53,5 +54,9 @@ struct Images {
     static let MenuIcon = "menu_icon"
     static let ActivedDot = "actived_dot"
     static let InactivedDot = "unactived_dot"
+}
+
+struct ImageObjects {
+    static let Placeholder = UIImage(named: "placeholder")
 }
 
