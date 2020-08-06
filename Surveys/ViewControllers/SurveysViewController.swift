@@ -39,27 +39,33 @@ class SurveysViewController: BaseViewController {
     }
     
     // MARK: - API
-    private func fetchSurveys(completionHandler: @escaping () -> Void = {}) {
+    private func refreshSurveys(completionHandler: @escaping () -> Void = {}) {
         leftBarButton.isEnabled = false
         self.showSpinner(onView: self.view)
-        surveysModel.fetchSurveys(success: {
+        fetchSurveys {
+            self.removeSpinner()
             self.leftBarButton.isEnabled = true
+        }
+    }
+    
+    private func fetchSurveys(completionHandler: @escaping () -> Void = {}) {
+        surveysModel.fetchSurveys(success: {
             self.handleFetchingDataSuccess()
             completionHandler()
         }, failure: { (_) in
-            self.leftBarButton.isEnabled = true
             self.handleFetchingDataFailed()
+            completionHandler()
         })
     }
     
     private func handleFetchingDataSuccess() {
-        removeSpinner()
+        tableView.stopFooterLoading()
         reloadVerticalPageControl(totalPages: surveysModel.count)
         tableView.reloadData()
     }
     
     private func handleFetchingDataFailed() {
-        removeSpinner()
+        tableView.stopFooterLoading()
         showAlert(message: Messages.CouldNotGetSurveysData)
     }
     
@@ -84,7 +90,7 @@ class SurveysViewController: BaseViewController {
     
     private func refreshData() {
         resetData()
-        fetchSurveys()
+        refreshSurveys()
     }
     
     private func resetData() {
@@ -147,6 +153,7 @@ extension SurveysViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if surveysModel.shouldLoadMoreItems(currentRow: indexPath.row) {
+            tableView.addFooterLoading()
             fetchSurveys()
         }
     }

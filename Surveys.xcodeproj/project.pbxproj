@@ -34,6 +34,7 @@
 		2E52AF2024CAA6AD00BD6CDF /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52AF1F24CAA6AD00BD6CDF /* UIImageView+Extensions.swift */; };
 		2E52AF2224CAB13100BD6CDF /* UIVIewController+Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52AF2124CAB13100BD6CDF /* UIVIewController+Spinner.swift */; };
 		2E52AF2824CAD57800BD6CDF /* VerticalPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52AF2724CAD57800BD6CDF /* VerticalPageControlView.swift */; };
+		2E7166DB24DC04080092CDB4 /* UITableView+Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7166DA24DC04080092CDB4 /* UITableView+Indicator.swift */; };
 		2E7B6C5F24CBF37600DB99DA /* ScrollView+Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7B6C5E24CBF37600DB99DA /* ScrollView+Position.swift */; };
 		2E7B6C6124CC198D00DB99DA /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7B6C6024CC198D00DB99DA /* LoadingViewController.swift */; };
 		2EC3D27124DBEC1F0012C785 /* ControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3D27024DBEC1F0012C785 /* ControllerHelper.swift */; };
@@ -102,6 +103,7 @@
 		2E52AF1F24CAA6AD00BD6CDF /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		2E52AF2124CAB13100BD6CDF /* UIVIewController+Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Spinner.swift"; sourceTree = "<group>"; };
 		2E52AF2724CAD57800BD6CDF /* VerticalPageControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalPageControlView.swift; sourceTree = "<group>"; };
+		2E7166DA24DC04080092CDB4 /* UITableView+Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Indicator.swift"; sourceTree = "<group>"; };
 		2E7B6C5E24CBF37600DB99DA /* ScrollView+Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Position.swift"; sourceTree = "<group>"; };
 		2E7B6C6024CC198D00DB99DA /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		2EC3D27024DBEC1F0012C785 /* ControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerHelper.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				2E48458824CC498B0003DFD4 /* UIViewController+Alert.swift */,
 				2E48458F24CC7B0D0003DFD4 /* UIBarButtonItem+Button.swift */,
 				2E0A2A2C24D0881100D7D344 /* UIView+Extensions.swift */,
+				2E7166DA24DC04080092CDB4 /* UITableView+Indicator.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				2E48458524CC44010003DFD4 /* Token.swift in Sources */,
 				2E52AF1C24CAA4FB00BD6CDF /* SurveyTableViewCell.swift in Sources */,
 				2ECCFA3324C9E65200912CB9 /* Survey.swift in Sources */,
+				2E7166DB24DC04080092CDB4 /* UITableView+Indicator.swift in Sources */,
 				2E52AF2824CAD57800BD6CDF /* VerticalPageControlView.swift in Sources */,
 				2E48459224CC7EE50003DFD4 /* SurveyDetailViewController.swift in Sources */,
 				2EC3D27124DBEC1F0012C785 /* ControllerHelper.swift in Sources */,
