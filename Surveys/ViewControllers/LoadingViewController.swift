@@ -9,36 +9,10 @@
 import UIKit
 import os.log
 
-// MARK: - ControllerHelper
-class ControllerHelper {
-    class var window:UIWindow? {
-        get {
-            return UIApplication.shared.windows.first
-        }
-    }
-    
-    class func load<T>(_ type: T.Type, fromStoryboard storyboardName:String) -> T? where T : UIViewController {
-        let storyboard : UIStoryboard = UIStoryboard(name: storyboardName, bundle: nil)
-        let identifier = String(describing: T.self)
-        guard let controller = storyboard.instantiateViewController(withIdentifier: identifier) as? T else {
-            os_log(LogMessages.CouldNotInit, log: .userInterface, type: .error, identifier)
-            return nil
-        }
-        return controller
-    }
-    
-    class func setToRootViewController(_ controller:UIViewController) {
-        guard let currentWindow = window else {
-            os_log(LogMessages.CouldNotGetTheWindow, log: .userInterface, type: .error)
-            return
-        }
-        currentWindow.rootViewController = controller
-    }
-}
-
 // MARK: - LoadingViewController
 class LoadingViewController: BaseViewController {
     var surveysModel = SurveysViewModel()
+    
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +21,7 @@ class LoadingViewController: BaseViewController {
     
     // MARK: - Methods
     private func redirectToSurveysViewContrroller() {
-        guard let surveysController = ControllerHelper.load(SurveysViewController.self, fromStoryboard: K.Main) else { return }
+        guard let surveysController = ControllerHelper.load(SurveysViewController.self, fromStoryboard: Keys.Main) else { return }
         surveysController.surveysModel = surveysModel
         let nav = UINavigationController(rootViewController: surveysController)
         ControllerHelper.setToRootViewController(nav)
@@ -57,18 +31,18 @@ class LoadingViewController: BaseViewController {
     private func fetchSurveys() {
         surveysModel.fetchSurveys(success: {
             self.handleFetchingSurveySuccess()
-        }) { (error) in
+        }, failure: { (_) in
             self.handleFetchingSurveyFailed()
-        }
+        })
     }
     
     private func loadData() {
         self.showSpinner(onView: self.view)
         UserLogin.shared.requestAccessToken(success: {
             self.fetchSurveys()
-        }) { (error) in
+        }, failure: { (_) in
             self.handleFetchingTokenFailed()
-        }
+        })
     }
     
     private func handleFetchingSurveySuccess() {

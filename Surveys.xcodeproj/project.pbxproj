@@ -36,6 +36,8 @@
 		2E52AF2824CAD57800BD6CDF /* VerticalPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52AF2724CAD57800BD6CDF /* VerticalPageControlView.swift */; };
 		2E7B6C5F24CBF37600DB99DA /* ScrollView+Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7B6C5E24CBF37600DB99DA /* ScrollView+Position.swift */; };
 		2E7B6C6124CC198D00DB99DA /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7B6C6024CC198D00DB99DA /* LoadingViewController.swift */; };
+		2EC3D27124DBEC1F0012C785 /* ControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3D27024DBEC1F0012C785 /* ControllerHelper.swift */; };
+		2EC3D27324DBED900012C785 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3D27224DBED900012C785 /* OSLog+Extensions.swift */; };
 		2ECCF9ED24C9D94E00912CB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCF9EC24C9D94E00912CB9 /* AppDelegate.swift */; };
 		2ECCF9F924C9D94F00912CB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCF9F724C9D94F00912CB9 /* LaunchScreen.storyboard */; };
 		2ECCFA0424C9D94F00912CB9 /* SurveysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCFA0324C9D94F00912CB9 /* SurveysTests.swift */; };
@@ -48,7 +50,6 @@
 		2EDC540324CE6DFF00D69B11 /* APIServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDC540224CE6DFF00D69B11 /* APIServicesTests.swift */; };
 		2EE2C23324CEBA590015595C /* VerticalPageControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2C23224CEBA590015595C /* VerticalPageControlTests.swift */; };
 		2EE2C23524CEDB970015595C /* UIScrollViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2C23424CEDB970015595C /* UIScrollViewTests.swift */; };
-		2EF4AC0524DAC92600D07AC4 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF4AC0424DAC92600D07AC4 /* Log.swift */; };
 		2EF4AC0724DAF6C300D07AC4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF4AC0624DAF6C300D07AC4 /* BaseViewController.swift */; };
 		59DAC9EA43F04956AADEA900 /* Pods_Surveys.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85206FE83E79A382C878A04F /* Pods_Surveys.framework */; };
 		61A1144FCA3CC8ACF8EC6F5E /* Pods_SurveysTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F4D30567F8875F71146F1B1 /* Pods_SurveysTests.framework */; };
@@ -103,6 +104,8 @@
 		2E52AF2724CAD57800BD6CDF /* VerticalPageControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalPageControlView.swift; sourceTree = "<group>"; };
 		2E7B6C5E24CBF37600DB99DA /* ScrollView+Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Position.swift"; sourceTree = "<group>"; };
 		2E7B6C6024CC198D00DB99DA /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		2EC3D27024DBEC1F0012C785 /* ControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerHelper.swift; sourceTree = "<group>"; };
+		2EC3D27224DBED900012C785 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 		2ECCF9E924C9D94E00912CB9 /* Surveys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surveys.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ECCF9EC24C9D94E00912CB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2ECCF9F824C9D94F00912CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -121,7 +124,6 @@
 		2EDC540224CE6DFF00D69B11 /* APIServicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServicesTests.swift; sourceTree = "<group>"; };
 		2EE2C23224CEBA590015595C /* VerticalPageControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalPageControlTests.swift; sourceTree = "<group>"; };
 		2EE2C23424CEDB970015595C /* UIScrollViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewTests.swift; sourceTree = "<group>"; };
-		2EF4AC0424DAC92600D07AC4 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		2EF4AC0624DAF6C300D07AC4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		3F4D30567F8875F71146F1B1 /* Pods_SurveysTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SurveysTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40D76D3A8E933C4B6B374103 /* Pods-Surveys-SurveysUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surveys-SurveysUITests.debug.xcconfig"; path = "Target Support Files/Pods-Surveys-SurveysUITests/Pods-Surveys-SurveysUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -191,7 +193,6 @@
 			isa = PBXGroup;
 			children = (
 				2E48458B24CC4B640003DFD4 /* Constant.swift */,
-				2EF4AC0424DAC92600D07AC4 /* Log.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -216,6 +217,7 @@
 		2E52AF1E24CAA62E00BD6CDF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2EC3D27224DBED900012C785 /* OSLog+Extensions.swift */,
 				2E52AF1F24CAA6AD00BD6CDF /* UIImageView+Extensions.swift */,
 				2E52AF2124CAB13100BD6CDF /* UIVIewController+Spinner.swift */,
 				2E7B6C5E24CBF37600DB99DA /* ScrollView+Position.swift */,
@@ -235,6 +237,14 @@
 				2E0A2A3224D0A97700D7D344 /* VPCValidations.swift */,
 			);
 			path = VerticalPageControlView;
+			sourceTree = "<group>";
+		};
+		2EC3D26F24DBEBFA0012C785 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2EC3D27024DBEC1F0012C785 /* ControllerHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		2ECCF9E024C9D94E00912CB9 = {
@@ -262,16 +272,17 @@
 		2ECCF9EB24C9D94E00912CB9 /* Surveys */ = {
 			isa = PBXGroup;
 			children = (
-				2E0A2A1A24CFFF4B00D7D344 /* Protocols */,
-				2ECCFA1C24C9DCBE00912CB9 /* Models */,
-				2ECCFA1F24C9DCBE00912CB9 /* ViewControllers */,
-				2ECCFA1D24C9DCBE00912CB9 /* Views */,
 				2ECCF9EC24C9D94E00912CB9 /* AppDelegate.swift */,
 				2ECCFA2E24C9E5A100912CB9 /* SceneDelegate.swift */,
 				2ECCF9F724C9D94F00912CB9 /* LaunchScreen.storyboard */,
-				2E48458A24CC4B5A0003DFD4 /* Constants */,
-				2E52AF1E24CAA62E00BD6CDF /* Extensions */,
+				2ECCFA1C24C9DCBE00912CB9 /* Models */,
+				2ECCFA1F24C9DCBE00912CB9 /* ViewControllers */,
+				2ECCFA1D24C9DCBE00912CB9 /* Views */,
 				2E52AF1424CA8EB200BD6CDF /* Services */,
+				2E52AF1E24CAA62E00BD6CDF /* Extensions */,
+				2E48458A24CC4B5A0003DFD4 /* Constants */,
+				2E0A2A1A24CFFF4B00D7D344 /* Protocols */,
+				2EC3D26F24DBEBFA0012C785 /* Helpers */,
 				2ECCFA2524C9DE7C00912CB9 /* Supporting Files */,
 			);
 			path = Surveys;
@@ -639,13 +650,14 @@
 				2ECCFA3324C9E65200912CB9 /* Survey.swift in Sources */,
 				2E52AF2824CAD57800BD6CDF /* VerticalPageControlView.swift in Sources */,
 				2E48459224CC7EE50003DFD4 /* SurveyDetailViewController.swift in Sources */,
+				2EC3D27124DBEC1F0012C785 /* ControllerHelper.swift in Sources */,
 				2E0A2A2B24D0835800D7D344 /* VerticalPageControlViewModel.swift in Sources */,
 				2E0A2A1C24CFFF5C00D7D344 /* Protocols.swift in Sources */,
 				2E48458724CC46380003DFD4 /* UserLogin.swift in Sources */,
-				2EF4AC0524DAC92600D07AC4 /* Log.swift in Sources */,
 				2E0A2A3324D0A97700D7D344 /* VPCValidations.swift in Sources */,
 				2ECCFA2F24C9E5A100912CB9 /* SceneDelegate.swift in Sources */,
 				2E50479324CDCD5100103DB8 /* SurveysViewModel.swift in Sources */,
+				2EC3D27324DBED900012C785 /* OSLog+Extensions.swift in Sources */,
 				2ECCFA3124C9E64500912CB9 /* SurveysViewController.swift in Sources */,
 				2E7B6C6124CC198D00DB99DA /* LoadingViewController.swift in Sources */,
 				2EF4AC0724DAF6C300D07AC4 /* BaseViewController.swift in Sources */,

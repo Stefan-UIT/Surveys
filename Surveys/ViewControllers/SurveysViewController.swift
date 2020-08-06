@@ -15,10 +15,10 @@ class SurveysViewController: BaseViewController {
     
     // MARK: - Private Var
     private let surveyCellIdentifier = "SurveyTableViewCell"
-    private var leftBarButton:UIBarButtonItem!
+    private var leftBarButton: UIBarButtonItem!
     
     // MARK: - Variables
-    var surveysModel:SurveysViewModel!
+    var surveysModel: SurveysViewModel!
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -34,22 +34,22 @@ class SurveysViewController: BaseViewController {
         self.tableView.reloadData()
     }
     
-    override var preferredStatusBarStyle : UIStatusBarStyle {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
     // MARK: - API
-    private func fetchSurveys(completionHandler: @escaping ()->() = {}) {
+    private func fetchSurveys(completionHandler: @escaping () -> Void = {}) {
         leftBarButton.isEnabled = false
         self.showSpinner(onView: self.view)
         surveysModel.fetchSurveys(success: {
             self.leftBarButton.isEnabled = true
             self.handleFetchingDataSuccess()
             completionHandler()
-        }) { (error) in
+        }, failure: { (_) in
             self.leftBarButton.isEnabled = true
             self.handleFetchingDataFailed()
-        }
+        })
     }
     
     private func handleFetchingDataSuccess() {
@@ -70,14 +70,14 @@ class SurveysViewController: BaseViewController {
     }
     
     private func setupBarButtonItems() {
-        leftBarButton = UIBarButtonItem.barButton(imageName: Images.RefreshIcon, selector: #selector(onReloadTouchUp(sender:)),actionController: self)
-        let rightBarButton = UIBarButtonItem.barButton(imageName: Images.MenuIcon,selector: nil, actionController: nil)
+        leftBarButton = UIBarButtonItem.barButton(imageName: Images.RefreshIcon, selector: #selector(onReloadTouchUp(sender:)), actionController: self)
+        let rightBarButton = UIBarButtonItem.barButton(imageName: Images.MenuIcon, selector: nil, actionController: nil)
         
         navigationItem.leftBarButtonItem = leftBarButton
         navigationItem.rightBarButtonItem = rightBarButton
     }
     
-    @objc func onReloadTouchUp(sender:UIBarButtonItem) {
+    @objc func onReloadTouchUp(sender: UIBarButtonItem) {
         os_log(LogMessages.RefreshSurveyData, log: .surveys, type: .info)
         refreshData()
     }
@@ -111,11 +111,11 @@ class SurveysViewController: BaseViewController {
         reloadVerticalPageControl(totalPages: totalPages)
     }
     
-    private func reloadVerticalPageControl(totalPages:Int) {
+    private func reloadVerticalPageControl(totalPages: Int) {
         verticalPageControlView.setNumberOfPages(totalPages)
         do {
             try verticalPageControlView.show()
-            os_log(LogMessages.VerticalPageControlHasBeenShowedWithTotalPages, log: .surveys, type: .info, totalPages)
+            os_log(LogMessages.VPCHasBeenShowedWithTotalPages, log: .surveys, type: .info, totalPages)
         } catch let error as VPCValidationError {
             let mes = error.errorDescription
             os_log("%@", log: .surveys, type: .error, mes)
@@ -129,7 +129,7 @@ class SurveysViewController: BaseViewController {
 }
 
 // MARK: - UIScrollViewDelegate
-extension SurveysViewController:UIScrollViewDelegate {
+extension SurveysViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         verticalPageControlView.proceed(contentOffsetY: scrollView.contentOffset.y, pageHeight: scrollView.bounds.height)
     }
@@ -146,7 +146,7 @@ extension SurveysViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if surveysModel.shouldLoadMoreItems(currentRow:indexPath.row) {
+        if surveysModel.shouldLoadMoreItems(currentRow: indexPath.row) {
             fetchSurveys()
         }
     }
@@ -159,7 +159,7 @@ extension SurveysViewController: UITableViewDataSource {
         return tableView.frame.size.height
     }
     
-    func  cellSurvey(_ tableView: UITableView, atIndexPath indexPath:IndexPath) -> SurveyTableViewCell {
+    func  cellSurvey(_ tableView: UITableView, atIndexPath indexPath: IndexPath) -> SurveyTableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: surveyCellIdentifier, for: indexPath) as? SurveyTableViewCell else {
             os_log(LogMessages.CouldNotReusedCell, log: .surveys, type: .error, surveyCellIdentifier)
             return SurveyTableViewCell()
@@ -172,29 +172,29 @@ extension SurveysViewController: UITableViewDataSource {
     }
 }
 
-//MARK: - UITableViewDelegate
+// MARK: - UITableViewDelegate
 extension SurveysViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }
 
-//MARK: - VerticalPageControlViewDelegate
-extension SurveysViewController:VerticalPageControlViewDelegate {
+// MARK: - VerticalPageControlViewDelegate
+extension SurveysViewController: VerticalPageControlViewDelegate {
     func verticalPageControlView(_ view: VerticalPageControlView?, currentPage: Int) {
         let point = CGPoint(x: 0.0, y: CGFloat(CGFloat(currentPage) * tableView.frame.size.height))
         tableView.scrollTo(point)
     }
 }
 
-//MARK: - SurveyTableViewCellDelegate
-extension SurveysViewController:SurveyTableViewCellDelegate {
+// MARK: - SurveyTableViewCellDelegate
+extension SurveysViewController: SurveyTableViewCellDelegate {
     func didTouchUpTakeTheSurvey(_ cell: SurveyTableViewCell, survey: Survey) {
         os_log(LogMessages.RedirectToSurveyDetail, log: .userFlows, type: .info, survey.title)
         redirectToSurveyDetailVC(survey: survey)
     }
     
-    private func redirectToSurveyDetailVC(survey:Survey) {
-        guard let surveyDetailController = ControllerHelper.load(SurveyDetailViewController.self, fromStoryboard: K.Main) else { return }
+    private func redirectToSurveyDetailVC(survey: Survey) {
+        guard let surveyDetailController = ControllerHelper.load(SurveyDetailViewController.self, fromStoryboard: Keys.Main) else { return }
         surveyDetailController.survey = survey
         self.navigationController?.pushViewController(surveyDetailController, animated: true)
     }

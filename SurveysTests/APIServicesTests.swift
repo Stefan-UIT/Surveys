@@ -29,16 +29,16 @@ class APIServicesTests: XCTestCase {
         let header = services.getHeader()
         XCTAssert(header.count > 1)
         
-        let contentType = header.value(for: K.ContentType)
-        let acceptType = header.value(for: K.Accept)
-        XCTAssertEqual(contentType, K.ApplicationJson)
-        XCTAssertEqual(acceptType, K.ApplicationJson)
+        let contentType = header.value(for: Keys.ContentType)
+        let acceptType = header.value(for: Keys.Accept)
+        XCTAssertEqual(contentType, Keys.ApplicationJson)
+        XCTAssertEqual(acceptType, Keys.ApplicationJson)
     }
     
     func testBearerTokenInHeader() {
         UserLogin.shared.token = testedToken
         let header = services.getHeader()
-        guard let bearerToken = header.value(for: K.Authorization) else {
+        guard let bearerToken = header.value(for: Keys.Authorization) else {
             XCTFail()
             return
         }

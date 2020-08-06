@@ -30,52 +30,50 @@ enum JsonParseError: Error {
 
 final class APIServices: APIServicesProvider {
     static let shared = APIServices()
-    private var decoder:JSONDecoder
+    private var decoder: JSONDecoder
     
-    private init(){
+    private init() {
         decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
     private var bearerToken: String {
-        get {
             return "Bearer \(UserLogin.shared.token)"
-        }
     }
     
     func getHeader() -> HTTPHeaders {
-        var header:HTTPHeaders = [
-            K.ContentType: K.ApplicationJson,
-            K.Accept: K.ApplicationJson
+        var header: HTTPHeaders = [
+            Keys.ContentType: Keys.ApplicationJson,
+            Keys.Accept: Keys.ApplicationJson
         ]
         if !UserLogin.shared.token.isEmpty {
-            header[K.Authorization] = bearerToken
+            header[Keys.Authorization] = bearerToken
         }
         
         return header
     }
     
-    private func jsonDecode<T>(_ type: T.Type, fromAnyObject data:Any) throws -> T where T : Decodable {
+    private func jsonDecode<T>(_ type: T.Type,
+                               fromAnyObject data: Any) throws -> T where T: Decodable {
         guard !(data is NSNull) else {
             throw JsonParseError.nullData
         }
         guard let jsonData = try? JSONSerialization.data(withJSONObject: data) else {
             throw JsonParseError.wrongJsonFormat
         }
-        guard let result:T = try? decoder.decode(type, from: jsonData) else {
+        guard let result: T = try? decoder.decode(type, from: jsonData) else {
             throw JsonParseError.couldNotDecode }
         
         return result
     }
     
-    
-    func fetchSurveys(page:Int,
-                      success: @escaping ([Survey])->(),
-                      failure: @escaping (_ error:Error)->()) {
+    func fetchSurveys(page: Int,
+                      success: @escaping ([Survey]) -> Void,
+                      failure: @escaping (_ error: Error) -> Void) {
         let path = Paths.GetSurveys
-        let params:[String:Any] = [
-            K.PerPage  : Paths.DataPerPage,
-            K.Page      : page
+        let params: [String: Any] = [
+            Keys.PerPage: Paths.DataPerPage,
+            Keys.Page: page
         ]
         
         request(path: path, method: .get, parameters: params, success: { (data) in
@@ -90,19 +88,22 @@ final class APIServices: APIServicesProvider {
                 failure(error)
             }
             
-        }) { (error) in
+        }, failure: { (error) in
             failure(error)
-        }
+        })
     }
     
-    func requestAccessToken(username:String, password:String, success: @escaping (_ token:Token)->(), failure:@escaping (_ error:Error)->()) {
+    func requestAccessToken(username: String,
+                            password: String,
+                            success: @escaping (_ token: Token) -> Void,
+                            failure:@escaping (_ error: Error) -> Void) {
         let path = Paths.GetAccessToken
 
-        let params = [K.GrantType : K.Password,
-                      K.Username : username,
-                      K.Password : password]
+        let params = [Keys.GrantType: Keys.Password,
+                      Keys.Username: username,
+                      Keys.Password: password]
         
-        request(path: path, method: .post, parameters: params , success: { (data) in
+        request(path: path, method: .post, parameters: params, success: { (data) in
             do {
                 let token = try self.jsonDecode(Token.self, fromAnyObject: data)
                 os_log(LogMessages.FetchTokenSuccessful, log: .networking, type: .info, token.accessToken)
@@ -113,21 +114,24 @@ final class APIServices: APIServicesProvider {
                 os_log("%@", log: .networking, type: .error, path, jpError.errorDescription)
                 failure(error)
             }
-        }) { (error) in
+        }, failure: { (error) in
             failure(error)
-        }
+        })
     }
     
-    private func request(path:String, method:HTTPMethod, parameters: Parameters? = nil, success: @escaping (_ data:Any)->(), failure: @escaping (_ error:Error)->()) {
+    private func request(path: String,
+                         method: HTTPMethod,
+                         parameters: Parameters? = nil,
+                         success: @escaping (_ data: Any) -> Void,
+                         failure: @escaping (_ error: Error) -> Void) {
         let header = getHeader()
-        let encoding:ParameterEncoding =  (method == .get) ? URLEncoding.default : JSONEncoding.default
+        let encoding: ParameterEncoding =  (method == .get) ? URLEncoding.default : JSONEncoding.default
         
         os_log(LogMessages.FetchingDataFrom, log: .networking, type: .info, path)
         AF.request(path, method: method, parameters: parameters, encoding: encoding, headers: header).responseJSON(completionHandler: { (dataResponse) in
                switch dataResponse.result {
                case .success(let data):
                     success(data)
-                    break
                case .failure(let error):
                     os_log(LogMessages.FetchDataFailedFromWithError, log: .networking, type: .error, path, error.localizedDescription)
                     failure(error)

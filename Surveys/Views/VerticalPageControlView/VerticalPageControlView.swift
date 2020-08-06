@@ -11,12 +11,13 @@ import UIKit
 import os.log
 
 // MARK: - VerticalPageControlViewDelegate
-protocol VerticalPageControlViewDelegate:class {
+protocol VerticalPageControlViewDelegate: class {
     func verticalPageControlView(_ view: VerticalPageControlView?, currentPage: Int)
 }
 
 // MARK: - VerticalPageControlView
 class VerticalPageControlView: UIScrollView {
+    
     // MARK: - Private Var
     var viewModel = VPCViewModel()
     private let pageHelper = VPCPageHelper()
@@ -114,7 +115,7 @@ class VerticalPageControlView: UIScrollView {
         }
     }
     
-    private func updatePosition(forPageNumber page:Int) {
+    private func updatePosition(forPageNumber page: Int) {
         let needToScrollDown = viewModel.needToScrollDown(pageContentOffsetY: contentOffset.y, pageHeight: bounds.size.height)
         if needToScrollDown {
             handleScrollingDown()
@@ -158,4 +159,3 @@ class VerticalPageControlView: UIScrollView {
         viewModel.updateAllButtonsState(forTag: tag, inPageControl: self)
     }
 }
-

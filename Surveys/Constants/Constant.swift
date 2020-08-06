@@ -16,7 +16,7 @@ struct Paths {
     static let DataPerPage = 10
 }
 
-struct K {
+struct Keys {
     static let PerPage = "per_page"
     static let Page = "page"
     static let Password = "password"
@@ -37,7 +37,7 @@ struct Messages {
     static let CouldNotGetSurveysData = "Could not get survey data"
     static let InvalidNumberOfPages = "Invalid number of pages"
     static let InvalidCurrentPage = "Invalid current page"
-    static let CurrentPageShouldLessThanOrEqualNumberOfPage = "Current page should less than or equal number of pages"
+    static let CurrentPageShouldLessThanNumberOfPage = "Current page should less than or equal number of pages"
     static let ActiveImageShouldNotBeNil = "Active Image Should Not Be Nil"
     static let InactiveImageShouldNotBeNil = "Inactive Image Should Not Be Nil"
     static let CouldNotSetRootViewControllerToWindow = "Could Not Set Root View Controller To Window"
@@ -48,20 +48,19 @@ struct Messages {
     static let FailedToShowVerticalPageControl = "Failed to show vertical page control"
 }
 
-
 struct LogMessages {
-    static let FetchDataFailedFromWithError:StaticString = "Fetch data failed from %@ with error: %@"
-    static let FetchingDataFrom:StaticString = "Fetching data from %@"
-    static let SuccessfullyFetchedNumberOfRecordsAtPage:StaticString = "Successfully fetched %d records at page %d"
-    static let FetchTokenSuccessful:StaticString = "Successfully fetched with token: %{private}@"
-    static let RefreshSurveyData:StaticString = "Refresh Surveys data."
-    static let VerticalPageControlHasBeenShowedWithTotalPages:StaticString = "Vertical page control has been showed with %d pages."
-    static let RedirectToSurveyDetail:StaticString = "Redirect to survey detail: %@"
-    static let ScrollToPage:StaticString = "Scroll to page %d"
-    static let CouldNotGetTheWindow:StaticString = "Could not get the window"
-    static let CouldNotInit:StaticString = "Could not init %@"
-    static let CouldNotReusedCell:StaticString = "Could not reused cell identifer: %@"
-    static let ViewControllerIsLoaded:StaticString = "%@ is loaded."
+    static let FetchDataFailedFromWithError: StaticString = "Fetch data failed from %@ with error: %@"
+    static let FetchingDataFrom: StaticString = "Fetching data from %@"
+    static let SuccessfullyFetchedNumberOfRecordsAtPage: StaticString = "Successfully fetched %d records at page %d"
+    static let FetchTokenSuccessful: StaticString = "Successfully fetched with token: %{private}@"
+    static let RefreshSurveyData: StaticString = "Refresh Surveys data."
+    static let VPCHasBeenShowedWithTotalPages: StaticString = "Vertical page control has been showed with %d pages."
+    static let RedirectToSurveyDetail: StaticString = "Redirect to survey detail: %@"
+    static let ScrollToPage: StaticString = "Scroll to page %d"
+    static let CouldNotGetTheWindow: StaticString = "Could not get the window"
+    static let CouldNotInit: StaticString = "Could not init %@"
+    static let CouldNotReusedCell: StaticString = "Could not reused cell identifer: %@"
+    static let ViewControllerIsLoaded: StaticString = "%@ is loaded."
 }
 
 struct Texts {
@@ -78,7 +77,3 @@ struct Images {
 struct ImageObjects {
     static let Placeholder = UIImage(named: "placeholder")
 }
-
-
-
-

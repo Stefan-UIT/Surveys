@@ -8,7 +8,6 @@
 
 import Foundation
 
-struct Token:Decodable {
-    var accessToken:String = ""
+struct Token: Decodable {
+    var accessToken: String = ""
 }
-

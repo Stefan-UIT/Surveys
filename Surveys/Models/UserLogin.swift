@@ -8,20 +8,19 @@
 
 import Foundation
 
-
-final class UserLogin:BaseViewModel {
+final class UserLogin: BaseViewModel {
     static let shared = UserLogin()
     
-    var username:String = "carlos@nimbl3.com"
-    var password:String = "antikera"
-    var token:String = ""
+    var username: String = "carlos@nimbl3.com"
+    var password: String = "antikera"
+    var token: String = ""
     
-    func requestAccessToken(success: @escaping ()->(), failure:@escaping (_ error:Error)->()) {
+    func requestAccessToken(success: @escaping () -> Void, failure:@escaping (_ error: Error) -> Void) {
         apiServicesProvider.requestAccessToken(username: username, password: password, success: { (token) in
             self.token = token.accessToken
             success()
-        }) { (error) in
+        }, failure: { (error) in
             failure(error)
-        }
+        })
     }
 }

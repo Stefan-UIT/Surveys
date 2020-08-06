@@ -9,12 +9,12 @@
 import Foundation
 
 protocol APIServicesProvider {
-    func requestAccessToken(username:String,
-                            password:String,
-                            success: @escaping (_ token:Token) -> Void,
-                            failure:@escaping (_ error:Error)->())
+    func requestAccessToken(username: String,
+                            password: String,
+                            success: @escaping (_ token: Token) -> Void,
+                            failure:@escaping (_ error: Error) -> Void)
     
-    func fetchSurveys(page:Int,
-                      success: @escaping ([Survey])->(),
-                      failure: @escaping (_ error:Error)->())
+    func fetchSurveys(page: Int,
+                      success: @escaping ([Survey]) -> Void,
+                      failure: @escaping (_ error: Error) -> Void)
 }
