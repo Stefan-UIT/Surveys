@@ -52,10 +52,10 @@ final class SurveysViewModel:BaseViewModel {
             self.calculateCurrentPageAndIsLastPageReached(numberOfNewData: data.count)
             self.surveys.append(contentsOf: data)
             success()
-        }) { (error) in
+        }, failure: { (error) in
             self.isFetchInProgress = false
             failure(error)
-        }
+        }) 
     }
     
     private func calculateCurrentPageAndIsLastPageReached(numberOfNewData:Int) {

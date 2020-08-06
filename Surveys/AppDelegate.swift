@@ -10,24 +10,24 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupNavigationBarAppearance()
         return true
-    }   
+    }
     
     func setupNavigationBarAppearance() {
         let navigationBarAppearace = UINavigationBar.appearance()
         let color = UIColor(red: 19/255.0, green: 30/255.0, blue: 52/255.0, alpha: 1)
-        let font = UIFont.systemFont(ofSize: 24.0,weight: .semibold)
+        let font = UIFont.systemFont(ofSize: 24.0, weight: .semibold)
         
         navigationBarAppearace.tintColor = .white
         navigationBarAppearace.isTranslucent = false
         navigationBarAppearace.barTintColor = color
-        navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white,
-                                                      NSAttributedString.Key.font : font]
+        navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
+                                                      NSAttributedString.Key.font: font]
     }
     
     // MARK: UISceneSession Lifecycle
@@ -45,7 +45,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
-

@@ -95,19 +95,19 @@ struct VPCViewModel {
     
     func getButton(withOriginY originY:CGFloat, atIndex index:Int, targetView:VerticalPageControlView) -> UIButton {
         let button = buttonHelper.button(activeImage: activeImage, inactiveImage: inactiveImage, selector: #selector(targetView.userTap(_:)), target: targetView)
-        guard let _button = button  else {
+        guard let imageButton = button  else {
             return UIButton()
         }
-        buttonHelper.setPosition(ofButton: _button, originY: originY, itemSize: itemSize.width, marginSpace: CGFloat(marginSpace), inView: targetView)
-        buttonHelper.handleSelectedState(ofButton: _button, index: index, currentPage: currentPage)
-        return _button
+        buttonHelper.setPosition(ofButton: imageButton, originY: originY, itemSize: itemSize.width, marginSpace: CGFloat(marginSpace), inView: targetView)
+        buttonHelper.handleSelectedState(ofButton: imageButton, index: index, currentPage: currentPage)
+        return imageButton
     }
     
     func addButtons(toView view:VerticalPageControlView) {
-        var y = buttonHelper.getY(itemSizeWithMarginSpace: sizeWithSpace, parentView: view, numberOfPages: numberOfPages)
+        var originY = buttonHelper.getY(itemSizeWithMarginSpace: sizeWithSpace, parentView: view, numberOfPages: numberOfPages)
         for index in 1...numberOfPages {
-            let button = getButton(withOriginY: y, atIndex: index, targetView: view)
-            y += button.frame.size.height
+            let button = getButton(withOriginY: originY, atIndex: index, targetView: view)
+            originY += button.frame.size.height
         }
     }
     
@@ -167,8 +167,8 @@ struct VPCViewModel {
     
     mutating func updateAllButtonsState(forTag tag: Int, inPageControl pageControl:VerticalPageControlView) {
         for index in 1...numberOfPages {
-            guard let _btnState = pageControl.viewWithTag(index) as? UIButton else { break }
-            updateButtonState(button: _btnState, atIndex: index, forTag: tag)
+            guard let stateButton = pageControl.viewWithTag(index) as? UIButton else { break }
+            updateButtonState(button: stateButton, atIndex: index, forTag: tag)
         }
     }
 }

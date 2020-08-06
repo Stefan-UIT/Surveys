@@ -130,8 +130,7 @@ class SurveysViewController: BaseViewController {
 
 // MARK: - UIScrollViewDelegate
 extension SurveysViewController:UIScrollViewDelegate {
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
-    {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         verticalPageControlView.proceed(contentOffsetY: scrollView.contentOffset.y, pageHeight: scrollView.bounds.height)
     }
 

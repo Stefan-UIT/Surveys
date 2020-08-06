@@ -12,12 +12,12 @@ import UIKit
 // MARK: - VPCButtonHelper
 struct VPCButtonHelper {
     func button(activeImage:UIImage?, inactiveImage:UIImage?, selector:Selector?, target:UIView?) -> UIButton? {
-        guard let _activeImage = activeImage, let _inactiveImage = inactiveImage else { return nil }
+        guard let activeImage = activeImage, let inactiveImage = inactiveImage else { return nil }
         let button = UIButton(type: .custom)
-        button.setImage(_inactiveImage, for: .normal)
-        button.setImage(_activeImage, for: .selected)
-        if let _selector = selector, let _target = target {
-            button.addTarget(_target, action: _selector, for: .touchUpInside)
+        button.setImage(inactiveImage, for: .normal)
+        button.setImage(activeImage, for: .selected)
+        if let selector = selector, let target = target {
+            button.addTarget(target, action: selector, for: .touchUpInside)
         }
         
         return button

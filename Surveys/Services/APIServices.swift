@@ -11,17 +11,17 @@ import Alamofire
 import os.log
 
 enum JsonParseError: Error {
-    case NullData
-    case WrongJsonFormat
-    case CouldNotDecode
+    case nullData
+    case wrongJsonFormat
+    case couldNotDecode
     
     var errorDescription: String {
         switch self {
-        case .NullData:
+        case .nullData:
             return Messages.NoDataFromResponse
-        case .WrongJsonFormat:
+        case .wrongJsonFormat:
             return Messages.WrongJsonFormat
-        case .CouldNotDecode:
+        case .couldNotDecode:
             return Messages.CouldNotDecode
         }
         
@@ -57,13 +57,13 @@ final class APIServices: APIServicesProvider {
     
     private func jsonDecode<T>(_ type: T.Type, fromAnyObject data:Any) throws -> T where T : Decodable {
         guard !(data is NSNull) else {
-            throw JsonParseError.NullData
+            throw JsonParseError.nullData
         }
         guard let jsonData = try? JSONSerialization.data(withJSONObject: data) else {
-            throw JsonParseError.WrongJsonFormat
+            throw JsonParseError.wrongJsonFormat
         }
         guard let result:T = try? decoder.decode(type, from: jsonData) else {
-            throw JsonParseError.CouldNotDecode }
+            throw JsonParseError.couldNotDecode }
         
         return result
     }
@@ -85,8 +85,8 @@ final class APIServices: APIServicesProvider {
 
                 success(surveys)
             } catch let error {
-                let _error = error as! JsonParseError
-                os_log("%@", log: .networking, type: .error, path, _error.errorDescription)
+                let jpError = error as! JsonParseError
+                os_log("%@", log: .networking, type: .error, path, jpError.errorDescription)
                 failure(error)
             }
             
@@ -109,8 +109,8 @@ final class APIServices: APIServicesProvider {
                 
                 success(token)
             } catch let error {
-                let _error = error as! JsonParseError
-                os_log("%@", log: .networking, type: .error, path, _error.errorDescription)
+                let jpError = error as! JsonParseError
+                os_log("%@", log: .networking, type: .error, path, jpError.errorDescription)
                 failure(error)
             }
         }) { (error) in

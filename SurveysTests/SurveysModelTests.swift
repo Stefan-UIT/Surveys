@@ -26,7 +26,6 @@ class SurveysModelTests: XCTestCase {
         super.tearDown()
     }
     
-    
     // Test With Stub
     func testStubFetchSurveysDataSuccess() {
         surveysModel = SurveysViewModel(provider: stubService)

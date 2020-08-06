@@ -14,8 +14,6 @@ struct Survey:Decodable {
     var coverImageUrl: String = ""
     
     var fullSizeCoverImageUrl:String {
-        get {
-            return coverImageUrl + "l"
-        }
+        return coverImageUrl + "l"
     }
 }

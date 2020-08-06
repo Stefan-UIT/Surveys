@@ -8,6 +8,7 @@ target 'Surveys' do
   # Pods for Surveys
   pod "Alamofire"
   pod 'SDWebImage'
+  pod 'SwiftLint'
   
   target 'SurveysTests' do
     inherit! :search_paths

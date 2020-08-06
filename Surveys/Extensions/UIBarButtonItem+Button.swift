@@ -29,8 +29,8 @@ extension UIButton {
         button.frame = CGRect(x: 0, y: 0, width: itemSize, height: itemSize)
         button.widthAnchor.constraint(equalToConstant: constraintSize).isActive = true
         button.heightAnchor.constraint(equalToConstant: constraintSize).isActive = true
-        if let _selector = selector, let _controller = actionController {
-            button.addTarget(_controller, action: _selector, for: .touchUpInside)
+        if let selector = selector, let controller = actionController {
+            button.addTarget(controller, action: selector, for: .touchUpInside)
         }
         
         return button

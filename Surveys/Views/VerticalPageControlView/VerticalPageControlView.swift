@@ -84,8 +84,8 @@ class VerticalPageControlView: UIScrollView {
         do {
             try viewModel.validateInputData()
         } catch let error {
-            let _error = error as! VPCValidationError
-            os_log("%@", log: .surveys, type: .error, _error.errorDescription)
+            let vpcError = error as! VPCValidationError
+            os_log("%@", log: .surveys, type: .error, vpcError.errorDescription)
             return
         }
         
