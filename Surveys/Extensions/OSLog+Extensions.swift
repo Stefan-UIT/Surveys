@@ -17,4 +17,5 @@ extension OSLog {
     static let userInterface = OSLog(subsystem: subsystem, category: "userInterface")
     static let lifeCycle = OSLog(subsystem: subsystem, category: "lifeCycle")
     static let surveys = OSLog(subsystem: subsystem, category: "surveys")
+    static let system = OSLog(subsystem: subsystem, category: "system")
 }

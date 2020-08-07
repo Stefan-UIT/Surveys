@@ -20,7 +20,6 @@ class ControllerHelper {
         let storyboard: UIStoryboard = UIStoryboard(name: storyboardName, bundle: nil)
         let identifier = String(describing: T.self)
         guard let controller = storyboard.instantiateViewController(withIdentifier: identifier) as? T else {
-            os_log(LogMessages.CouldNotInit, log: .userInterface, type: .error, identifier)
             return nil
         }
         return controller
@@ -28,7 +27,6 @@ class ControllerHelper {
     
     class func setToRootViewController(_ controller: UIViewController) {
         guard let currentWindow = window else {
-            os_log(LogMessages.CouldNotGetTheWindow, log: .userInterface, type: .error)
             return
         }
         currentWindow.rootViewController = controller

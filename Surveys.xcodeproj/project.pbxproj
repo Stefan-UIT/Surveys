@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2E0A2A1C24CFFF5C00D7D344 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A1B24CFFF5C00D7D344 /* Protocols.swift */; };
 		2E0A2A1F24D0093400D7D344 /* ServicesStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A1E24D0093400D7D344 /* ServicesStub.swift */; };
-		2E0A2A2224D0149F00D7D344 /* UserLoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A2124D0149F00D7D344 /* UserLoginTests.swift */; };
 		2E0A2A2524D03A1700D7D344 /* ControllerHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A2424D03A1700D7D344 /* ControllerHelperTests.swift */; };
 		2E0A2A2724D0579B00D7D344 /* UIBarButtonItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A2624D0579B00D7D344 /* UIBarButtonItemTests.swift */; };
 		2E0A2A2924D0637300D7D344 /* UIButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0A2A2824D0637300D7D344 /* UIButtonTests.swift */; };
@@ -27,8 +26,6 @@
 		2E48459024CC7B0D0003DFD4 /* UIBarButtonItem+Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48458F24CC7B0D0003DFD4 /* UIBarButtonItem+Button.swift */; };
 		2E48459224CC7EE50003DFD4 /* SurveyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48459124CC7EE50003DFD4 /* SurveyDetailViewController.swift */; };
 		2E50479324CDCD5100103DB8 /* SurveysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E50479224CDCD5100103DB8 /* SurveysViewModel.swift */; };
-		2E50479524CDCFCB00103DB8 /* SurveysModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E50479424CDCFCB00103DB8 /* SurveysModelTests.swift */; };
-		2E52AF1624CA8ED000BD6CDF /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52AF1524CA8ED000BD6CDF /* APIServices.swift */; };
 		2E52AF1C24CAA4FB00BD6CDF /* SurveyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52AF1A24CAA4FB00BD6CDF /* SurveyTableViewCell.swift */; };
 		2E52AF1D24CAA4FB00BD6CDF /* SurveyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E52AF1B24CAA4FB00BD6CDF /* SurveyTableViewCell.xib */; };
 		2E52AF2024CAA6AD00BD6CDF /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52AF1F24CAA6AD00BD6CDF /* UIImageView+Extensions.swift */; };
@@ -37,6 +34,13 @@
 		2E7166DB24DC04080092CDB4 /* UITableView+Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7166DA24DC04080092CDB4 /* UITableView+Indicator.swift */; };
 		2E7B6C5F24CBF37600DB99DA /* ScrollView+Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7B6C5E24CBF37600DB99DA /* ScrollView+Position.swift */; };
 		2E7B6C6124CC198D00DB99DA /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7B6C6024CC198D00DB99DA /* LoadingViewController.swift */; };
+		2E8C489D24DD1FF400337D09 /* SurveyServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C489C24DD1FF400337D09 /* SurveyServices.swift */; };
+		2E8C489F24DD24EA00337D09 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C489E24DD24EA00337D09 /* UserService.swift */; };
+		2E8C48A124DD2E8C00337D09 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C48A024DD2E8C00337D09 /* NetworkManager.swift */; };
+		2E8C48A324DD4E5200337D09 /* LoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C48A224DD4E5200337D09 /* LoadingViewModel.swift */; };
+		2E8C48A624DD567D00337D09 /* AppKeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C48A524DD567D00337D09 /* AppKeyChain.swift */; };
+		2E8C48A824DD581000337D09 /* Networkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C48A724DD581000337D09 /* Networkable.swift */; };
+		2E8C48AA24DD5E0B00337D09 /* AppTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C48A924DD5E0B00337D09 /* AppTargetType.swift */; };
 		2EC3D27124DBEC1F0012C785 /* ControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3D27024DBEC1F0012C785 /* ControllerHelper.swift */; };
 		2EC3D27324DBED900012C785 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3D27224DBED900012C785 /* OSLog+Extensions.swift */; };
 		2ECCF9ED24C9D94E00912CB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCF9EC24C9D94E00912CB9 /* AppDelegate.swift */; };
@@ -48,7 +52,9 @@
 		2ECCFA2F24C9E5A100912CB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCFA2E24C9E5A100912CB9 /* SceneDelegate.swift */; };
 		2ECCFA3124C9E64500912CB9 /* SurveysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCFA3024C9E64500912CB9 /* SurveysViewController.swift */; };
 		2ECCFA3324C9E65200912CB9 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCFA3224C9E65200912CB9 /* Survey.swift */; };
-		2EDC540324CE6DFF00D69B11 /* APIServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDC540224CE6DFF00D69B11 /* APIServicesTests.swift */; };
+		2ED7FAA824DD763900A370E0 /* UserServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7FAA724DD763900A370E0 /* UserServiceTests.swift */; };
+		2ED7FAAA24DD799C00A370E0 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7FAA924DD799C00A370E0 /* String+Extensions.swift */; };
+		2ED7FAAC24DD815300A370E0 /* SurveyServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7FAAB24DD815300A370E0 /* SurveyServiceTests.swift */; };
 		2EE2C23324CEBA590015595C /* VerticalPageControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2C23224CEBA590015595C /* VerticalPageControlTests.swift */; };
 		2EE2C23524CEDB970015595C /* UIScrollViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2C23424CEDB970015595C /* UIScrollViewTests.swift */; };
 		2EF4AC0724DAF6C300D07AC4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF4AC0624DAF6C300D07AC4 /* BaseViewController.swift */; };
@@ -78,7 +84,6 @@
 		26C3933CA077660B90832A2F /* Pods-Surveys-SurveysUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surveys-SurveysUITests.release.xcconfig"; path = "Target Support Files/Pods-Surveys-SurveysUITests/Pods-Surveys-SurveysUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2E0A2A1B24CFFF5C00D7D344 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		2E0A2A1E24D0093400D7D344 /* ServicesStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesStub.swift; sourceTree = "<group>"; };
-		2E0A2A2124D0149F00D7D344 /* UserLoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginTests.swift; sourceTree = "<group>"; };
 		2E0A2A2424D03A1700D7D344 /* ControllerHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerHelperTests.swift; sourceTree = "<group>"; };
 		2E0A2A2624D0579B00D7D344 /* UIBarButtonItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemTests.swift; sourceTree = "<group>"; };
 		2E0A2A2824D0637300D7D344 /* UIButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonTests.swift; sourceTree = "<group>"; };
@@ -96,8 +101,6 @@
 		2E48458F24CC7B0D0003DFD4 /* UIBarButtonItem+Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Button.swift"; sourceTree = "<group>"; };
 		2E48459124CC7EE50003DFD4 /* SurveyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyDetailViewController.swift; sourceTree = "<group>"; };
 		2E50479224CDCD5100103DB8 /* SurveysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveysViewModel.swift; sourceTree = "<group>"; };
-		2E50479424CDCFCB00103DB8 /* SurveysModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveysModelTests.swift; sourceTree = "<group>"; };
-		2E52AF1524CA8ED000BD6CDF /* APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
 		2E52AF1A24CAA4FB00BD6CDF /* SurveyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTableViewCell.swift; sourceTree = "<group>"; };
 		2E52AF1B24CAA4FB00BD6CDF /* SurveyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyTableViewCell.xib; sourceTree = "<group>"; };
 		2E52AF1F24CAA6AD00BD6CDF /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
@@ -106,6 +109,13 @@
 		2E7166DA24DC04080092CDB4 /* UITableView+Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Indicator.swift"; sourceTree = "<group>"; };
 		2E7B6C5E24CBF37600DB99DA /* ScrollView+Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Position.swift"; sourceTree = "<group>"; };
 		2E7B6C6024CC198D00DB99DA /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		2E8C489C24DD1FF400337D09 /* SurveyServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyServices.swift; sourceTree = "<group>"; };
+		2E8C489E24DD24EA00337D09 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		2E8C48A024DD2E8C00337D09 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		2E8C48A224DD4E5200337D09 /* LoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewModel.swift; sourceTree = "<group>"; };
+		2E8C48A524DD567D00337D09 /* AppKeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKeyChain.swift; sourceTree = "<group>"; };
+		2E8C48A724DD581000337D09 /* Networkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networkable.swift; sourceTree = "<group>"; };
+		2E8C48A924DD5E0B00337D09 /* AppTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTargetType.swift; sourceTree = "<group>"; };
 		2EC3D27024DBEC1F0012C785 /* ControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerHelper.swift; sourceTree = "<group>"; };
 		2EC3D27224DBED900012C785 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 		2ECCF9E924C9D94E00912CB9 /* Surveys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surveys.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,7 +133,9 @@
 		2ECCFA2E24C9E5A100912CB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2ECCFA3024C9E64500912CB9 /* SurveysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveysViewController.swift; sourceTree = "<group>"; };
 		2ECCFA3224C9E65200912CB9 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
-		2EDC540224CE6DFF00D69B11 /* APIServicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServicesTests.swift; sourceTree = "<group>"; };
+		2ED7FAA724DD763900A370E0 /* UserServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceTests.swift; sourceTree = "<group>"; };
+		2ED7FAA924DD799C00A370E0 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		2ED7FAAB24DD815300A370E0 /* SurveyServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyServiceTests.swift; sourceTree = "<group>"; };
 		2EE2C23224CEBA590015595C /* VerticalPageControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalPageControlTests.swift; sourceTree = "<group>"; };
 		2EE2C23424CEDB970015595C /* UIScrollViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewTests.swift; sourceTree = "<group>"; };
 		2EF4AC0624DAF6C300D07AC4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				2E0A2A1B24CFFF5C00D7D344 /* Protocols.swift */,
+				2E8C48A724DD581000337D09 /* Networkable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -202,7 +215,10 @@
 		2E52AF1424CA8EB200BD6CDF /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				2E52AF1524CA8ED000BD6CDF /* APIServices.swift */,
+				2E8C489C24DD1FF400337D09 /* SurveyServices.swift */,
+				2E8C489E24DD24EA00337D09 /* UserService.swift */,
+				2E8C48A024DD2E8C00337D09 /* NetworkManager.swift */,
+				2E8C48A924DD5E0B00337D09 /* AppTargetType.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -227,6 +243,7 @@
 				2E48458F24CC7B0D0003DFD4 /* UIBarButtonItem+Button.swift */,
 				2E0A2A2C24D0881100D7D344 /* UIView+Extensions.swift */,
 				2E7166DA24DC04080092CDB4 /* UITableView+Indicator.swift */,
+				2ED7FAA924DD799C00A370E0 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -246,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				2EC3D27024DBEC1F0012C785 /* ControllerHelper.swift */,
+				2E8C48A524DD567D00337D09 /* AppKeyChain.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -297,17 +315,16 @@
 				2E0A2A1D24D0092600D7D344 /* Stubs */,
 				2ECCFA0324C9D94F00912CB9 /* SurveysTests.swift */,
 				2EE2C23224CEBA590015595C /* VerticalPageControlTests.swift */,
-				2EDC540224CE6DFF00D69B11 /* APIServicesTests.swift */,
-				2E50479424CDCFCB00103DB8 /* SurveysModelTests.swift */,
 				2EE2C23424CEDB970015595C /* UIScrollViewTests.swift */,
 				2ECCFA0524C9D94F00912CB9 /* Info.plist */,
-				2E0A2A2124D0149F00D7D344 /* UserLoginTests.swift */,
 				2E0A2A2424D03A1700D7D344 /* ControllerHelperTests.swift */,
 				2E0A2A2624D0579B00D7D344 /* UIBarButtonItemTests.swift */,
 				2E0A2A2824D0637300D7D344 /* UIButtonTests.swift */,
 				2E0A2A2E24D0A85E00D7D344 /* VPCViewModelTests.swift */,
 				2E0A2A3424D0A9D300D7D344 /* VPCHelpersTests.swift */,
 				2E0A2A3624D0B66100D7D344 /* VPCValidationTests.swift */,
+				2ED7FAA724DD763900A370E0 /* UserServiceTests.swift */,
+				2ED7FAAB24DD815300A370E0 /* SurveyServiceTests.swift */,
 			);
 			path = SurveysTests;
 			sourceTree = "<group>";
@@ -328,6 +345,7 @@
 				2E50479224CDCD5100103DB8 /* SurveysViewModel.swift */,
 				2E48458424CC44010003DFD4 /* Token.swift */,
 				2E48458624CC46380003DFD4 /* UserLogin.swift */,
+				2E8C48A224DD4E5200337D09 /* LoadingViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -649,15 +667,20 @@
 				2E48458C24CC4B640003DFD4 /* Constant.swift in Sources */,
 				2E52AF2024CAA6AD00BD6CDF /* UIImageView+Extensions.swift in Sources */,
 				2E48458524CC44010003DFD4 /* Token.swift in Sources */,
+				2E8C48A824DD581000337D09 /* Networkable.swift in Sources */,
+				2E8C48AA24DD5E0B00337D09 /* AppTargetType.swift in Sources */,
 				2E52AF1C24CAA4FB00BD6CDF /* SurveyTableViewCell.swift in Sources */,
 				2ECCFA3324C9E65200912CB9 /* Survey.swift in Sources */,
 				2E7166DB24DC04080092CDB4 /* UITableView+Indicator.swift in Sources */,
+				2ED7FAAA24DD799C00A370E0 /* String+Extensions.swift in Sources */,
 				2E52AF2824CAD57800BD6CDF /* VerticalPageControlView.swift in Sources */,
 				2E48459224CC7EE50003DFD4 /* SurveyDetailViewController.swift in Sources */,
+				2E8C48A124DD2E8C00337D09 /* NetworkManager.swift in Sources */,
 				2EC3D27124DBEC1F0012C785 /* ControllerHelper.swift in Sources */,
 				2E0A2A2B24D0835800D7D344 /* VerticalPageControlViewModel.swift in Sources */,
 				2E0A2A1C24CFFF5C00D7D344 /* Protocols.swift in Sources */,
 				2E48458724CC46380003DFD4 /* UserLogin.swift in Sources */,
+				2E8C489F24DD24EA00337D09 /* UserService.swift in Sources */,
 				2E0A2A3324D0A97700D7D344 /* VPCValidations.swift in Sources */,
 				2ECCFA2F24C9E5A100912CB9 /* SceneDelegate.swift in Sources */,
 				2E50479324CDCD5100103DB8 /* SurveysViewModel.swift in Sources */,
@@ -665,9 +688,11 @@
 				2ECCFA3124C9E64500912CB9 /* SurveysViewController.swift in Sources */,
 				2E7B6C6124CC198D00DB99DA /* LoadingViewController.swift in Sources */,
 				2EF4AC0724DAF6C300D07AC4 /* BaseViewController.swift in Sources */,
+				2E8C48A624DD567D00337D09 /* AppKeyChain.swift in Sources */,
 				2E48459024CC7B0D0003DFD4 /* UIBarButtonItem+Button.swift in Sources */,
 				2E7B6C5F24CBF37600DB99DA /* ScrollView+Position.swift in Sources */,
-				2E52AF1624CA8ED000BD6CDF /* APIServices.swift in Sources */,
+				2E8C48A324DD4E5200337D09 /* LoadingViewModel.swift in Sources */,
+				2E8C489D24DD1FF400337D09 /* SurveyServices.swift in Sources */,
 				2E48458924CC498B0003DFD4 /* UIViewController+Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -678,16 +703,15 @@
 			files = (
 				2EE2C23524CEDB970015595C /* UIScrollViewTests.swift in Sources */,
 				2E0A2A2924D0637300D7D344 /* UIButtonTests.swift in Sources */,
-				2E0A2A2224D0149F00D7D344 /* UserLoginTests.swift in Sources */,
 				2E0A2A2724D0579B00D7D344 /* UIBarButtonItemTests.swift in Sources */,
 				2EE2C23324CEBA590015595C /* VerticalPageControlTests.swift in Sources */,
-				2EDC540324CE6DFF00D69B11 /* APIServicesTests.swift in Sources */,
 				2E0A2A3724D0B66100D7D344 /* VPCValidationTests.swift in Sources */,
 				2E0A2A1F24D0093400D7D344 /* ServicesStub.swift in Sources */,
 				2E0A2A3524D0A9D300D7D344 /* VPCHelpersTests.swift in Sources */,
+				2ED7FAA824DD763900A370E0 /* UserServiceTests.swift in Sources */,
 				2E0A2A2524D03A1700D7D344 /* ControllerHelperTests.swift in Sources */,
+				2ED7FAAC24DD815300A370E0 /* SurveyServiceTests.swift in Sources */,
 				2ECCFA0424C9D94F00912CB9 /* SurveysTests.swift in Sources */,
-				2E50479524CDCFCB00103DB8 /* SurveysModelTests.swift in Sources */,
 				2E0A2A2F24D0A85E00D7D344 /* VPCViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

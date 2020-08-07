@@ -11,8 +11,8 @@ import UIKit
 
 struct Paths {
     static let BaseApiGateway = "https://nimble-survey-api.herokuapp.com"
-    static let GetAccessToken = BaseApiGateway + "/oauth/token"
-    static let GetSurveys = BaseApiGateway + "/surveys.json"
+    static let GetAccessToken = "/oauth/token"
+    static let GetSurveys = "/surveys.json"
     static let DataPerPage = 10
 }
 
@@ -29,6 +29,8 @@ struct Keys {
     static let SurveysViewController = "SurveysViewController"
     static let SurveyDetailViewController = "SurveyDetailViewController"
     static let Main = "Main"
+    static let AccessToken = "accessToken"
+    static let AppKeys = "AppKeys_"
 }
 
 struct Messages {
@@ -61,6 +63,8 @@ struct LogMessages {
     static let CouldNotInit: StaticString = "Could not init %@"
     static let CouldNotReusedCell: StaticString = "Could not reused cell identifer: %@"
     static let ViewControllerIsLoaded: StaticString = "%@ is loaded."
+    static let KeyChainCouldNotSaveAccessToken: StaticString = "KeyChain could not save access token"
+    static let KeyChainCouldNotGetAccessToken: StaticString = "KeyChain could not get access token"
 }
 
 struct Texts {

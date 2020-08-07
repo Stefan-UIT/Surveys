@@ -10,10 +10,10 @@ import Foundation
 import os.log
 
 class BaseViewModel {
-    let apiServicesProvider: APIServicesProvider!
+    var provider: Networkable!
     
-    init(provider: APIServicesProvider = APIServices.shared) {
-        apiServicesProvider = provider
+    init(provider: Networkable = NetworkManager()) {
+        self.provider = provider
     }
 }
 
@@ -43,19 +43,23 @@ final class SurveysViewModel: BaseViewModel {
         return isLastRow && !isLastPageReached
     }
     
-    func fetchSurveys(success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
+    func fetchSurveys(completion: @escaping (_ error: Error?) -> Void) {
         guard !isFetchInProgress else { return }
         
         isFetchInProgress = true
-        apiServicesProvider.fetchSurveys(page: currentPage, success: { (data) in
-            self.isFetchInProgress = false
-            self.calculateCurrentPageAndIsLastPageReached(numberOfNewData: data.count)
-            self.surveys.append(contentsOf: data)
-            success()
-        }, failure: { (error) in
-            self.isFetchInProgress = false
-            failure(error)
-        }) 
+        provider.fetchSurveys(page: currentPage,
+                              perPage: Paths.DataPerPage,
+                              completion: { (responseData, error) in
+                                guard let responseData = responseData else {
+                                    self.isFetchInProgress = false
+                                    completion(error!)
+                                    return
+                                }
+                                self.isFetchInProgress = false
+                                self.calculateCurrentPageAndIsLastPageReached(numberOfNewData: responseData.count)
+                                self.surveys.append(contentsOf: responseData)
+                                completion(nil)
+        })
     }
     
     private func calculateCurrentPageAndIsLastPageReached(numberOfNewData: Int) {

@@ -39,7 +39,7 @@ class SurveysViewController: BaseViewController {
     }
     
     // MARK: - API
-    private func refreshSurveys(completionHandler: @escaping () -> Void = {}) {
+    private func refreshSurveys(completion: @escaping () -> Void = {}) {
         leftBarButton.isEnabled = false
         self.showSpinner(onView: self.view)
         fetchSurveys {
@@ -48,24 +48,24 @@ class SurveysViewController: BaseViewController {
         }
     }
     
-    private func fetchSurveys(completionHandler: @escaping () -> Void = {}) {
-        surveysModel.fetchSurveys(success: {
-            self.handleFetchingDataSuccess()
-            completionHandler()
-        }, failure: { (_) in
-            self.handleFetchingDataFailed()
-            completionHandler()
-        })
+    private func fetchSurveys(completion: @escaping () -> Void = {}) {
+        surveysModel.fetchSurveys { (error) in
+            self.tableView.stopFooterLoading()
+            if error != nil {
+                self.handleFetchingDataFailed()
+            } else {
+                self.handleFetchingDataSuccess()
+            }
+            completion()
+        }
     }
     
     private func handleFetchingDataSuccess() {
-        tableView.stopFooterLoading()
         reloadVerticalPageControl(totalPages: surveysModel.count)
         tableView.reloadData()
     }
     
     private func handleFetchingDataFailed() {
-        tableView.stopFooterLoading()
         showAlert(message: Messages.CouldNotGetSurveysData)
     }
     
@@ -84,7 +84,6 @@ class SurveysViewController: BaseViewController {
     }
     
     @objc func onReloadTouchUp(sender: UIBarButtonItem) {
-        os_log(LogMessages.RefreshSurveyData, log: .surveys, type: .info)
         refreshData()
     }
     
@@ -166,9 +165,8 @@ extension SurveysViewController: UITableViewDataSource {
         return tableView.frame.size.height
     }
     
-    func  cellSurvey(_ tableView: UITableView, atIndexPath indexPath: IndexPath) -> SurveyTableViewCell {
+    private func  cellSurvey(_ tableView: UITableView, atIndexPath indexPath: IndexPath) -> SurveyTableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: surveyCellIdentifier, for: indexPath) as? SurveyTableViewCell else {
-            os_log(LogMessages.CouldNotReusedCell, log: .surveys, type: .error, surveyCellIdentifier)
             return SurveyTableViewCell()
         }
         let survey = surveysModel.survey(at: indexPath.row)
@@ -196,7 +194,6 @@ extension SurveysViewController: VerticalPageControlViewDelegate {
 // MARK: - SurveyTableViewCellDelegate
 extension SurveysViewController: SurveyTableViewCellDelegate {
     func didTouchUpTakeTheSurvey(_ cell: SurveyTableViewCell, survey: Survey) {
-        os_log(LogMessages.RedirectToSurveyDetail, log: .userFlows, type: .info, survey.title)
         redirectToSurveyDetailVC(survey: survey)
     }
     

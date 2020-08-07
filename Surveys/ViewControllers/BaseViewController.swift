@@ -13,7 +13,5 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let identifier = String(describing: self)
-        os_log(LogMessages.ViewControllerIsLoaded, log: .lifeCycle, type: .info, identifier)
     }
 }

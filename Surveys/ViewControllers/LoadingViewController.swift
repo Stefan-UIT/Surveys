@@ -11,7 +11,8 @@ import os.log
 
 // MARK: - LoadingViewController
 class LoadingViewController: BaseViewController {
-    var surveysModel = SurveysViewModel()
+    private var surveysModel = SurveysViewModel()
+    private var loadingModel = LoadingViewModel()
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -29,29 +30,32 @@ class LoadingViewController: BaseViewController {
     
     // MARK: - API
     private func fetchSurveys() {
-        surveysModel.fetchSurveys(success: {
-            self.handleFetchingSurveySuccess()
-        }, failure: { (_) in
-            self.handleFetchingSurveyFailed()
-        })
+        surveysModel.fetchSurveys { (error) in
+            self.removeSpinner()
+            if error != nil {
+                self.handleFetchingSurveyFailed()
+            } else {
+                self.handleFetchingSurveySuccess()
+            }
+        }
     }
     
     private func loadData() {
         self.showSpinner(onView: self.view)
-        UserLogin.shared.requestAccessToken(success: {
-            self.fetchSurveys()
-        }, failure: { (_) in
+        loadingModel.requestAccessToken { (error) in
+            guard error != nil else {
+                self.fetchSurveys()
+                return
+            }
             self.handleFetchingTokenFailed()
-        })
+        }
     }
     
     private func handleFetchingSurveySuccess() {
-        removeSpinner()
         redirectToSurveysViewContrroller()
     }
     
     private func handleFetchingSurveyFailed() {
-        removeSpinner()
         showAlert(message: Messages.CouldNotGetSurveysData)
     }
     

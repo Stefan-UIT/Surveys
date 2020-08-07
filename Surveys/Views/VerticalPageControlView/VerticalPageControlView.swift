@@ -63,7 +63,6 @@ class VerticalPageControlView: UIScrollView {
         let page = pageHelper.calculatePage(contentOffsetY: contentOffsetY, pageHeight: pageHeight)
         updateState(forPageNumber: page)
         updatePosition(forPageNumber: page)
-        os_log(LogMessages.ScrollToPage, log: .surveys, type: .info, page)
     }
     
     func moveDown() {
