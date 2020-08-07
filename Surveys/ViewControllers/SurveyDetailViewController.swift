@@ -9,7 +9,7 @@
 import UIKit
 
 class SurveyDetailViewController: BaseViewController {
-    var survey:Survey!
+    var survey: Survey!
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!

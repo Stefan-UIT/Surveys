@@ -30,7 +30,7 @@ class VPCValidationTests: XCTestCase {
        }
        
        func testInvalidNumberOfPages() {
-           let expectedError = VPCValidationError.InvalidNumberOfPage
+           let expectedError = VPCValidationError.invalidNumberOfPage
            var error: VPCValidationError?
            
            XCTAssertThrowsError(try validation.validateNumberOfPages(-1)) { (err) in
@@ -57,7 +57,7 @@ class VPCValidationTests: XCTestCase {
        }
        
        func testInvalidActiveImage() {
-           let expectedError = VPCValidationError.ActiveImageShouldNotNil
+           let expectedError = VPCValidationError.activeImageShouldNotNil
            var error: VPCValidationError?
            
            XCTAssertThrowsError(try validation.validateActiveImage(nil)) { (err) in
@@ -69,7 +69,7 @@ class VPCValidationTests: XCTestCase {
        }
        
        func testInvalidInactiveImage() {
-           let expectedError = VPCValidationError.InActiveImageShouldNotNil
+           let expectedError = VPCValidationError.inActiveImageShouldNotNil
            var error: VPCValidationError?
            
            XCTAssertThrowsError(try validation.validateInactiveImage(nil)) { (err) in
@@ -81,7 +81,7 @@ class VPCValidationTests: XCTestCase {
        }
        
        func testInvalidCurrentPage() {
-           let expectedError = VPCValidationError.InvalidCurrentPage
+           let expectedError = VPCValidationError.invalidCurrentPage
            var error: VPCValidationError?
            
            XCTAssertThrowsError(try validation.validateCurrentPage(-1, numberOfPages: 5)) { (err) in
@@ -93,7 +93,7 @@ class VPCValidationTests: XCTestCase {
        }
        
        func testCurrentPageLessThanNumberOfPages() {
-           let expectedError = VPCValidationError.CurrentPageIsTooLarge
+           let expectedError = VPCValidationError.currentPageIsTooLarge
            var error: VPCValidationError?
            
            XCTAssertThrowsError(try validation.validateCurrentPage(999, numberOfPages: 10)) { (err) in

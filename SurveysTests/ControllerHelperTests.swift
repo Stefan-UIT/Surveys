@@ -24,7 +24,7 @@ class ControllerHelperTests: XCTestCase {
     }
     
     func testLoadControllerSuccess() {
-        let controller = ControllerHelper.load(SurveysViewController.self, fromStoryboard: K.Main)
+        let controller = ControllerHelper.load(SurveysViewController.self, fromStoryboard: Keys.Main)
         XCTAssertNotNil(controller)
     }
     

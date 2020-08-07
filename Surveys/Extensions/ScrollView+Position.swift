@@ -20,7 +20,7 @@ extension UIScrollView {
         setContentOffset(topOffset, animated: true)
     }
     
-    func scrollTo(_ offset:CGPoint) {
+    func scrollTo(_ offset: CGPoint) {
         setContentOffset(offset, animated: true)
     }
 }

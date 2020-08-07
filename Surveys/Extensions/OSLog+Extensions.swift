@@ -9,12 +9,13 @@
 import Foundation
 import os.log
 
-fileprivate let subsystem = Bundle.main.bundleIdentifier!
-
 extension OSLog {
+    private static let subsystem = Bundle.main.bundleIdentifier!
+    
     static let networking = OSLog(subsystem: subsystem, category: "networking")
     static let userFlows = OSLog(subsystem: subsystem, category: "userFlows")
-    static let ui = OSLog(subsystem: subsystem, category: "userInterface")
+    static let userInterface = OSLog(subsystem: subsystem, category: "userInterface")
     static let lifeCycle = OSLog(subsystem: subsystem, category: "lifeCycle")
     static let surveys = OSLog(subsystem: subsystem, category: "surveys")
+    static let system = OSLog(subsystem: subsystem, category: "system")
 }

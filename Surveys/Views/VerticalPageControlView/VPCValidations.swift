@@ -10,25 +10,24 @@ import Foundation
 import UIKit
 
 // MARK: - VPCValidationError
-enum VPCValidationError:Error {
-    case InvalidNumberOfPage
-    case InvalidCurrentPage
-    case CurrentPageIsTooLarge
-    case ActiveImageShouldNotNil
-    case InActiveImageShouldNotNil
-    
+enum VPCValidationError: Error {
+    case invalidNumberOfPage
+    case invalidCurrentPage
+    case currentPageIsTooLarge
+    case activeImageShouldNotNil
+    case inActiveImageShouldNotNil
     
     var errorDescription: String {
         switch self {
-        case .InvalidNumberOfPage:
+        case .invalidNumberOfPage:
             return Messages.InvalidNumberOfPages
-        case .InvalidCurrentPage:
+        case .invalidCurrentPage:
             return Messages.InvalidCurrentPage
-        case .CurrentPageIsTooLarge:
-            return Messages.CurrentPageShouldLessThanOrEqualNumberOfPage
-        case .ActiveImageShouldNotNil:
+        case .currentPageIsTooLarge:
+            return Messages.CurrentPageShouldLessThanNumberOfPage
+        case .activeImageShouldNotNil:
             return Messages.ActiveImageShouldNotBeNil
-        case .InActiveImageShouldNotNil:
+        case .inActiveImageShouldNotNil:
             return Messages.InactiveImageShouldNotBeNil
         }
         
@@ -37,21 +36,20 @@ enum VPCValidationError:Error {
 
 // MARK: - VPCValidationService
 struct VPCValidationService {
-    func validateNumberOfPages(_ numberOfPages:Int) throws {
-        guard numberOfPages > 0 else { throw VPCValidationError.InvalidNumberOfPage }
+    func validateNumberOfPages(_ numberOfPages: Int) throws {
+        guard numberOfPages > 0 else { throw VPCValidationError.invalidNumberOfPage }
     }
     
-    func validateCurrentPage(_ currentPage:Int, numberOfPages:Int) throws {
-        guard currentPage > 0 else { throw VPCValidationError.InvalidCurrentPage }
-        guard currentPage <= numberOfPages else { throw VPCValidationError.CurrentPageIsTooLarge }
+    func validateCurrentPage(_ currentPage: Int, numberOfPages: Int) throws {
+        guard currentPage > 0 else { throw VPCValidationError.invalidCurrentPage }
+        guard currentPage <= numberOfPages else { throw VPCValidationError.currentPageIsTooLarge }
     }
     
-    func validateActiveImage(_ activeImage:UIImage?) throws {
-        guard activeImage != nil else { throw VPCValidationError.ActiveImageShouldNotNil }
+    func validateActiveImage(_ activeImage: UIImage?) throws {
+        guard activeImage != nil else { throw VPCValidationError.activeImageShouldNotNil }
     }
     
-    func validateInactiveImage(_ inactiveImage:UIImage?) throws {
-        guard inactiveImage != nil else { throw VPCValidationError.InActiveImageShouldNotNil }
+    func validateInactiveImage(_ inactiveImage: UIImage?) throws {
+        guard inactiveImage != nil else { throw VPCValidationError.inActiveImageShouldNotNil }
     }
 }
-

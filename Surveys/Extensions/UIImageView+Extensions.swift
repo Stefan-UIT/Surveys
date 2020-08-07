@@ -12,7 +12,7 @@ import UIKit
 let imageCache = NSCache<NSString, UIImage>()
 
 extension UIImageView {
-    func load(urlString:String) {
+    func load(urlString: String) {
         guard let url = URL(string: urlString) else { return }
         
         image = nil
@@ -32,7 +32,5 @@ extension UIImageView {
             }
         }
         
-        
     }
 }
-

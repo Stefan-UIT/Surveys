@@ -8,14 +8,12 @@
 
 import Foundation
 
-struct Survey:Decodable {
+struct Survey: Decodable {
     var title: String = ""
     var description: String = ""
     var coverImageUrl: String = ""
     
-    var fullSizeCoverImageUrl:String {
-        get {
-            return coverImageUrl + "l"
-        }
+    var fullSizeCoverImageUrl: String {
+        return coverImageUrl + "l"
     }
 }
