@@ -60,7 +60,7 @@ class SurveyTableViewCell: UITableViewCell {
     
     private func initOverlay() {
         overlay = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
-        overlay.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.4)
+        overlay.backgroundColor = AppColor.Overlay
     }
     
     // MARK: - Actions

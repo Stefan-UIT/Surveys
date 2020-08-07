@@ -55,6 +55,7 @@
 		2ED7FAA824DD763900A370E0 /* UserServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7FAA724DD763900A370E0 /* UserServiceTests.swift */; };
 		2ED7FAAA24DD799C00A370E0 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7FAA924DD799C00A370E0 /* String+Extensions.swift */; };
 		2ED7FAAC24DD815300A370E0 /* SurveyServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7FAAB24DD815300A370E0 /* SurveyServiceTests.swift */; };
+		2ED7FAB224DDA4F600A370E0 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7FAB124DDA4F600A370E0 /* AppColor.swift */; };
 		2EE2C23324CEBA590015595C /* VerticalPageControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2C23224CEBA590015595C /* VerticalPageControlTests.swift */; };
 		2EE2C23524CEDB970015595C /* UIScrollViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2C23424CEDB970015595C /* UIScrollViewTests.swift */; };
 		2EF4AC0724DAF6C300D07AC4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF4AC0624DAF6C300D07AC4 /* BaseViewController.swift */; };
@@ -136,6 +137,7 @@
 		2ED7FAA724DD763900A370E0 /* UserServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceTests.swift; sourceTree = "<group>"; };
 		2ED7FAA924DD799C00A370E0 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		2ED7FAAB24DD815300A370E0 /* SurveyServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyServiceTests.swift; sourceTree = "<group>"; };
+		2ED7FAB124DDA4F600A370E0 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		2EE2C23224CEBA590015595C /* VerticalPageControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalPageControlTests.swift; sourceTree = "<group>"; };
 		2EE2C23424CEDB970015595C /* UIScrollViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewTests.swift; sourceTree = "<group>"; };
 		2EF4AC0624DAF6C300D07AC4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				2E48458B24CC4B640003DFD4 /* Constant.swift */,
+				2ED7FAB124DDA4F600A370E0 /* AppColor.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -691,6 +694,7 @@
 				2E8C48A624DD567D00337D09 /* AppKeyChain.swift in Sources */,
 				2E48459024CC7B0D0003DFD4 /* UIBarButtonItem+Button.swift in Sources */,
 				2E7B6C5F24CBF37600DB99DA /* ScrollView+Position.swift in Sources */,
+				2ED7FAB224DDA4F600A370E0 /* AppColor.swift in Sources */,
 				2E8C48A324DD4E5200337D09 /* LoadingViewModel.swift in Sources */,
 				2E8C489D24DD1FF400337D09 /* SurveyServices.swift in Sources */,
 				2E48458924CC498B0003DFD4 /* UIViewController+Alert.swift in Sources */,
