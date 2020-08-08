@@ -24,7 +24,7 @@ struct VPCViewModel {
     
     // MARK: - Getter Variables
     var itemSize: CGSize {
-        return activeImage?.size ?? CGSize.zero
+        return Sizes.DotSize
     }
     
     var sizeWithSpace: CGFloat {
@@ -91,7 +91,7 @@ struct VPCViewModel {
         var originY = buttonHelper.getY(itemSizeWithMarginSpace: sizeWithSpace, parentView: view, numberOfPages: numberOfPages)
         for index in 1...numberOfPages {
             let button = getButton(withOriginY: originY, atIndex: index, targetView: view)
-            originY += button.frame.size.height
+            originY += button.frame.size.height + marginSpace
         }
     }
     
