@@ -24,7 +24,7 @@ struct VPCButtonHelper {
     }
     
     func setPosition(ofButton button: UIButton, originY: CGFloat, itemSize: CGFloat, marginSpace: CGFloat, inView view: UIView) {
-        let frame = CGRect(x: 0, y: originY, width: itemSize, height: (itemSize + marginSpace))
+        let frame = CGRect(x: 0, y: originY, width: itemSize, height: (itemSize))
         button.frame = frame
         button.center = CGPoint(x: view.frame.width / 2.0, y: button.center.y)
         view.addSubview(button)

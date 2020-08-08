@@ -81,3 +81,7 @@ struct Images {
 struct ImageObjects {
     static let Placeholder = UIImage(named: "placeholder")
 }
+
+struct Sizes {
+    static let DotSize: CGSize = CGSize(width: 16, height: 16)
+}
