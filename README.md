@@ -1,6 +1,4 @@
 # Surveys Demo App
-> This demo application aims to participate in the challenge of Nimble company.
-
 
 An application that allows users to browse a list of surveys. For the UI:
 
