@@ -28,17 +28,28 @@ class NetworkManager: Networkable {
     }
     
     lazy var provider = MoyaProvider<MultiTarget>(plugins: [authPlugin])
+    let translationLayer: NetworkTranslationLayer
     
-    private var decoder: JSONDecoder {
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        return decoder
+    init(networkTranslationLayer: NetworkTranslationLayer = NetworkTranslationLayer()) {
+        translationLayer = networkTranslationLayer
     }
-    
+}
+
+protocol JsonTranslatable {
+    func jsonDecode<T>(_ type: T.Type, fromData data: Data) throws -> T where T: Decodable
+}
+
+struct NetworkTranslationLayer: JsonTranslatable {
     func jsonDecode<T>(_ type: T.Type, fromData data: Data) throws -> T where T: Decodable {
         guard let result: T = try? decoder.decode(type, from: data) else {
             throw JsonParseError.couldNotDecode }
         
         return result
+    }
+    
+    private var decoder: JSONDecoder {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return decoder
     }
 }

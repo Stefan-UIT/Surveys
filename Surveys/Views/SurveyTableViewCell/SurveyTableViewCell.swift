@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 protocol SurveyTableViewCellDelegate: class {
-    func didTouchUpTakeTheSurvey(_ cell: SurveyTableViewCell, survey: Survey)
+    func surveyCell(_ cell: SurveyTableViewCell, didSelectSurvey survey: Survey)
 }
 
 class SurveyTableViewCell: UITableViewCell {
@@ -20,6 +20,7 @@ class SurveyTableViewCell: UITableViewCell {
     @IBOutlet weak var backgroundImageView: UIImageView!
     
     // MARK: - Variables
+    static let cellIdentifier = "SurveyTableViewCell"
     private var overlay: UIView!
     var survey: Survey!
     weak var delegate: SurveyTableViewCellDelegate?
@@ -65,6 +66,16 @@ class SurveyTableViewCell: UITableViewCell {
     
     // MARK: - Actions
     @IBAction func onTakeTheSurveyTouchUp(_ sender: UIButton) {
-        self.delegate?.didTouchUpTakeTheSurvey(self, survey: survey)
+        self.delegate?.surveyCell(self, didSelectSurvey: survey)
+    }
+}
+
+protocol UINibable {
+    static func uiNib() -> UINib
+}
+
+extension SurveyTableViewCell: UINibable {
+    static func uiNib() -> UINib {
+        return UINib(nibName: SurveyTableViewCell.cellIdentifier, bundle: nil)
     }
 }

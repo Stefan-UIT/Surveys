@@ -14,7 +14,6 @@ class SurveysViewController: BaseViewController {
     @IBOutlet weak var verticalPageControlView: VerticalPageControlView!
     
     // MARK: - Private Var
-    private let surveyCellIdentifier = "SurveyTableViewCell"
     private var leftBarButton: UIBarButtonItem!
     
     // MARK: - Variables
@@ -101,7 +100,7 @@ class SurveysViewController: BaseViewController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: surveyCellIdentifier, bundle: nil), forCellReuseIdentifier: surveyCellIdentifier)
+        tableView.register(SurveyTableViewCell.uiNib(), forCellReuseIdentifier: SurveyTableViewCell.cellIdentifier)
     }
     
     private func setupVerticalPageView() {
@@ -166,7 +165,7 @@ extension SurveysViewController: UITableViewDataSource {
     }
     
     private func  cellSurvey(_ tableView: UITableView, atIndexPath indexPath: IndexPath) -> SurveyTableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: surveyCellIdentifier, for: indexPath) as? SurveyTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SurveyTableViewCell.cellIdentifier, for: indexPath) as? SurveyTableViewCell else {
             return SurveyTableViewCell()
         }
         let survey = surveysModel.survey(at: indexPath.row)
@@ -193,13 +192,16 @@ extension SurveysViewController: VerticalPageControlViewDelegate {
 
 // MARK: - SurveyTableViewCellDelegate
 extension SurveysViewController: SurveyTableViewCellDelegate {
-    func didTouchUpTakeTheSurvey(_ cell: SurveyTableViewCell, survey: Survey) {
+    func surveyCell(_ cell: SurveyTableViewCell, didSelectSurvey survey: Survey) {
         redirectToSurveyDetailVC(survey: survey)
     }
     
     private func redirectToSurveyDetailVC(survey: Survey) {
-        guard let surveyDetailController = ControllerHelper.load(SurveyDetailViewController.self, fromStoryboard: Keys.Main) else { return }
-        surveyDetailController.survey = survey
-        self.navigationController?.pushViewController(surveyDetailController, animated: true)
+//        let surveyRouter = SurveyRouter(nav: navigationController)
+//        surveyRouter.redirectToSurveyDetailVC(survey: survey)
+        let target = RouterTarget.surveyDetail(survey: survey)
+        let nav = navigationController
+        let router = AppRouter(target: target, navigation: nav)
+        router.push()
     }
 }

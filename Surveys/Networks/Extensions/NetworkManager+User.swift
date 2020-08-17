@@ -19,7 +19,7 @@ extension NetworkManager {
                                 completion(nil, error)
                             case .success(let response):
                                 do {
-                                    let token = try self.jsonDecode(Token.self, fromData: response.data)
+                                    let token = try self.translationLayer.jsonDecode(Token.self, fromData: response.data)
                                     completion(token, nil)
                                 } catch let error {
                                     completion(nil, error)

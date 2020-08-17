@@ -58,6 +58,7 @@
 		2ED7FAAA24DD799C00A370E0 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7FAA924DD799C00A370E0 /* String+Extensions.swift */; };
 		2ED7FAAC24DD815300A370E0 /* SurveyServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7FAAB24DD815300A370E0 /* SurveyServiceTests.swift */; };
 		2ED7FAB224DDA4F600A370E0 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7FAB124DDA4F600A370E0 /* AppColor.swift */; };
+		2EE1B10E24EA66F600A06492 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE1B10D24EA66F600A06492 /* Router.swift */; };
 		2EE2C23324CEBA590015595C /* VerticalPageControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2C23224CEBA590015595C /* VerticalPageControlTests.swift */; };
 		2EE2C23524CEDB970015595C /* UIScrollViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2C23424CEDB970015595C /* UIScrollViewTests.swift */; };
 		2EF4AC0724DAF6C300D07AC4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF4AC0624DAF6C300D07AC4 /* BaseViewController.swift */; };
@@ -142,6 +143,7 @@
 		2ED7FAA924DD799C00A370E0 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		2ED7FAAB24DD815300A370E0 /* SurveyServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyServiceTests.swift; sourceTree = "<group>"; };
 		2ED7FAB124DDA4F600A370E0 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		2EE1B10D24EA66F600A06492 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		2EE2C23224CEBA590015595C /* VerticalPageControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalPageControlTests.swift; sourceTree = "<group>"; };
 		2EE2C23424CEDB970015595C /* UIScrollViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewTests.swift; sourceTree = "<group>"; };
 		2EF4AC0624DAF6C300D07AC4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			children = (
 				2EC3D27024DBEC1F0012C785 /* ControllerHelper.swift */,
 				2E8C48A524DD567D00337D09 /* AppKeyChain.swift */,
+				2EE1B10D24EA66F600A06492 /* Router.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -691,6 +694,7 @@
 				2E74B9B124DFDCC5005D26EA /* BaseAppTarget.swift in Sources */,
 				2ECCF9ED24C9D94E00912CB9 /* AppDelegate.swift in Sources */,
 				2E48458C24CC4B640003DFD4 /* Constant.swift in Sources */,
+				2EE1B10E24EA66F600A06492 /* Router.swift in Sources */,
 				2E74B9B324DFDCC5005D26EA /* SurveyServices.swift in Sources */,
 				2E52AF2024CAA6AD00BD6CDF /* UIImageView+Extensions.swift in Sources */,
 				2E48458524CC44010003DFD4 /* Token.swift in Sources */,
