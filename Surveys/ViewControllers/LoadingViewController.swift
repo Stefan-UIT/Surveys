@@ -25,7 +25,8 @@ class LoadingViewController: BaseViewController {
         guard let surveysController = ControllerHelper.load(SurveysViewController.self, fromStoryboard: Keys.Main) else { return }
         surveysController.surveysModel = surveysModel
         let nav = UINavigationController(rootViewController: surveysController)
-        ControllerHelper.setToRootViewController(nav)
+//        let router = SurveyRouter(nav: ControllerHelper.window)
+
     }
     
     // MARK: - API
