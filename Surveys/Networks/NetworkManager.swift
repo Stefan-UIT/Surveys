@@ -28,19 +28,19 @@ class NetworkManager: Networkable {
     }
     
     lazy var provider = MoyaProvider<MultiTarget>(plugins: [authPlugin])
-    let translationLayer: NetworkTranslationLayer
+    let translationLayer: Translatable
     
-    init(networkTranslationLayer: NetworkTranslationLayer = NetworkTranslationLayer()) {
+    init(networkTranslationLayer: Translatable = JsonTranslationLayer()) {
         translationLayer = networkTranslationLayer
     }
 }
 
-protocol JsonTranslatable {
-    func jsonDecode<T>(_ type: T.Type, fromData data: Data) throws -> T where T: Decodable
+protocol Translatable {
+    func decode<T>(_ type: T.Type, fromData data: Data) throws -> T where T: Decodable
 }
 
-struct NetworkTranslationLayer: JsonTranslatable {
-    func jsonDecode<T>(_ type: T.Type, fromData data: Data) throws -> T where T: Decodable {
+struct JsonTranslationLayer: Translatable {
+    func decode<T>(_ type: T.Type, fromData data: Data) throws -> T where T: Decodable {
         guard let result: T = try? decoder.decode(type, from: data) else {
             throw JsonParseError.couldNotDecode }
         

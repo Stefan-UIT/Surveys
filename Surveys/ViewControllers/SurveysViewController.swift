@@ -197,8 +197,6 @@ extension SurveysViewController: SurveyTableViewCellDelegate {
     }
     
     private func redirectToSurveyDetailVC(survey: Survey) {
-//        let surveyRouter = SurveyRouter(nav: navigationController)
-//        surveyRouter.redirectToSurveyDetailVC(survey: survey)
         let target = RouterTarget.surveyDetail(survey: survey)
         let nav = navigationController
         let router = AppRouter(target: target, navigation: nav)
