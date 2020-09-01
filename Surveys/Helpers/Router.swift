@@ -64,7 +64,6 @@ extension RouterTarget: NavTargetType {
         return ControllerHelper.load(controllerType, fromStoryboard: storyboardName)
     }
 }
-
 protocol Navigatale {
     func pushTo(viewController: UIViewController, animated: Bool)
 //    func present()
@@ -79,12 +78,8 @@ extension UINavigationController: Navigatale {
 extension UIWindow: Navigatale {
     func pushTo(viewController: UIViewController, animated: Bool) {
         rootViewController = viewController
-        //animated
     }
 }
-
-
-
 
 protocol NavTargetType {
     var storyboard:UIStoryboard { get }

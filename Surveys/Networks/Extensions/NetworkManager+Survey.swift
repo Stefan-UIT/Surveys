@@ -20,7 +20,7 @@ extension NetworkManager {
                                 completion(nil, error)
                             case .success(let response):
                                 do {
-                                    let surveys = try self.translationLayer.jsonDecode([Survey].self, fromData: response.data)
+                                    let surveys = try self.translationLayer.decode([Survey].self, fromData: response.data)
                                     completion(surveys, nil)
                                 } catch let error {
                                     completion(nil, error)
