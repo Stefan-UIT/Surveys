@@ -26,6 +26,12 @@ class LoadingViewController: BaseViewController {
         surveysController.surveysModel = surveysModel
         let nav = UINavigationController(rootViewController: surveysController)
 //        let router = SurveyRouter(nav: ControllerHelper.window)
+        
+        let target = RouterTarget.surveyList(surveyModel: SurveysViewModel())
+        RouterTarget.
+        
+        let router = AppRouter(target: target)
+        router.push()
 
     }
     
